@@ -1,0 +1,87 @@
+﻿<!-- SECTION 4: PREMIUM BUYING GUIDE -->
+        <section class="py-24 bg-gray-50 dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 font-serif">Tech Editorials</h2>
+                    <div class="w-24 h-1 bg-gray-900 dark:bg-white mx-auto"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Featured Article (Spans 2 columns) -->
+                    <article class="lg:col-span-2 group cursor-pointer bg-white dark:bg-gray-800 rounded-none shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-200 dark:border-gray-700">
+                        <div class="relative h-[400px] md:h-[500px] overflow-hidden">
+                            <img src="assets/images/home2/guide-laptop.jpg" alt="Laptop Buying Guide" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 uppercase tracking-wider">Featured Guide</div>
+                        </div>
+                        <div class="p-8 md:p-12">
+                            <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                                <span><i class="fa-regular fa-calendar mr-2"></i> October 2026</span>
+                                <span><i class="fa-regular fa-clock mr-2"></i> 10 min read</span>
+                            </div>
+                            <h3 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 leading-tight group-hover:text-primary transition-colors font-serif">The Ultimate Creator Laptop Buying Guide for 2026</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-8 text-lg">Navigating the complex landscape of high-performance mobile workstations. We break down GPU rendering capabilities, thermal designs, and color-accurate displays to help you find the perfect machine for your creative workflow.</p>
+                            
+                            <!-- Mini Comparison Table -->
+                            <div class="overflow-x-auto mb-8 border border-gray-200 dark:border-gray-700 rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+                                    <thead class="bg-gray-50 dark:bg-gray-900">
+                                        <tr>
+                                            <th class="px-6 py-3 text-left font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tier</th>
+                                            <th class="px-6 py-3 text-left font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Ideal For</th>
+                                            <th class="px-6 py-3 text-left font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Key Spec</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                                        <tr>
+                                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Premium</td>
+                                            <td class="px-6 py-4 text-gray-500 dark:text-gray-400">3D Rendering / 8K Video</td>
+                                            <td class="px-6 py-4 text-gray-500 dark:text-gray-400">RTX 5090 / 64GB RAM</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Mid-Range</td>
+                                            <td class="px-6 py-4 text-gray-500 dark:text-gray-400">4K Editing / UI Design</td>
+                                            <td class="px-6 py-4 text-gray-500 dark:text-gray-400">RTX 5070 / 32GB RAM</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <span class="inline-flex items-center text-primary font-bold uppercase tracking-widest text-sm group-hover:underline">Read Full Guide <i class="fa-solid fa-arrow-right ml-2"></i></span>
+                        </div>
+                    </article>
+
+                    <!-- Side Articles -->
+                    <div class="flex flex-col gap-8">
+                        <!-- Article 2 -->
+                        <article class="group cursor-pointer flex flex-col h-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="assets/images/home2/guide-phone.jpg" alt="Smartphone Comparison" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute top-4 left-4 bg-gray-900 text-white text-xs font-bold px-3 py-1 uppercase tracking-wider">Comparison</div>
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors leading-snug">Flagship Showdown: iOS vs Android Cameras</h3>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">A deep dive into computational photography, sensor sizes, and night mode capabilities of this year's top models.</p>
+                                </div>
+                                <span class="text-gray-500 text-xs font-medium uppercase tracking-wider"><i class="fa-solid fa-fire text-orange-500 mr-1"></i> Trending</span>
+                            </div>
+                        </article>
+
+                        <!-- Article 3 -->
+                        <article class="group cursor-pointer flex flex-col h-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="assets/images/home2/guide-audio.jpg" alt="Headphone Guide" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute top-4 left-4 bg-gray-900 text-white text-xs font-bold px-3 py-1 uppercase tracking-wider">Review</div>
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors leading-snug">Audiophile's Guide to Spatial Audio</h3>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">How multi-driver setups and personalized HRTF profiles are changing how we consume lossless music.</p>
+                                </div>
+                                <span class="text-gray-500 text-xs font-medium uppercase tracking-wider"><i class="fa-solid fa-star text-yellow-500 mr-1"></i> Top Pick</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>

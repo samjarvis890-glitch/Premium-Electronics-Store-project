@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nexura Store - Premium Accessories">
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+    <title>Nexura Store | Accessories</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#FF6B00', secondary: '#2B2D42', accent: '#FFE8D6' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .glass-dark { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* SECTION 1: Floating Hero */
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        .float-animation-delay-1 { animation-delay: 1s; }
+        .float-animation-delay-2 { animation-delay: 2s; }
+        .float-animation-delay-3 { animation-delay: 3s; }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* SECTION 2: Vertical Sticky Stack */
+        .sticky-card {
+            position: sticky;
+            top: 100px; /* Offset for navbar */
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
+        }
+        
+        /* SECTION 3: RGB Gaming Arena */
+        .rgb-ring {
+            position: relative;
+            z-index: 0;
+            overflow: hidden;
+            border-radius: 1.5rem;
+        }
+        .rgb-ring::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, #ff0000, #ff00ff, #0000ff, #00ffff, #00ff00, #ffff00, #ff0000);
+            animation: spin 4s linear infinite;
+            z-index: -2;
+        }
+        .rgb-ring::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            background: #111827; /* dark bg inside */
+            border-radius: 1.25rem;
+            z-index: -1;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* SECTION 4: Circular Hub Layout */
+        .hub-dial-container {
+            position: relative;
+            width: 600px;
+            height: 300px; /* Semi-circle */
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        @media (max-width: 640px) {
+            .hub-dial-container { width: 300px; height: 150px; }
+        }
+        .hub-dial {
+            position: absolute;
+            bottom: -300px; /* Center is at bottom center */
+            left: 0;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,107,0,0.2);
+        }
+        @media (max-width: 640px) {
+            .hub-dial { bottom: -150px; width: 300px; height: 300px; }
+        }
+        .dial-item {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: theme('colors.primary');
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-top: -40px;
+            margin-left: -40px;
+            transform-origin: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .dark .dial-item { background: #1f2937; color: white; border: 1px solid #374151; }
+        .dial-item:hover { transform: scale(1.2); z-index: 10; background: theme('colors.primary'); color: white; }
+
+        /* SECTION 5: Wave Audio */
+        .wave-card {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            transition: all 0.5s ease-in-out;
+            animation: morph 8s ease-in-out infinite;
+        }
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        /* SECTION 6: Isometric 3D Lab */
+        .iso-container {
+            transform: rotateX(60deg) rotateZ(-45deg);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            display: grid;
+            grid-template-columns: repeat(3, 150px);
+            grid-template-rows: repeat(3, 150px);
+            gap: 20px;
+            justify-content: center;
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+        @media (max-width: 640px) {
+            .iso-container { grid-template-columns: repeat(2, 120px); grid-template-rows: repeat(4, 120px); transform: rotateX(50deg) rotateZ(-30deg); }
+        }
+        .iso-block {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 107, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: -10px 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        .dark .iso-block { background: rgba(31, 41, 55, 0.9); border: 1px solid rgba(255, 107, 0, 0.3); box-shadow: -10px 10px 20px rgba(0,0,0,0.5); }
+        .iso-block:hover {
+            transform: translateZ(30px);
+            box-shadow: -20px 20px 30px rgba(0,0,0,0.2);
+            background: theme('colors.primary');
+            color: white !important;
+        }
+        .iso-block::before { /* Left wall */
+            content: ''; position: absolute; top: 0; left: -10px; width: 10px; height: 100%;
+            background: #e5e7eb; transform: skewY(-45deg) translate(0, -5px); transform-origin: right;
+        }
+        .dark .iso-block::before { background: #111827; }
+        .iso-block::after { /* Bottom wall */
+            content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 10px;
+            background: #d1d5db; transform: skewX(-45deg) translate(-5px, 0); transform-origin: top;
+        }
+        .dark .iso-block::after { background: #030712; }
+    </style>
+    <style>
+        /* Premium Nav Hover Line Effect */
+        #main-nav-links > a, #main-nav-links > div > button {
+            position: relative;
+        }
+        #main-nav-links > a::after, #main-nav-links > div > button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #FF6B00; /* Primary color */
+            transition: width 0.3s ease-in-out;
+            border-radius: 2px;
+        }
+        #main-nav-links > a:hover::after, #main-nav-links > div:hover > button::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="antialiased transition-colors duration-300 bg-gray-50 dark:bg-black overflow-x-hidden">
+
+    <!-- Sticky Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 gap-4 lg:gap-8">
+                <!-- Left: Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <img src="assets/images/logo.svg" alt="Nexura Logo" class="w-10 h-10 drop-shadow-lg">
+                    <a href="index.html" class="font-bold text-2xl tracking-tight text-gray-900 dark:text-white uppercase">Nexura</a>
+                </div>
+
+                <!-- Center: Menus (Desktop Only XL+) -->
+                <div id="main-nav-links" class="hidden xl:flex space-x-3 xl:space-x-6 text-base">
+                    <div class="relative group">
+                        <button class="text-primary-custom font-medium flex items-center gap-1 hover:text-primary transition-colors py-2">
+                            Home <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </button>
+                        <!-- Premium Dropdown -->
+                        <div class="absolute start-0 mt-2 w-48 rounded-xl glass-card opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left scale-95 group-hover:scale-100 z-50">
+                            <div class="py-2">
+                                <a href="index.html" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-primary">Home 1</a>
+                                <a href="home2.html" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-primary">Home 2</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="about.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">About</a>
+                    <a href="products.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Products</a>
+                    <a href="categories.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Categories</a>
+                    <a href="brands.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Brands</a>
+                    <a href="deals.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Deals</a>
+                    <a href="accessories.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Accessories</a>
+                    <a href="gallery.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Gallery</a>
+                    <a href="blog.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Blog</a>
+                    <a href="contact.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Contact</a>
+                </div>
+
+                <!-- Right: Actions -->
+                <div class="hidden xl:flex items-center space-x-4">
+                    <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <button id="rtl-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle RTL">
+                        <i class="fa-solid fa-right-left"></i>
+                    </button>
+                    <a href="login.html" class="px-5 py-2 rounded-full border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all text-sm font-medium flex items-center gap-2">
+                        <i class="fa-regular fa-user"></i> Login
+                    </a>
+                </div>
+
+                <!-- Tablet/Mobile Hamburger Toggle (Visible < XL) -->
+                <div class="xl:hidden flex items-center gap-2">
+                    <button id="mobile-menu-btn" class="text-gray-800 dark:text-gray-200 text-2xl focus:outline-none p-2 ms-2">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full Width Drawer Overlay -->
+        <div id="drawer-overlay" class="fixed inset-0 bg-black/60 z-[60] hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm"></div>
+        
+        <!-- Sliding Drawer Menu -->
+        <div id="drawer-menu" class="fixed top-0 start-0 w-full md:w-[400px] h-screen bg-white dark:bg-gray-900 z-[70] transform -translate-x-full rtl:translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto flex flex-col shadow-2xl">
+            <!-- Drawer Header -->
+            <div class="flex justify-between items-center p-6 border-b border-gray-200 dark:border-gray-800">
+                <div class="flex items-center gap-3">
+                    <img src="assets/images/logo.svg" alt="Nexura Logo" class="w-8 h-8 drop-shadow-md">
+                    <span class="font-bold text-xl tracking-tight text-gray-900 dark:text-white uppercase">Nexura Menu</span>
+                </div>
+                <button id="close-drawer-btn" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <!-- Drawer Links -->
+            <div class="flex-grow py-4 px-6 space-y-1">
+                <div class="border-b border-gray-100 dark:border-gray-800/50 pb-2 mb-2">
+                    <button id="drawer-home-btn" class="w-full flex justify-between items-center py-3 text-lg font-bold text-gray-900 dark:text-white hover:text-primary transition-colors">
+                        Home <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="drawer-home-icon"></i>
+                    </button>
+                    <div id="drawer-home-menu" class="hidden overflow-hidden ps-4 py-2 space-y-2 border-s-2 border-primary/30 ms-2">
+                        <a href="index.html" class="block py-2 text-primary font-bold">Home 1 (Current)</a>
+                        <a href="home2.html" class="block py-2 text-gray-800 dark:text-gray-200 hover:text-primary transition-colors font-medium">Home 2 (Alternate)</a>
+                    </div>
+                </div>
+                
+                <a href="about.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">About</a>
+                <a href="products.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Products</a>
+                <a href="categories.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Categories</a>
+                <a href="brands.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Brands</a>
+                <a href="deals.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Deals</a>
+                <a href="accessories.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Accessories</a>
+                <a href="gallery.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Gallery</a>
+                <a href="blog.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Blog</a>
+                <a href="contact.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors">Contact</a>
+            </div>
+
+            <!-- Drawer Footer -->
+            <div class="p-6 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/30 space-y-4 mt-auto">
+                <div class="flex gap-4">
+                    <button id="drawer-theme-toggle-btn" class="flex-1 py-3.5 rounded-xl bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 shadow-sm flex justify-center items-center gap-2 text-gray-800 dark:text-gray-200 font-bold hover:border-primary transition-colors">
+                        <i class="fa-solid fa-moon"></i> Dark
+                    </button>
+                    <button id="drawer-rtl-toggle-btn" class="flex-1 py-3.5 rounded-xl bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 shadow-sm flex justify-center items-center gap-2 text-gray-800 dark:text-gray-200 font-bold hover:border-primary transition-colors">
+                        <i class="fa-solid fa-right-left"></i> RTL
+                    </button>
+                </div>
+                <a href="login.html" class="w-full py-4 rounded-xl bg-primary text-white font-bold flex justify-center items-center gap-2 hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/30">
+                    <i class="fa-regular fa-user"></i> Login to Account
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: ACCESSORIES UNIVERSE HERO (Split Layout) -->
+    <section class="min-h-[90vh] bg-white dark:bg-black relative flex items-center pt-24 pb-16 border-b border-gray-300 dark:border-gray-600 overflow-hidden">
+        <!-- Decorative Blur Background -->
+        <div class="absolute top-1/2 end-0 transform translate-x-1/3 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] z-0"></div>
+        
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-16 relative z-10">
+            
+            <!-- Left: Content -->
+            <div class="w-full lg:w-1/2 text-center xl:text-start">
+                <span class="inline-block py-2 px-6 rounded-full bg-orange-50 dark:bg-orange-900/30 text-primary font-bold tracking-widest uppercase mb-8 border border-orange-100 dark:border-orange-900/50">
+                    Premium Collection
+                </span>
+                <h1 class="text-5xl md:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-tighter">
+                    Upgrade Every Device,<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">Elevate Every Experience</span>
+                </h1>
+                <p class="text-xl text-gray-800 dark:text-gray-200 mb-10 max-w-xl mx-auto xl:mx-0 font-medium leading-relaxed">
+                    Explore premium accessories designed for productivity, entertainment, gaming, travel, and smart living.
+                </p>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center gap-4 justify-center xl:justify-start mb-12">
+                    <button class="w-full sm:w-auto bg-primary text-white font-bold px-8 py-4 rounded-full text-lg hover:bg-orange-600 transition-colors shadow-lg shadow-primary/30">Shop Accessories</button>
+                    <button class="w-full sm:w-auto bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white font-bold px-8 py-4 rounded-full text-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play"></i> Watch Video
+                    </button>
+                </div>
+                
+                <!-- Hero Highlights -->
+                <div class="grid grid-cols-3 gap-4 pt-8 border-t border-gray-300 dark:border-gray-600">
+                    <div class="text-start">
+                        <h4 class="text-3xl font-black text-gray-900 dark:text-white mb-1">2.5k+</h4>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Accessories</p>
+                    </div>
+                    <div class="text-start border-l border-gray-300 dark:border-gray-600 ps-4 sm:ps-8">
+                        <h4 class="text-3xl font-black text-gray-900 dark:text-white mb-1">75+</h4>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Premium Brands</p>
+                    </div>
+                    <div class="text-start border-l border-gray-300 dark:border-gray-600 ps-4 sm:ps-8">
+                        <h4 class="text-3xl font-black text-gray-900 dark:text-white mb-1"><i class="fa-solid fa-truck-fast text-primary"></i></h4>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Same-Day Ship</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right: Featured Image -->
+            <div class="w-full lg:w-1/2">
+                <div class="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-square sm:aspect-[4/3] lg:aspect-square border border-gray-300 dark:border-gray-600 group bg-gray-100 dark:bg-gray-900">
+                    <img src="assets/images/products/gaming-collection.jpg" alt="Premium Accessories" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-black/60 via-transparent to-transparent"></div>
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute bottom-8 start-8 bg-white/90 dark:bg-black/90 backdrop-blur-md p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-gray-300 dark:border-gray-600">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white text-xl shadow-inner">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-0.5">Top Rated</p>
+                            <p class="text-lg font-black text-gray-900 dark:text-white leading-none">Award Winning</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: PRODUCTIVITY ESSENTIALS (Vertical Card Stack) -->
+    <section class="py-24 bg-white dark:bg-gray-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Productivity Essentials</h2>
+                <p class="text-gray-700 dark:text-gray-300 mt-4 text-xl">Tools to optimize your workflow.</p>
+            </div>
+
+            <!-- Grid Container -->
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 max-w-7xl mx-auto">
+                
+                <!-- Card 1 -->
+                <div class="bg-gray-100 dark:bg-gray-900 rounded-[2rem] p-8 border border-gray-300 dark:border-gray-600 flex flex-col gap-6">
+                    <div class="w-full rounded-2xl overflow-hidden shadow-lg h-64 shrink-0 group">
+                        <img src="assets/images/products/mech_keyboard_1784092778954.png" alt="Keyboards" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="w-full flex flex-col flex-grow">
+                        <span class="text-primary font-bold uppercase tracking-widest text-xs mb-2 block">Mechanical Keyboards</span>
+                        <h3 class="text-3xl font-black text-gray-900 dark:text-white mb-4">Tactile Precision</h3>
+                        <p class="text-gray-800 dark:text-gray-200 mb-6 flex-grow">Enhance typing speed and comfort with premium switches.</p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-2xl font-black text-gray-900 dark:text-white">From $99</span>
+                            <span class="bg-white dark:bg-black px-4 py-1 rounded-full text-xs font-bold text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-600">Best for: Professionals</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-blue-50 dark:bg-blue-900/20 rounded-[2rem] p-8 border border-blue-200 dark:border-blue-800 flex flex-col gap-6">
+                    <div class="w-full rounded-2xl overflow-hidden shadow-lg h-64 shrink-0 group">
+                        <img src="assets/images/products/rgb_accessories_hero_1784091273504.png" alt="Mouse" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="w-full flex flex-col flex-grow">
+                        <span class="text-blue-500 font-bold uppercase tracking-widest text-xs mb-2 block">Wireless Mouse</span>
+                        <h3 class="text-3xl font-black text-gray-900 dark:text-white mb-4">Ergonomic Control</h3>
+                        <p class="text-gray-800 dark:text-gray-200 mb-6 flex-grow">Track on any surface with high DPI and customizable buttons.</p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-2xl font-black text-gray-900 dark:text-white">From $49</span>
+                            <span class="bg-white dark:bg-black px-4 py-1 rounded-full text-xs font-bold text-gray-700 dark:text-gray-200 border border-blue-200 dark:border-blue-700">Best for: Creators</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-purple-50 dark:bg-purple-900/20 rounded-[2rem] p-8 border border-purple-200 dark:border-purple-800 flex flex-col gap-6">
+                    <div class="w-full rounded-2xl overflow-hidden shadow-lg h-64 shrink-0 group">
+                        <img src="assets/images/products/power_banks_hero_1784090905534.png" alt="Docking Stations" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="w-full flex flex-col flex-grow">
+                        <span class="text-purple-500 font-bold uppercase tracking-widest text-xs mb-2 block">Docking Stations</span>
+                        <h3 class="text-3xl font-black text-gray-900 dark:text-white mb-4">One Cable Hub</h3>
+                        <p class="text-gray-800 dark:text-gray-200 mb-6 flex-grow">Expand your laptop's connectivity to multiple monitors and peripherals instantly.</p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-2xl font-black text-gray-900 dark:text-white">From $149</span>
+                            <span class="bg-white dark:bg-black px-4 py-1 rounded-full text-xs font-bold text-gray-700 dark:text-gray-200 border border-purple-200 dark:border-purple-700">Best for: Remote Workers</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-green-50 dark:bg-green-900/20 rounded-[2rem] p-8 border border-green-200 dark:border-green-800 flex flex-col gap-6">
+                    <div class="w-full rounded-2xl overflow-hidden shadow-lg h-64 shrink-0 group">
+                        <img src="assets/images/products/camera_hero_1784090988431.png" alt="High-Res Webcams" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="w-full flex flex-col flex-grow">
+                        <span class="text-green-500 font-bold uppercase tracking-widest text-xs mb-2 block">High-Res Webcams</span>
+                        <h3 class="text-3xl font-black text-gray-900 dark:text-white mb-4">Crystal Clear Calls</h3>
+                        <p class="text-gray-800 dark:text-gray-200 mb-6 flex-grow">Upgrade your meetings with 4K resolution and auto-framing technology.</p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-2xl font-black text-gray-900 dark:text-white">From $129</span>
+                            <span class="bg-white dark:bg-black px-4 py-1 rounded-full text-xs font-bold text-gray-700 dark:text-gray-200 border border-green-200 dark:border-green-700">Best for: Executives</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-orange-50 dark:bg-orange-900/20 rounded-[2rem] p-8 border border-orange-200 dark:border-orange-800 flex flex-col gap-6">
+                    <div class="w-full rounded-2xl overflow-hidden shadow-lg h-64 shrink-0 group">
+                        <img src="assets/images/products/headphones_deal_hero_1784092009632.png" alt="Noise Cancelling Headphones" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="w-full flex flex-col flex-grow">
+                        <span class="text-orange-500 font-bold uppercase tracking-widest text-xs mb-2 block">Premium Audio</span>
+                        <h3 class="text-3xl font-black text-gray-900 dark:text-white mb-4">Total Focus</h3>
+                        <p class="text-gray-800 dark:text-gray-200 mb-6 flex-grow">Block out distractions and focus deeply with industry-leading ANC.</p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-2xl font-black text-gray-900 dark:text-white">From $299</span>
+                            <span class="bg-white dark:bg-black px-4 py-1 rounded-full text-xs font-bold text-gray-700 dark:text-gray-200 border border-orange-200 dark:border-orange-700">Best for: Deep Work</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-teal-50 dark:bg-teal-900/20 rounded-[2rem] p-8 border border-teal-200 dark:border-teal-800 flex flex-col gap-6">
+                    <div class="w-full rounded-2xl overflow-hidden shadow-lg h-64 shrink-0 group">
+                        <img src="assets/images/products/lighting_hero_1784091029678.png" alt="Standing Desks" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="w-full flex flex-col flex-grow">
+                        <span class="text-teal-500 font-bold uppercase tracking-widest text-xs mb-2 block">Standing Desks</span>
+                        <h3 class="text-3xl font-black text-gray-900 dark:text-white mb-4">Ergonomic Posture</h3>
+                        <p class="text-gray-800 dark:text-gray-200 mb-6 flex-grow">Switch seamlessly between sitting and standing for better health.</p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-2xl font-black text-gray-900 dark:text-white">From $399</span>
+                            <span class="bg-white dark:bg-black px-4 py-1 rounded-full text-xs font-bold text-gray-700 dark:text-gray-200 border border-teal-200 dark:border-teal-700">Best for: Daily Office</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: GAMING ACCESSORIES ARENA (Dark Neon Gaming Zone) -->
+    <section class="py-32 bg-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('assets/images/about/future-vision.jpg')] bg-cover opacity-10 mix-blend-luminosity"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 uppercase tracking-tighter leading-none">Gaming<br>Arena</h2>
+            </div>
+
+            <!-- Gaming Statistics Bar -->
+            <div class="flex flex-wrap justify-center gap-4 md:gap-16 mb-20 bg-gray-900/50 backdrop-blur-md py-6 rounded-3xl border border-gray-800">
+                <div class="text-center px-4"><span class="block text-3xl font-black text-white">50,000+</span><span class="text-xs uppercase text-red-500 font-bold tracking-widest">Gamers Served</span></div>
+                <div class="text-center px-4 border-l border-gray-800"><span class="block text-3xl font-black text-white">300+</span><span class="text-xs uppercase text-blue-500 font-bold tracking-widest">Gaming Accessories</span></div>
+                <div class="text-center px-4 border-l border-gray-800"><span class="block text-3xl font-black text-white">25+</span><span class="text-xs uppercase text-purple-500 font-bold tracking-widest">Premium Brands</span></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- RGB Card 1 -->
+                <div class="rgb-ring p-6 text-center group cursor-pointer">
+                    <div class="relative z-10">
+                        <img src="assets/images/products/mech_keyboard_1784092778954.png" alt="RGB Keyboard" class="w-full h-40 object-cover rounded-xl mb-6 shadow-2xl group-hover:scale-105 transition-transform">
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight mb-2">RGB Keyboard</h3>
+                        <p class="text-gray-200 text-sm mb-4">Tournament Ready, Low Latency</p>
+                        <span class="text-red-500 font-bold"><i class="fa-solid fa-fire"></i> Hot Item</span>
+                    </div>
+                </div>
+
+                <!-- RGB Card 2 -->
+                <div class="rgb-ring p-6 text-center group cursor-pointer">
+                    <div class="relative z-10">
+                        <img src="assets/images/products/headphones_deal_hero_1784092009632.png" alt="Gaming Headset" class="w-full h-40 object-cover rounded-xl mb-6 shadow-2xl group-hover:scale-105 transition-transform">
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight mb-2">Gaming Headset</h3>
+                        <p class="text-gray-200 text-sm mb-4">Spatial Audio, Premium Build</p>
+                        <span class="text-blue-500 font-bold"><i class="fa-solid fa-headset"></i> Pro Gear</span>
+                    </div>
+                </div>
+
+                <!-- RGB Card 3 -->
+                <div class="rgb-ring p-6 text-center group cursor-pointer">
+                    <div class="relative z-10">
+                        <img src="assets/images/products/microphone_hero_1784090974870.png" alt="Streaming Kit" class="w-full h-40 object-cover rounded-xl mb-6 shadow-2xl group-hover:scale-105 transition-transform">
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tight mb-2">Streaming Kit</h3>
+                        <p class="text-gray-200 text-sm mb-4">Studio Mic & Ring Light</p>
+                        <span class="text-purple-500 font-bold"><i class="fa-solid fa-video"></i> Creator Pack</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: MOBILE ACCESSORIES HUB (Circular Layout) -->
+    <section class="py-32 bg-gray-50 dark:bg-gray-900 border-t border-gray-300 dark:border-gray-600 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Mobile Hub</h2>
+                <p class="text-gray-700 dark:text-gray-300 mt-4 text-xl">Power and protect your daily driver.</p>
+            </div>
+
+            <!-- Mobile Hub Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-16">
+                
+                <!-- Category 1: Power Banks -->
+                <div class="group bg-white dark:bg-gray-800 rounded-[2rem] p-8 border border-gray-300 dark:border-gray-600 hover:border-primary dark:hover:border-primary transition-colors shadow-sm hover:shadow-xl">
+                    <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-6 text-blue-500 text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-battery-full"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Power Banks</h3>
+                    <p class="text-gray-700 dark:text-gray-200 mb-6 line-clamp-2">High-capacity portable chargers to keep your devices powered all day long.</p>
+                    <a href="#" class="text-primary font-bold hover:underline">Explore Power Banks &rarr;</a>
+                </div>
+
+                <!-- Category 2: Wireless Chargers -->
+                <div class="group bg-white dark:bg-gray-800 rounded-[2rem] p-8 border border-gray-300 dark:border-gray-600 hover:border-primary dark:hover:border-primary transition-colors shadow-sm hover:shadow-xl">
+                    <div class="w-16 h-16 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mb-6 text-orange-500 text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-plug"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Wireless Chargers</h3>
+                    <p class="text-gray-700 dark:text-gray-200 mb-6 line-clamp-2">Fast and sleek Qi-certified wireless charging pads and stands for your desk.</p>
+                    <a href="#" class="text-primary font-bold hover:underline">Explore Chargers &rarr;</a>
+                </div>
+
+                <!-- Category 3: Phone Cases -->
+                <div class="group bg-white dark:bg-gray-800 rounded-[2rem] p-8 border border-gray-300 dark:border-gray-600 hover:border-primary dark:hover:border-primary transition-colors shadow-sm hover:shadow-xl">
+                    <div class="w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-6 text-purple-500 text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Premium Cases</h3>
+                    <p class="text-gray-700 dark:text-gray-200 mb-6 line-clamp-2">Protect your investment with our curated selection of rugged and clear cases.</p>
+                    <a href="#" class="text-primary font-bold hover:underline">Explore Phone Cases &rarr;</a>
+                </div>
+
+                <!-- Category 4: Screen Protectors -->
+                <div class="group bg-white dark:bg-gray-800 rounded-[2rem] p-8 border border-gray-300 dark:border-gray-600 hover:border-primary dark:hover:border-primary transition-colors shadow-sm hover:shadow-xl">
+                    <div class="w-16 h-16 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center mb-6 text-teal-500 text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shield"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Screen Protectors</h3>
+                    <p class="text-gray-700 dark:text-gray-200 mb-6 line-clamp-2">Tempered glass and privacy screen protectors with edge-to-edge coverage.</p>
+                    <a href="#" class="text-primary font-bold hover:underline">Explore Protectors &rarr;</a>
+                </div>
+
+                <!-- Category 5: MagSafe Gear -->
+                <div class="group bg-white dark:bg-gray-800 rounded-[2rem] p-8 border border-gray-300 dark:border-gray-600 hover:border-primary dark:hover:border-primary transition-colors shadow-sm hover:shadow-xl">
+                    <div class="w-16 h-16 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center mb-6 text-red-500 text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-magnet"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">MagSafe Gear</h3>
+                    <p class="text-gray-700 dark:text-gray-200 mb-6 line-clamp-2">Magnetic wallets, mounts, and accessories designed seamlessly for iPhone.</p>
+                    <a href="#" class="text-primary font-bold hover:underline">Explore MagSafe Gear &rarr;</a>
+                </div>
+
+                <!-- Category 6: Car Mounts -->
+                <div class="group bg-white dark:bg-gray-800 rounded-[2rem] p-8 border border-gray-300 dark:border-gray-600 hover:border-primary dark:hover:border-primary transition-colors shadow-sm hover:shadow-xl">
+                    <div class="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-6 text-green-500 text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-car"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Car Mounts</h3>
+                    <p class="text-gray-700 dark:text-gray-200 mb-6 line-clamp-2">Secure your device on the road with vent, dash, and windshield mounts.</p>
+                    <a href="#" class="text-primary font-bold hover:underline">Explore Car Mounts &rarr;</a>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-16">
+                <button class="bg-gray-900 dark:bg-white text-white dark:text-black font-bold px-10 py-4 rounded-full hover:bg-primary dark:hover:bg-primary hover:text-white transition-colors shadow-xl">Shop All Mobile Accessories</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: AUDIO EXPERIENCE CENTER (Wave Inspired Design) -->
+    <section class="py-32 bg-white dark:bg-gray-950 border-t border-gray-300 dark:border-gray-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col xl:flex-row justify-between items-center xl:items-end mb-20 gap-8 text-center xl:text-start">
+                <div class="flex flex-col items-center xl:items-start">
+                    <span class="text-blue-500 font-bold uppercase tracking-widest text-sm mb-2 block">Immersive Sound</span>
+                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Audio Center</h2>
+                </div>
+                <div class="bg-gray-100 dark:bg-gray-900 p-4 rounded-xl border border-gray-300 dark:border-gray-600 hidden lg:block">
+                    <p class="text-sm font-bold text-gray-900 dark:text-white mb-2">Supported Features:</p>
+                    <div class="flex gap-4 text-xs text-gray-700 dark:text-gray-300">
+                        <span><i class="fa-solid fa-check text-blue-500"></i> Dolby Atmos</span>
+                        <span><i class="fa-solid fa-check text-blue-500"></i> Active Noise Cancelling</span>
+                        <span><i class="fa-solid fa-check text-blue-500"></i> Hi-Res Audio</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-16 gap-x-8 justify-items-center mt-12">
+                
+                <!-- Audio Card 1 -->
+                <div class="w-full max-w-sm text-center group bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg border border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-500 transition-colors">
+                    <div class="wave-card w-48 h-48 bg-blue-100 dark:bg-blue-900/30 border-2 border-blue-200 dark:border-blue-800 flex items-center justify-center p-4 mb-8 mx-auto relative overflow-hidden group-hover:scale-110 transition-transform duration-500">
+                        <img src="assets/images/products/earbuds_hero_1784090892438.png" alt="Earbuds" class="w-full h-full object-contain relative z-10">
+                    </div>
+                    <h3 class="text-2xl font-black text-gray-900 dark:text-white mb-2">Wireless Earbuds</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-6">True wireless freedom with punchy bass.</p>
+                    <div class="flex flex-col gap-2 mb-8 text-start text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-950 p-4 rounded-xl border border-gray-300 dark:border-gray-600">
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-battery-full text-blue-500 w-4 text-center"></i> 24Hr Battery Life</div>
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-droplet text-blue-500 w-4 text-center"></i> IPX4 Water Resistant</div>
+                    </div>
+                    <button class="w-full py-3 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-bold rounded-xl hover:bg-blue-500 hover:text-white transition-colors">Compare Models</button>
+                </div>
+
+                <!-- Audio Card 2 -->
+                <div class="w-full max-w-sm text-center group bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg border border-gray-300 dark:border-gray-600 hover:border-purple-500 dark:hover:border-purple-500 transition-colors">
+                    <div class="wave-card w-48 h-48 bg-purple-100 dark:bg-purple-900/30 border-2 border-purple-200 dark:border-purple-800 flex items-center justify-center p-4 mb-8 mx-auto relative overflow-hidden group-hover:scale-110 transition-transform duration-500" style="animation-delay: 2s;">
+                        <img src="assets/images/products/headphones_deal_hero_1784092009632.png" alt="Headphones" class="w-full h-full object-contain relative z-10">
+                    </div>
+                    <h3 class="text-2xl font-black text-gray-900 dark:text-white mb-2">ANC Headphones</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-6">Block the noise, hear the music.</p>
+                    <div class="flex flex-col gap-2 mb-8 text-start text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-950 p-4 rounded-xl border border-gray-300 dark:border-gray-600">
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-volume-xmark text-purple-500 w-4 text-center"></i> Active Noise Cancelling</div>
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-music text-purple-500 w-4 text-center"></i> High-Res Audio Certified</div>
+                    </div>
+                    <button class="w-full py-3 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 font-bold rounded-xl hover:bg-purple-500 hover:text-white transition-colors">Expert Picks</button>
+                </div>
+
+                <!-- Audio Card 3 -->
+                <div class="w-full max-w-sm text-center group bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg border border-gray-300 dark:border-gray-600 hover:border-green-500 dark:hover:border-green-500 transition-colors">
+                    <div class="wave-card w-48 h-48 bg-green-100 dark:bg-green-900/30 border-2 border-green-200 dark:border-green-800 flex items-center justify-center p-4 mb-8 mx-auto relative overflow-hidden group-hover:scale-110 transition-transform duration-500" style="animation-delay: 4s;">
+                        <img src="assets/images/products/microphone_hero_1784090974870.png" alt="Mic" class="w-full h-full object-contain relative z-10">
+                    </div>
+                    <h3 class="text-2xl font-black text-gray-900 dark:text-white mb-2">Studio Microphones</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-6">Broadcast quality audio for creators.</p>
+                    <div class="flex flex-col gap-2 mb-8 text-start text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-950 p-4 rounded-xl border border-gray-300 dark:border-gray-600">
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-microphone-lines text-green-500 w-4 text-center"></i> Cardioid Pickup Pattern</div>
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-usb text-green-500 w-4 text-center"></i> Plug & Play USB-C</div>
+                    </div>
+                    <button class="w-full py-3 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 font-bold rounded-xl hover:bg-green-500 hover:text-white transition-colors">Podcast Kits</button>
+                </div>
+
+                <!-- Audio Card 4 -->
+                <div class="w-full max-w-sm text-center group bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg border border-gray-300 dark:border-gray-600 hover:border-red-500 dark:hover:border-red-500 transition-colors">
+                    <div class="wave-card w-48 h-48 bg-red-100 dark:bg-red-900/30 border-2 border-red-200 dark:border-red-800 flex items-center justify-center p-4 mb-8 mx-auto relative overflow-hidden group-hover:scale-110 transition-transform duration-500" style="animation-delay: 1s;">
+                        <img src="assets/images/products/soundbar_hero_1784090961467.png" alt="Soundbar" class="w-full h-full object-contain relative z-10">
+                    </div>
+                    <h3 class="text-2xl font-black text-gray-900 dark:text-white mb-2">Cinematic Soundbars</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-6">Upgrade your living room theater.</p>
+                    <div class="flex flex-col gap-2 mb-8 text-start text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-950 p-4 rounded-xl border border-gray-300 dark:border-gray-600">
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-cubes text-red-500 w-4 text-center"></i> 5.1 Surround Sound</div>
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-wifi text-red-500 w-4 text-center"></i> Wireless Subwoofer</div>
+                    </div>
+                    <button class="w-full py-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 font-bold rounded-xl hover:bg-red-500 hover:text-white transition-colors">View Soundbars</button>
+                </div>
+
+                <!-- Audio Card 5 -->
+                <div class="w-full max-w-sm text-center group bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg border border-gray-300 dark:border-gray-600 hover:border-orange-500 dark:hover:border-orange-500 transition-colors">
+                    <div class="wave-card w-48 h-48 bg-orange-100 dark:bg-orange-900/30 border-2 border-orange-200 dark:border-orange-800 flex items-center justify-center p-4 mb-8 mx-auto relative overflow-hidden group-hover:scale-110 transition-transform duration-500" style="animation-delay: 3s;">
+                        <img src="assets/images/products/speakers_hero_1784091433040.png" alt="Portable Speakers" class="w-full h-full object-contain relative z-10">
+                    </div>
+                    <h3 class="text-2xl font-black text-gray-900 dark:text-white mb-2">Portable Speakers</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-6">Take the party anywhere.</p>
+                    <div class="flex flex-col gap-2 mb-8 text-start text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-950 p-4 rounded-xl border border-gray-300 dark:border-gray-600">
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-water text-orange-500 w-4 text-center"></i> IP67 Waterproof</div>
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-link text-orange-500 w-4 text-center"></i> Multi-speaker Pairing</div>
+                    </div>
+                    <button class="w-full py-3 bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 font-bold rounded-xl hover:bg-orange-500 hover:text-white transition-colors">Shop Speakers</button>
+                </div>
+
+                <!-- Audio Card 6 -->
+                <div class="w-full max-w-sm text-center group bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg border border-gray-300 dark:border-gray-600 hover:border-teal-500 dark:hover:border-teal-500 transition-colors">
+                    <div class="wave-card w-48 h-48 bg-teal-100 dark:bg-teal-900/30 border-2 border-teal-200 dark:border-teal-800 flex items-center justify-center p-4 mb-8 mx-auto relative overflow-hidden group-hover:scale-110 transition-transform duration-500" style="animation-delay: 5s;">
+                        <img src="assets/images/products/smart-home-collection.jpg" alt="Smart Audio" class="w-full h-full object-cover rounded-full relative z-10">
+                    </div>
+                    <h3 class="text-2xl font-black text-gray-900 dark:text-white mb-2">Smart Audio Hubs</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-6">Control your home with your voice.</p>
+                    <div class="flex flex-col gap-2 mb-8 text-start text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-950 p-4 rounded-xl border border-gray-300 dark:border-gray-600">
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-home text-teal-500 w-4 text-center"></i> Smart Home Control</div>
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-robot text-teal-500 w-4 text-center"></i> Voice Assistant</div>
+                    </div>
+                    <button class="w-full py-3 bg-teal-50 dark:bg-teal-900/20 text-teal-600 dark:text-teal-400 font-bold rounded-xl hover:bg-teal-500 hover:text-white transition-colors">Smart Speakers</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: SMART ACCESSORIES LAB (Isometric 3D Lab Grid) -->
+    <section class="py-32 bg-gray-100 dark:bg-black overflow-hidden relative border-t border-gray-300 dark:border-gray-600">
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center gap-16">
+            
+            <div class="w-full lg:w-1/3">
+                <span class="inline-block px-3 py-1 bg-gray-900 text-white font-bold text-xs uppercase tracking-widest rounded-full mb-4">Innovation Lab</span>
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tight mb-6">Smart Accessories</h2>
+                <p class="text-gray-800 dark:text-gray-200 mb-8 font-medium">Step into the future. Discover wearable technology, AI assistants, and compact devices that redefine convenience.</p>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-300 dark:border-gray-600">
+                    <h4 class="font-bold text-gray-900 dark:text-white uppercase tracking-widest text-sm mb-4">Future Tech Collection</h4>
+                    <ul class="space-y-3 font-medium text-gray-800 dark:text-gray-200">
+                        <li><i class="fa-solid fa-microchip text-primary w-6"></i> AI Wearables</li>
+                        <li><i class="fa-solid fa-glasses text-primary w-6"></i> Smart Glasses</li>
+                        <li><i class="fa-solid fa-language text-primary w-6"></i> Smart Translators</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-2/3">
+                <!-- Detailed Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Card 1 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-300 dark:border-gray-600 hover:border-primary transition-colors group flex gap-5 shadow-sm hover:shadow-lg">
+                        <div class="w-16 h-16 rounded-2xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-primary text-2xl shrink-0 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-ring"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-1">Smart Rings</h4>
+                            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Track your sleep, vitals, and fitness seamlessly from your finger without the bulk of a watch.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-300 dark:border-gray-600 hover:border-primary transition-colors group flex gap-5 shadow-sm hover:shadow-lg">
+                        <div class="w-16 h-16 rounded-2xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-primary text-2xl shrink-0 group-hover:scale-110 transition-transform relative">
+                            <span class="absolute -top-2 -end-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md">NEW</span>
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-1">Smart Pens</h4>
+                            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Digitize your handwritten notes instantly to the cloud. Perfect for students and professionals.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-300 dark:border-gray-600 hover:border-primary transition-colors group flex gap-5 shadow-sm hover:shadow-lg">
+                        <div class="w-16 h-16 rounded-2xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-primary text-2xl shrink-0 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-1">Smart Tags</h4>
+                            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Never lose your keys, wallet, or luggage again with precision ultra-wideband tracking.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-300 dark:border-gray-600 hover:border-primary transition-colors group flex gap-5 shadow-sm hover:shadow-lg">
+                        <div class="w-16 h-16 rounded-2xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-primary text-2xl shrink-0 group-hover:scale-110 transition-transform relative">
+                            <span class="absolute -top-2 -end-2 bg-blue-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md">AI</span>
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-1">AI Assistants</h4>
+                            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Voice-controlled hubs that automate your smart home, answer questions, and manage routines.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-300 dark:border-gray-600 hover:border-primary transition-colors group flex gap-5 shadow-sm hover:shadow-lg">
+                        <div class="w-16 h-16 rounded-2xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-primary text-2xl shrink-0 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-1">Mini Projectors</h4>
+                            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Pocket-sized laser projectors that cast a 100-inch screen anywhere you go.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-300 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-700 transition-colors group flex gap-5 opacity-80">
+                        <div class="w-16 h-16 rounded-2xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-gray-200 dark:text-gray-200 text-2xl shrink-0">
+                            <i class="fa-solid fa-vr-cardboard"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white text-lg mb-1 flex items-center gap-2">AR Accessories <span class="text-[10px] bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-2 py-0.5 rounded uppercase font-bold tracking-widest">Soon</span></h4>
+                            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Next-generation augmented reality gear and controllers. Coming in Q4.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white dark:bg-gray-950 border-t border-gray-300 dark:border-gray-600 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-12 mb-12">
+                <!-- Column 1 -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="assets/images/logo.svg" alt="Nexura Logo" class="w-10 h-10 drop-shadow-lg">
+                        <span class="font-bold text-2xl tracking-tight text-gray-900 dark:text-white uppercase">Nexura</span>
+                    </div>
+                    <p class="text-gray-800 dark:text-gray-200 text-sm mb-6 leading-relaxed">
+                        Your premium destination for the latest electronics, smart gadgets, and high-end technology. Discover the future today.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white transition-all"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white transition-all"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div>
+                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Home</a></li>
+                        <li><a href="about.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">About</a></li>
+                        <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Products</a></li>
+                        <li><a href="deals.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Deals</a></li>
+                        <li><a href="gallery.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3 -->
+                <div>
+                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Categories</h4>
+                    <ul class="space-y-3">
+                        <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Laptops</a></li>
+                        <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Smartphones</a></li>
+                        <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Smartwatches</a></li>
+                        <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Headphones</a></li>
+                        <li><a href="accessories.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Gaming Accessories</a></li>
+                        <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Smart Home</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4 -->
+                <div>
+                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Newsletter</h4>
+                    <p class="text-gray-800 dark:text-gray-200 text-sm mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
+                    <form class="flex flex-col gap-3">
+                        <input type="email" placeholder="Enter your email address" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-gray-900 dark:text-white" required>
+                        <button type="submit" class="btn-primary w-full justify-center">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-300 dark:border-gray-600 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-700 dark:text-gray-200 text-sm">
+                    &copy; 2026 Nexura Store. All rights reserved.
+                </p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-gray-700 dark:text-gray-200 hover:text-primary text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-700 dark:text-gray-200 hover:text-primary text-sm transition-colors">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Optional JS for parallax effect on hero if needed, but CSS animation handles the floating.
+        document.addEventListener('mousemove', (e) => {
+            const bg = document.getElementById('parallax-bg');
+            if(bg) {
+                const x = (window.innerWidth - e.pageX * 2) / 90;
+                const y = (window.innerHeight - e.pageY * 2) / 90;
+                bg.style.transform = `translateX(${x}px) translateY(${y}px)`;
+            }
+        });
+    </script>
+</body>
+</html>

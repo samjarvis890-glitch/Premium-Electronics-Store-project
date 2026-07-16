@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nexura Store - Visual Experience Gallery">
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+    <title>Nexura Store | Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#FF6B00', secondary: '#2B2D42', accent: '#FFE8D6' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .glass-dark { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* SECTION 1: Carousel Hero */
+        .camera-flash {
+            position: absolute;
+            inset: 0;
+            background: white;
+            opacity: 0;
+            z-index: 10;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+        @keyframes flash-effect {
+            0%, 95% { opacity: 0; }
+            96% { opacity: 0.8; }
+            97% { opacity: 0; }
+            98% { opacity: 0.4; }
+            100% { opacity: 0; }
+        }
+        .animate-flash { animation: flash-effect 10s infinite; }
+        .particle { position: absolute; background: white; border-radius: 50%; opacity: 0.5; animation: floatUp 15s linear infinite; }
+        @keyframes floatUp { 0% { transform: translateY(100vh) scale(0); opacity: 0; } 50% { opacity: 0.5; } 100% { transform: translateY(-100px) scale(1); opacity: 0; } }
+
+        /* SECTION 2: True Pinterest Masonry */
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1.5rem;
+        }
+        @media (max-width: 1024px) { .masonry-grid { column-count: 2; } }
+        @media (max-width: 640px) { .masonry-grid { column-count: 1; } }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+
+        /* SECTION 3: Dark Neon Lightbox */
+        .neon-lightbox:hover {
+            box-shadow: 0 0 40px rgba(255,107,0,0.4);
+            z-index: 20;
+        }
+
+        /* SECTION 4: Zig-Zag Layout */
+        .zig-zag-image { width: 60%; }
+        .zig-zag-content { width: 50%; margin-left: -10%; z-index: 10; background: white; padding: 3rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-radius: 2rem; }
+        .dark .zig-zag-content { background: #111827; border: 1px solid #374151; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .zig-zag-reverse .zig-zag-image { margin-left: auto; }
+        .zig-zag-reverse .zig-zag-content { margin-left: 0; margin-right: -10%; }
+        @media (max-width: 768px) {
+            .zig-zag-image, .zig-zag-content { width: 100%; margin: 0 !important; border-radius: 1rem; }
+            .zig-zag-content { transform: translateY(-20px); }
+        }
+
+        /* SECTION 5: 35mm Film Strip */
+        .film-strip {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 4rem 2rem;
+            background: #111827;
+            position: relative;
+        }
+        .film-strip::before, .film-strip::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 24px;
+            background-image: radial-gradient(circle at 12px 12px, transparent 8px, #000 9px);
+            background-size: 30px 24px;
+            background-repeat: repeat-x;
+        }
+        .film-strip::before { top: 0; }
+        .film-strip::after { bottom: 0; }
+        .film-frame {
+            flex: 0 0 500px;
+            height: 350px;
+            background: black;
+            scroll-snap-align: center;
+            border: 4px solid #374151;
+            position: relative;
+        }
+        @media (max-width: 640px) { .film-frame { flex: 0 0 300px; height: 200px; } }
+
+        /* SECTION 6: Glassmorphism Bento Grid */
+        .glass-bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 300px);
+            gap: 1.5rem;
+        }
+        @media (max-width: 1024px) { .glass-bento-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; } }
+        @media (max-width: 640px) { .glass-bento-grid { grid-template-columns: 1fr; } }
+        .glass-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .dark .glass-box { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.25); }
+        .glass-box:hover { transform: translateY(-5px); border-color: rgba(255, 255, 255, 0.5); }
+        .mesh-bg {
+            background-image: 
+                radial-gradient(at 40% 20%, hsla(28,100%,74%,1) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, hsla(189,100%,56%,1) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, hsla(355,100%,93%,1) 0px, transparent 50%);
+            animation: mesh-shift 15s ease infinite alternate;
+        }
+        .dark .mesh-bg {
+            background-image: 
+                radial-gradient(at 40% 20%, rgba(255, 107, 0, 0.3) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, rgba(138, 43, 226, 0.3) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, rgba(0, 255, 255, 0.3) 0px, transparent 50%);
+        }
+        @keyframes mesh-shift { 0% { background-position: 0% 0%; } 100% { background-position: 100% 100%; } }
+    </style>
+    <style>
+        /* Premium Nav Hover Line Effect */
+        #main-nav-links > a, #main-nav-links > div > button {
+            position: relative;
+        }
+        #main-nav-links > a::after, #main-nav-links > div > button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #FF6B00; /* Primary color */
+            transition: width 0.3s ease-in-out;
+            border-radius: 2px;
+        }
+        #main-nav-links > a:hover::after, #main-nav-links > div:hover > button::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="antialiased transition-colors duration-300 bg-gray-50 dark:bg-black overflow-x-hidden">
+
+    <!-- Sticky Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 gap-4 lg:gap-8">
+                <!-- Left: Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <img src="assets/images/logo.svg" alt="Nexura Logo" class="w-10 h-10 drop-shadow-lg">
+                    <a href="index.html" class="font-bold text-2xl tracking-tight text-gray-900 dark:text-white uppercase">Nexura</a>
+                </div>
+
+                <!-- Center: Menus (Desktop Only XL+) -->
+                <div id="main-nav-links" class="hidden xl:flex space-x-3 xl:space-x-6 text-base">
+                    <div class="relative group">
+                        <button class="text-primary-custom font-medium flex items-center gap-1 hover:text-primary transition-colors py-2">
+                            Home <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </button>
+                        <!-- Premium Dropdown -->
+                        <div class="absolute start-0 mt-2 w-48 rounded-xl glass-card opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left scale-95 group-hover:scale-100 z-50">
+                            <div class="py-2">
+                                <a href="index.html" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-primary">Home 1</a>
+                                <a href="home2.html" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-primary">Home 2</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="about.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">About</a>
+                    <a href="products.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Products</a>
+                    <a href="categories.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Categories</a>
+                    <a href="brands.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Brands</a>
+                    <a href="deals.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Deals</a>
+                    <a href="accessories.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Accessories</a>
+                    <a href="gallery.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Gallery</a>
+                    <a href="blog.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Blog</a>
+                    <a href="contact.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Contact</a>
+                </div>
+
+                <!-- Right: Actions -->
+                <div class="hidden xl:flex items-center space-x-4">
+                    <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <button id="rtl-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle RTL">
+                        <i class="fa-solid fa-right-left"></i>
+                    </button>
+                    <a href="login.html" class="px-5 py-2 rounded-full border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all text-sm font-medium flex items-center gap-2">
+                        <i class="fa-regular fa-user"></i> Login
+                    </a>
+                </div>
+
+                <!-- Tablet/Mobile Hamburger Toggle (Visible < XL) -->
+                <div class="xl:hidden flex items-center gap-2">
+                    <button id="mobile-menu-btn" class="text-gray-800 dark:text-gray-200 text-2xl focus:outline-none p-2 ms-2">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full Width Drawer Overlay -->
+        <div id="drawer-overlay" class="fixed inset-0 bg-black/60 z-[60] hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm"></div>
+        
+        <!-- Sliding Drawer Menu -->
+        <div id="drawer-menu" class="fixed top-0 start-0 w-full md:w-[400px] h-screen bg-white dark:bg-gray-900 z-[70] transform -translate-x-full rtl:translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto flex flex-col shadow-2xl">
+            <!-- Drawer Header -->
+            <div class="flex justify-between items-center p-6 border-b border-gray-200 dark:border-gray-800">
+                <div class="flex items-center gap-3">
+                    <img src="assets/images/logo.svg" alt="Nexura Logo" class="w-8 h-8 drop-shadow-md">
+                    <span class="font-bold text-xl tracking-tight text-gray-900 dark:text-white uppercase">Nexura Menu</span>
+                </div>
+                <button id="close-drawer-btn" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <!-- Drawer Links -->
+            <div class="flex-grow py-4 px-6 space-y-1">
+                <div class="border-b border-gray-100 dark:border-gray-800/50 pb-2 mb-2">
+                    <button id="drawer-home-btn" class="w-full flex justify-between items-center py-3 text-lg font-bold text-gray-900 dark:text-white hover:text-primary transition-colors">
+                        Home <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="drawer-home-icon"></i>
+                    </button>
+                    <div id="drawer-home-menu" class="hidden overflow-hidden ps-4 py-2 space-y-2 border-s-2 border-primary/30 ms-2">
+                        <a href="index.html" class="block py-2 text-primary font-bold">Home 1 (Current)</a>
+                        <a href="home2.html" class="block py-2 text-gray-800 dark:text-gray-200 hover:text-primary transition-colors font-medium">Home 2 (Alternate)</a>
+                    </div>
+                </div>
+                
+                <a href="about.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">About</a>
+                <a href="products.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Products</a>
+                <a href="categories.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Categories</a>
+                <a href="brands.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Brands</a>
+                <a href="deals.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Deals</a>
+                <a href="accessories.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Accessories</a>
+                <a href="gallery.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Gallery</a>
+                <a href="blog.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Blog</a>
+                <a href="contact.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors">Contact</a>
+            </div>
+
+            <!-- Drawer Footer -->
+            <div class="p-6 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/30 space-y-4 mt-auto">
+                <div class="flex gap-4">
+                    <button id="drawer-theme-toggle-btn" class="flex-1 py-3.5 rounded-xl bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 shadow-sm flex justify-center items-center gap-2 text-gray-800 dark:text-gray-200 font-bold hover:border-primary transition-colors">
+                        <i class="fa-solid fa-moon"></i> Dark
+                    </button>
+                    <button id="drawer-rtl-toggle-btn" class="flex-1 py-3.5 rounded-xl bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 shadow-sm flex justify-center items-center gap-2 text-gray-800 dark:text-gray-200 font-bold hover:border-primary transition-colors">
+                        <i class="fa-solid fa-right-left"></i> RTL
+                    </button>
+                </div>
+                <a href="login.html" class="w-full py-4 rounded-xl bg-primary text-white font-bold flex justify-center items-center gap-2 hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/30">
+                    <i class="fa-regular fa-user"></i> Login to Account
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: CREATIVE GALLERY HERO -->
+    <section class="min-h-screen relative overflow-hidden bg-gray-900 dark:bg-black flex items-center pt-20 border-b border-white/10">
+        <!-- Subtle Grid Background -->
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        
+        <!-- Animated Glow -->
+        <div class="absolute top-1/2 end-1/4 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] -translate-y-1/2 mix-blend-screen pointer-events-none"></div>
+        <div class="absolute top-1/3 start-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] -translate-y-1/2 mix-blend-screen pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col lg:flex-row items-center gap-16 py-20">
+            
+            <!-- Left: Typography & Content -->
+            <div class="w-full lg:w-1/2 text-start">
+                <span class="inline-block py-2 px-6 rounded-full bg-white/10 text-white font-bold tracking-widest uppercase mb-6 backdrop-blur-md border border-white/20 shadow-lg">
+                    <i class="fa-solid fa-camera me-2 text-primary"></i> Visual Experience
+                </span>
+                <h1 class="text-6xl md:text-8xl font-black text-white mb-8 leading-[1.1] tracking-tighter">
+                    A New <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">Perspective.</span>
+                </h1>
+                <p class="text-xl text-gray-200 mb-10 max-w-lg font-medium leading-relaxed">
+                    Step into our digital gallery. Explore breathtaking setups, premium gadgets, and immersive technological artistry.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 text-white font-bold text-sm">
+                    <div class="flex items-center gap-3 bg-white/5 backdrop-blur-md px-6 py-4 rounded-3xl border border-white/10 shadow-xl hover:bg-white/10 transition-colors">
+                        <i class="fa-solid fa-image text-2xl text-primary"></i>
+                        <div>
+                            <span class="block text-xl">1,000+</span>
+                            <span class="text-gray-200 text-xs uppercase tracking-widest">Showcase Images</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white/5 backdrop-blur-md px-6 py-4 rounded-3xl border border-white/10 shadow-xl hover:bg-white/10 transition-colors">
+                        <i class="fa-solid fa-vr-cardboard text-2xl text-blue-500"></i>
+                        <div>
+                            <span class="block text-xl">50+</span>
+                            <span class="text-gray-200 text-xs uppercase tracking-widest">Tech Experiences</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Creative Floating Image -->
+            <div class="w-full lg:w-1/2 relative group">
+                <!-- Glowing Ring Behind Image -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-primary to-blue-500 rounded-full blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-700"></div>
+                
+                <!-- The Creative Image -->
+                <div class="relative z-10 p-4 float-animation">
+                    <img src="assets/images/products/lens_hero_1784091015185.png" alt="Creative Lens" class="w-full max-w-lg mx-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] group-hover:scale-105 transition-transform duration-700 ease-out">
+                </div>
+                
+                <!-- Floating Elements -->
+                <div class="absolute top-10 start-10 bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-2xl float-animation float-animation-delay-1 shadow-2xl z-20">
+                    <i class="fa-solid fa-aperture text-3xl text-white"></i>
+                </div>
+                <div class="absolute bottom-20 end-10 bg-white/10 backdrop-blur-xl border border-white/20 px-6 py-3 rounded-full float-animation float-animation-delay-2 shadow-2xl z-20 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                    <span class="text-white font-bold text-sm tracking-widest uppercase">Live View</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 2: PREMIUM PRODUCT SHOWCASE (Pinterest Masonry) -->
+    <section class="py-32 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Premium Showcase</h2>
+                <p class="text-gray-700 dark:text-gray-300 mt-4 text-xl">The art of technology.</p>
+            </div>
+
+            <!-- True CSS Column Masonry -->
+            <div class="masonry-grid">
+                
+                <!-- Masonry Item (Tall) -->
+                <div class="masonry-item group cursor-pointer">
+                    <img src="assets/images/products/smartphones_hero_1784090879407.png" alt="Smartphone" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                        <span class="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full w-max mb-3">Flagship Smartphones</span>
+                        <h3 class="text-white text-2xl font-bold mb-1">Galaxy Z Fold</h3>
+                        <p class="text-gray-300 text-sm">Samsung • 2026</p>
+                    </div>
+                </div>
+
+                <!-- Masonry Item (Short) -->
+                <div class="masonry-item group cursor-pointer">
+                    <img src="assets/images/products/headphones_deal_hero_1784092009632.png" alt="Audio" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                        <span class="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full w-max mb-3">Audio Devices</span>
+                        <h3 class="text-white text-2xl font-bold mb-1">Sony WH-1000XM6</h3>
+                        <p class="text-gray-300 text-sm">Sony • 2026</p>
+                    </div>
+                </div>
+
+                <!-- Masonry Item (Medium) -->
+                <div class="masonry-item group cursor-pointer">
+                    <img src="assets/images/products/gaming_laptop_hero_1784091248220.png" alt="Laptop" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                        <span class="bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full w-max mb-3">Premium Laptops</span>
+                        <h3 class="text-white text-2xl font-bold mb-1">Razer Blade 18</h3>
+                        <p class="text-gray-300 text-sm">Razer • 2026</p>
+                    </div>
+                </div>
+
+                <!-- Masonry Item (Short) -->
+                <div class="masonry-item group cursor-pointer">
+                    <img src="assets/images/products/smartwatch_deal_hero_1784092000059.png" alt="Smartwatch" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                        <span class="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full w-max mb-3">Smartwatches</span>
+                        <h3 class="text-white text-2xl font-bold mb-1">Apple Watch Ultra</h3>
+                        <p class="text-gray-300 text-sm">Apple • 2025</p>
+                    </div>
+                </div>
+                
+                <!-- Masonry Item (Tall) -->
+                <div class="masonry-item group cursor-pointer">
+                    <img src="assets/images/products/vr_headset_hero_1784091260126.png" alt="VR Headset" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                        <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full w-max mb-3">VR Headsets</span>
+                        <h3 class="text-white text-2xl font-bold mb-1">Vision Pro</h3>
+                        <p class="text-gray-300 text-sm">Apple • 2025</p>
+                    </div>
+                </div>
+
+                <!-- Masonry Item (Medium) -->
+                <div class="masonry-item group cursor-pointer">
+                    <img src="assets/images/products/speakers_hero_1784091433040.png" alt="Smart Home" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                        <span class="bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full w-max mb-3">Smart Speakers</span>
+                        <h3 class="text-white text-2xl font-bold mb-1">Premium Audio Hub</h3>
+                        <p class="text-gray-300 text-sm">Bose • 2025</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: GAMING EXPERIENCE GALLERY (Dark Neon Lightbox) -->
+    <section class="py-32 bg-black relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="mb-16 border-s-4 border-primary ps-6">
+                <h2 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tight">Gaming Experience</h2>
+                <p class="text-gray-200 mt-2 font-medium">Ultimate setups and esports arenas.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                
+                <div class="rounded-2xl overflow-hidden relative group neon-lightbox transition-all duration-300 cursor-zoom-in border border-gray-800">
+                    <img src="assets/images/products/mech_keyboard_1784092778954.png" alt="RGB Room" class="w-full h-64 object-cover filter brightness-75 group-hover:brightness-110 transition-all duration-500">
+                    <div class="absolute bottom-4 start-4 bg-black/60 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <h4 class="text-white font-bold text-sm">RGB Gaming Rooms</h4>
+                    </div>
+                </div>
+                
+                <div class="rounded-2xl overflow-hidden relative group neon-lightbox transition-all duration-300 cursor-zoom-in border border-gray-800">
+                    <img src="assets/images/products/vr_headset_hero_1784091260126.png" alt="Esports" class="w-full h-64 object-cover filter brightness-75 group-hover:brightness-110 transition-all duration-500 bg-gray-900">
+                    <div class="absolute bottom-4 start-4 bg-black/60 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <h4 class="text-white font-bold text-sm">VR Experiences</h4>
+                    </div>
+                </div>
+                
+                <div class="rounded-2xl overflow-hidden relative group neon-lightbox transition-all duration-300 cursor-zoom-in border border-gray-800">
+                    <img src="assets/images/products/microphone_hero_1784090974870.png" alt="Streaming" class="w-full h-64 object-cover filter brightness-75 group-hover:brightness-110 transition-all duration-500">
+                    <div class="absolute bottom-4 start-4 bg-black/60 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <h4 class="text-white font-bold text-sm">Streaming Stations</h4>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-16 bg-gray-900 border border-gray-800 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Top Gaming Setup</h3>
+                    <p class="text-gray-200">The ultimate enthusiast rig.</p>
+                </div>
+                <div class="flex flex-wrap gap-4 text-sm font-bold text-white">
+                    <span class="bg-black px-4 py-2 rounded border border-gray-700 text-red-500">RTX 6090</span>
+                    <span class="bg-black px-4 py-2 rounded border border-gray-700 text-blue-500">49" Curved Display</span>
+                    <span class="bg-black px-4 py-2 rounded border border-gray-700 text-green-500">Mechanical Keyboard</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: SMART LIFESTYLE SHOWCASE (Premium Bento Grid) -->
+    <section class="py-32 bg-gray-50 dark:bg-gray-950 overflow-hidden relative">
+        <!-- Background Elements -->
+        <div class="absolute top-0 end-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-0 start-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Smart Lifestyle</h2>
+                <p class="text-gray-700 dark:text-gray-300 mt-4 text-xl">Technology integrated seamlessly into your daily life.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                  
+                  <!-- Card 1: Smart Homes -->
+                  <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 lg:p-12 border border-gray-300 dark:border-gray-600 shadow-xl group overflow-hidden relative flex flex-col hover:border-yellow-500/50 transition-colors h-full">
+                      <div class="absolute end-0 bottom-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+                      
+                      <!-- Top Text Block (Expands to align everything below) -->
+                      <div class="w-full relative z-10 mb-auto">
+                          <span class="text-yellow-500 font-bold uppercase tracking-widest text-xs mb-4 block"><i class="fa-solid fa-house-signal me-2"></i>Smart Homes</span>
+                          <h3 class="text-3xl font-black text-gray-900 dark:text-white mb-4">Automate Your Sanctuary</h3>
+                          <p class="text-gray-800 dark:text-gray-200 mb-6 leading-relaxed">Experience seamless device integration where lighting, climate, security, and high-fidelity audio work together autonomously to create the perfect environment.</p>
+                      </div>
+
+                      <!-- Bullet List (Locks to perfect horizontal line) -->
+                      <div class="w-full relative z-10 mt-8">
+                          <ul class="text-sm font-bold text-gray-700 dark:text-gray-200 space-y-3">
+                              <li class="flex items-center"><span class="w-6 h-6 rounded-full bg-yellow-50 dark:bg-yellow-900/30 flex items-center justify-center text-yellow-500 me-3"><i class="fa-solid fa-microphone text-[10px]"></i></span> Voice Controlled</li>
+                              <li class="flex items-center"><span class="w-6 h-6 rounded-full bg-yellow-50 dark:bg-yellow-900/30 flex items-center justify-center text-yellow-500 me-3"><i class="fa-solid fa-bolt text-[10px]"></i></span> Energy Efficient</li>
+                          </ul>
+                      </div>
+
+                      <!-- Fixed Height Image Container -->
+                      <div class="w-full relative z-10 h-48 md:h-56 flex justify-center items-end mt-10">
+                          <img src="assets/images/products/speakers_hero_1784091433040.png" alt="Smart Home Audio" class="w-auto h-auto max-w-[85%] max-h-full object-contain drop-shadow-2xl group-hover:scale-105 group-hover:-translate-y-4 transition-transform duration-700">
+                      </div>
+                  </div>
+  
+                  <!-- Card 2: Fitness -->
+                  <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 lg:p-12 border border-gray-300 dark:border-gray-600 shadow-xl group overflow-hidden relative flex flex-col hover:border-green-500/50 transition-colors h-full">
+                      <div class="absolute top-0 end-0 w-32 h-32 bg-green-500/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                      
+                      <!-- Top Text Block -->
+                      <div class="w-full relative z-10 mb-auto">
+                          <span class="text-green-500 font-bold uppercase tracking-widest text-xs mb-4 block"><i class="fa-solid fa-heart-pulse me-2"></i>Fitness Tech</span>
+                          <h3 class="text-3xl font-black text-gray-900 dark:text-white mb-4">Track Every Move</h3>
+                          <p class="text-gray-800 dark:text-gray-200 mb-6 leading-relaxed">Advanced wearables that provide real-time biomechanical feedback, precise health monitoring, and personalized coaching to help you achieve your fitness goals.</p>
+                      </div>
+
+                      <!-- Bullet List -->
+                      <div class="w-full relative z-10 mt-8">
+                          <ul class="text-sm font-bold text-gray-700 dark:text-gray-200 space-y-3">
+                              <li class="flex items-center"><span class="w-6 h-6 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-green-500 me-3"><i class="fa-solid fa-heart-pulse text-[10px]"></i></span> Health Tracking</li>
+                              <li class="flex items-center"><span class="w-6 h-6 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-green-500 me-3"><i class="fa-solid fa-droplet text-[10px]"></i></span> Water Resistant</li>
+                          </ul>
+                      </div>
+
+                      <!-- Fixed Height Image Container -->
+                      <div class="w-full relative z-10 h-48 md:h-56 flex justify-center items-end mt-10">
+                          <img src="assets/images/products/fitness_bands_hero_1784090918819.png" alt="Fitness Bands" class="w-auto h-auto max-w-[85%] max-h-full object-contain drop-shadow-2xl group-hover:scale-110 transition-transform duration-700 origin-bottom">
+                      </div>
+                  </div>
+  
+                  <!-- Card 3: Workspaces -->
+                  <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 lg:p-12 border border-gray-300 dark:border-gray-600 shadow-xl group overflow-hidden relative flex flex-col hover:border-blue-500/50 transition-colors h-full">
+                      <div class="absolute start-0 bottom-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                      
+                      <!-- Top Text Block -->
+                      <div class="w-full relative z-10 mb-auto">
+                          <span class="text-blue-500 font-bold uppercase tracking-widest text-xs mb-4 block"><i class="fa-solid fa-laptop-file me-2"></i>Smart Offices</span>
+                          <h3 class="text-3xl font-black text-gray-900 dark:text-white mb-4">Elevate Productivity</h3>
+                          <p class="text-gray-800 dark:text-gray-200 mb-6 leading-relaxed">Clean, wire-free workspaces featuring ergonomic focus, seamless connectivity, and intelligent automation designed to maximize your daily professional productivity.</p>
+                      </div>
+
+                      <!-- Bullet List -->
+                      <div class="w-full relative z-10 mt-8">
+                          <ul class="text-sm font-bold text-gray-700 dark:text-gray-200 space-y-3">
+                              <li class="flex items-center"><span class="w-6 h-6 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-500 me-3"><i class="fa-solid fa-chair text-[10px]"></i></span> Ergonomic Design</li>
+                              <li class="flex items-center"><span class="w-6 h-6 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-500 me-3"><i class="fa-solid fa-wifi text-[10px]"></i></span> Wi-Fi 6 Enabled</li>
+                          </ul>
+                      </div>
+
+                      <!-- Fixed Height Image Container -->
+                      <div class="w-full relative z-10 h-48 md:h-56 flex justify-center items-end mt-10">
+                          <img src="assets/images/products/gaming_laptop_hero_1784091248220.png" alt="Smart Office Laptop" class="w-auto h-auto max-w-[95%] max-h-full object-contain drop-shadow-2xl group-hover:translate-y-2 transition-transform duration-700">
+                      </div>
+                  </div>
+  
+                  <!-- Card 4: Travel -->
+                  <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 lg:p-12 border border-gray-300 dark:border-gray-600 shadow-xl group overflow-hidden relative flex flex-col hover:border-purple-500/50 transition-colors h-full">
+                      <div class="absolute end-1/2 top-1/2 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+                      
+                      <!-- Top Text Block -->
+                      <div class="w-full relative z-10 mb-auto">
+                          <span class="text-purple-500 font-bold uppercase tracking-widest text-xs mb-4 block"><i class="fa-solid fa-plane-departure me-2"></i>Travel Tech</span>
+                          <h3 class="text-3xl font-black text-gray-900 dark:text-white mb-4">Explore Without Limits</h3>
+                          <p class="text-gray-800 dark:text-gray-200 mb-6 leading-relaxed">Capture your global adventures in stunning 4K resolution and stay effortlessly connected anywhere in the world with our premium, ultra-portable smart technology.</p>
+                      </div>
+
+                      <!-- Bullet List -->
+                      <div class="w-full relative z-10 mt-8">
+                          <ul class="text-sm font-bold text-gray-700 dark:text-gray-200 space-y-3">
+                              <li class="flex items-center"><span class="w-6 h-6 rounded-full bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-500 me-3"><i class="fa-solid fa-suitcase text-[10px]"></i></span> Ultra Portable</li>
+                              <li class="flex items-center"><span class="w-6 h-6 rounded-full bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-500 me-3"><i class="fa-solid fa-globe text-[10px]"></i></span> Global Roaming</li>
+                          </ul>
+                      </div>
+
+                      <!-- Fixed Height Image Container -->
+                      <div class="w-full relative z-10 h-48 md:h-56 flex justify-center items-end mt-10">
+                          <img src="assets/images/products/drone_hero_1784091002216.png" alt="Travel Tech Drone" class="w-auto h-auto max-w-[85%] max-h-full object-contain drop-shadow-2xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-700">
+                      </div>
+                  </div>
+  
+              </div>
+          </div>
+      </section>
+      <!-- SECTION 5: BEHIND THE SCENES (Static Grid) -->
+    <section class="py-32 bg-gray-900 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <span class="text-primary font-bold tracking-widest uppercase text-sm mb-3 block">Inside Nexura</span>
+                <h2 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tight">Behind The Scenes</h2>
+                <p class="text-gray-200 mt-4 max-w-2xl mx-auto text-lg">Discover the relentless pursuit of perfection that powers our premium technology experiences.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="group rounded-3xl overflow-hidden bg-black border border-gray-800 hover:border-gray-600 transition-all duration-300 shadow-2xl">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="assets/images/about/innovation-lab.jpg" alt="Innovation Lab" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    </div>
+                    <div class="p-8 relative -mt-12">
+                        <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-lg shadow-primary/30 group-hover:-translate-y-2 transition-transform duration-300">
+                            <i class="fa-solid fa-microscope"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Innovation Lab</h3>
+                        <p class="text-gray-200 text-sm leading-relaxed mb-2">Our R&D team constantly pushes the boundaries of what's possible, prototyping next-generation hardware before it hits the market.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group rounded-3xl overflow-hidden bg-black border border-gray-800 hover:border-gray-600 transition-all duration-300 shadow-2xl">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="assets/images/about/future-vision.jpg" alt="Quality Testing" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    </div>
+                    <div class="p-8 relative -mt-12">
+                        <div class="w-14 h-14 bg-blue-500 text-white rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-lg shadow-blue-500/30 group-hover:-translate-y-2 transition-transform duration-300">
+                            <i class="fa-solid fa-vial-circle-check"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Quality Testing</h3>
+                        <p class="text-gray-200 text-sm leading-relaxed mb-2">Every single product undergoes rigorous stress testing in simulated extreme environments to guarantee absolute lifetime durability.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group rounded-3xl overflow-hidden bg-black border border-gray-800 hover:border-gray-600 transition-all duration-300 shadow-2xl">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="assets/images/about/global-map.jpg" alt="Global Operations" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    </div>
+                    <div class="p-8 relative -mt-12">
+                        <div class="w-14 h-14 bg-purple-500 text-white rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-lg shadow-purple-500/30 group-hover:-translate-y-2 transition-transform duration-300">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Global Operations</h3>
+                        <p class="text-gray-200 text-sm leading-relaxed mb-2">With automated warehouses in 15 countries, our advanced logistics network ensures that your premium tech arrives safely and swiftly.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: FUTURE TECHNOLOGY GALLERY (Glassmorphism Bento) -->
+    <section class="py-32 mesh-bg relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Future Tech Gallery</h2>
+                <p class="text-gray-800 dark:text-gray-200 mt-2 text-xl font-medium">Glimpse into tomorrow.</p>
+            </div>
+
+            <div class="glass-bento-grid">
+                
+                <!-- Main Block (2x2) -->
+                <div class="glass-box col-span-1 md:col-span-2 row-span-2 p-8 flex flex-col justify-end group">
+                    <img src="assets/images/about/future-vision.jpg" alt="AI" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700 mix-blend-overlay">
+                    <div class="relative z-10">
+                        <span class="bg-black text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">Artificial Intelligence</span>
+                        <h3 class="text-3xl font-black text-gray-900 dark:text-white mb-2">AI Companion Devices</h3>
+                        <p class="text-gray-800 dark:text-gray-200 text-sm">Context-aware hardware that learns from your daily routines.</p>
+                    </div>
+                </div>
+                
+                                  <!-- Small Block -->
+                  <div class="glass-box p-6 flex flex-col justify-between group">
+                      <div class="flex justify-end">
+                          <span class="bg-gray-200/50 dark:bg-gray-800/50 text-gray-900 dark:text-white text-[10px] font-bold px-2 py-1 rounded border border-gray-300 dark:border-gray-600 uppercase tracking-wider backdrop-blur-sm">AR / VR</span>
+                      </div>
+                      <div>
+                          <i class="fa-solid fa-glasses text-4xl text-gray-900 dark:text-white mb-4 group-hover:scale-110 transition-transform origin-bottom-left"></i>
+                          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Smart Glasses</h3>
+                          <p class="text-gray-800 dark:text-gray-200 text-xs mb-4 leading-relaxed">Experience seamless holographic overlays blended perfectly into your natural vision.</p>
+                          <a href="#" class="inline-flex items-center text-xs font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                              Discover <i class="fa-solid fa-arrow-right ms-1 group-hover:translate-x-1 transition-transform"></i>
+                          </a>
+                      </div>
+                  </div>
+                
+                                  <!-- Small Block -->
+                  <div class="glass-box p-6 flex flex-col justify-between group">
+                      <div class="flex justify-end">
+                          <span class="bg-gray-200/50 dark:bg-gray-800/50 text-gray-900 dark:text-white text-[10px] font-bold px-2 py-1 rounded border border-gray-300 dark:border-gray-600 uppercase tracking-wider backdrop-blur-sm">Robotics</span>
+                      </div>
+                      <div>
+                          <i class="fa-solid fa-robot text-4xl text-gray-900 dark:text-white mb-4 group-hover:scale-110 transition-transform origin-bottom-left"></i>
+                          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Personal Robots</h3>
+                          <p class="text-gray-800 dark:text-gray-200 text-xs mb-4 leading-relaxed">Autonomous home care assistants capable of navigating complex indoor environments.</p>
+                          <a href="#" class="inline-flex items-center text-xs font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                              Discover <i class="fa-solid fa-arrow-right ms-1 group-hover:translate-x-1 transition-transform"></i>
+                          </a>
+                      </div>
+                  </div>
+                
+                                  <!-- Small Block -->
+                  <div class="glass-box p-6 flex flex-col justify-between group">
+                      <div class="flex justify-end">
+                          <span class="bg-gray-200/50 dark:bg-gray-800/50 text-gray-900 dark:text-white text-[10px] font-bold px-2 py-1 rounded border border-gray-300 dark:border-gray-600 uppercase tracking-wider backdrop-blur-sm">Processing</span>
+                      </div>
+                      <div>
+                          <i class="fa-solid fa-atom text-4xl text-gray-900 dark:text-white mb-4 group-hover:scale-110 transition-transform origin-bottom-left"></i>
+                          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Quantum Computing</h3>
+                          <p class="text-gray-800 dark:text-gray-200 text-xs mb-4 leading-relaxed">Next-generation processing power for handling complex algorithms at unprecedented speeds.</p>
+                          <a href="#" class="inline-flex items-center text-xs font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                              Discover <i class="fa-solid fa-arrow-right ms-1 group-hover:translate-x-1 transition-transform"></i>
+                          </a>
+                      </div>
+                  </div>
+                
+                                  <!-- Small Block -->
+                  <div class="glass-box p-6 flex flex-col justify-between group">
+                      <div class="flex justify-end">
+                          <span class="bg-gray-200/50 dark:bg-gray-800/50 text-gray-900 dark:text-white text-[10px] font-bold px-2 py-1 rounded border border-gray-300 dark:border-gray-600 uppercase tracking-wider backdrop-blur-sm">Aerospace</span>
+                      </div>
+                      <div>
+                          <i class="fa-solid fa-rocket text-4xl text-gray-900 dark:text-white mb-4 group-hover:scale-110 transition-transform origin-bottom-left"></i>
+                          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Space Technology</h3>
+                          <p class="text-gray-800 dark:text-gray-200 text-xs mb-4 leading-relaxed">Consumer satellite links offering global high-speed connectivity from any remote location.</p>
+                          <a href="#" class="inline-flex items-center text-xs font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                              Discover <i class="fa-solid fa-arrow-right ms-1 group-hover:translate-x-1 transition-transform"></i>
+                          </a>
+                      </div>
+                  </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white dark:bg-gray-950 border-t border-gray-300 dark:border-gray-600 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-12 mb-12">
+                <!-- Column 1 -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="assets/images/logo.svg" alt="Nexura Logo" class="w-10 h-10 drop-shadow-lg">
+                        <span class="font-bold text-2xl tracking-tight text-gray-900 dark:text-white uppercase">Nexura</span>
+                    </div>
+                    <p class="text-gray-800 dark:text-gray-200 text-sm mb-6 leading-relaxed">
+                        Your premium destination for the latest electronics, smart gadgets, and high-end technology. Discover the future today.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white transition-all"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-primary hover:text-white transition-all"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div>
+                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Home</a></li>
+                        <li><a href="about.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">About</a></li>
+                        <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Products</a></li>
+                        <li><a href="deals.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Deals</a></li>
+                        <li><a href="gallery.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3 -->
+                <div>
+                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Categories</h4>
+                    <ul class="space-y-3">
+                        <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Laptops</a></li>
+                        <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Smartphones</a></li>
+                        <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Smartwatches</a></li>
+                        <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Headphones</a></li>
+                        <li><a href="accessories.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Gaming Accessories</a></li>
+                        <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Smart Home</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4 -->
+                <div>
+                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Newsletter</h4>
+                    <p class="text-gray-800 dark:text-gray-200 text-sm mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
+                    <form class="flex flex-col gap-3">
+                        <input type="email" placeholder="Enter your email address" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-gray-900 dark:text-white" required>
+                        <button type="submit" class="btn-primary w-full justify-center">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-300 dark:border-gray-600 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-700 dark:text-gray-200 text-sm">
+                    &copy; 2026 Nexura Store. All rights reserved.
+                </p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-gray-700 dark:text-gray-200 hover:text-primary text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-700 dark:text-gray-200 hover:text-primary text-sm transition-colors">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

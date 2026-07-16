@@ -1,0 +1,215 @@
+:root {
+  --primary: #FF6B00;
+  --secondary: #2B2D42;
+  --accent: #FFE8D6;
+  --dark: #0f1115;
+  --light: #F8F9FA;
+  --success: #2ECC71;
+  --text-dark: #000000;
+  --text-light: #ffffff;
+  --bg-color: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --card-bg: #ffffff;
+  --border-color: #cbd5e1;
+  --shadow-color: rgba(0, 0, 0, 0.12);
+}
+
+.dark {
+  --bg-color: #0f1115;
+  --nav-bg: rgba(15, 17, 21, 0.9);
+  --card-bg: #1e293b;
+  --text-dark: #ffffff;
+  --text-light: #000000;
+  --border-color: #475569;
+  --shadow-color: rgba(0, 0, 0, 0.8);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism */
+.glass {
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px var(--shadow-color);
+}
+
+.hover-zoom img {
+  transition: transform 0.5s ease;
+}
+.hover-zoom:hover img {
+  transform: scale(1.1);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+.hover-glow:hover {
+  box-shadow: 0 0 20px var(--primary);
+}
+
+/* Hexagon Grid (Categories) */
+.hexagon-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hex-card {
+  position: relative;
+  width: 300px;
+  height: 350px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background-color: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.hex-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  z-index: 0;
+  transition: opacity 0.4s ease;
+}
+.hex-card:hover::before {
+  opacity: 0.4;
+  transform: scale(1.1);
+}
+
+.hex-content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+}
+
+/* Magazine Grid (Deals) */
+.magazine-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 300px);
+  gap: 20px;
+}
+@media (max-width: 768px) {
+  .magazine-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+}
+
+.mag-large {
+  grid-row: span 2;
+}
+
+.deal-card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+.deal-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+}
+.deal-content {
+  position: relative;
+  z-index: 10;
+  padding: 2rem;
+  width: 100%;
+  color: white;
+}
+
+/* Utilities */
+.text-primary-custom { color: var(--primary); }
+.bg-primary-custom { background-color: var(--primary); color: white; }
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: #e66000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-secondary:hover {
+  background-color: #1a1b28;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 45, 66, 0.4);
+}
+
+.btn-outline {
+  border: 2px solid var(--text-dark);
+  color: var(--text-dark);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-outline:hover {
+  background-color: var(--text-dark);
+  color: var(--bg-color);
+}
+
+/* Dark mode specific fixes */
+.dark .deal-content { color: white; }
+.dark .text-dark { color: #f8f9fa; }

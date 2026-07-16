@@ -1,0 +1,27 @@
+﻿<div class="p-6 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors leading-snug">Flagship Showdown: iOS vs Android Cameras</h3>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">A deep dive into computational photography, sensor sizes, and night mode capabilities of this year's top models.</p>
+                                </div>
+                                <span class="text-gray-500 text-xs font-medium uppercase tracking-wider"><i class="fa-solid fa-fire text-orange-500 mr-1"></i> Trending</span>
+                            </div>
+                        </article>
+
+                        <!-- Article 3 -->
+                        <article class="group cursor-pointer flex flex-col h-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="assets/images/home2/guide-audio.jpg" alt="Headphone Guide" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute top-4 left-4 bg-gray-900 text-white text-xs font-bold px-3 py-1 uppercase tracking-wider">Review</div>
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors leading-snug">Audiophile's Guide to Spatial Audio</h3>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">How multi-driver setups and personalized HRTF profiles are changing how we consume lossless music.</p>
+                                </div>
+                                <span class="text-gray-500 text-xs font-medium uppercase tracking-wider"><i class="fa-solid fa-star text-yellow-500 mr-1"></i> Top Pick</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        
