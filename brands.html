@@ -31,15 +31,31 @@
         /* SECTION 1: Infinite Marquee */
         .marquee-wrapper {
             display: flex;
-            width: 200%;
-            animation: marquee 30s linear infinite;
+            width: max-content;
+            animation: marquee 25s linear infinite;
+        }
+        .marquee-wrapper:hover {
+            animation-play-state: paused;
         }
         .marquee-content {
             display: flex;
-            width: 50%;
-            justify-content: space-around;
+            align-items: center;
+            gap: 3.5rem;
+            padding-right: 3.5rem;
+            flex-shrink: 0;
         }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        [dir="rtl"] .marquee-content {
+            padding-right: 0;
+            padding-left: 3.5rem;
+        }
+        @keyframes marquee { 
+            0% { transform: translateX(0); } 
+            100% { transform: translateX(-50%); } 
+        }
+        [dir="rtl"] @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50%); }
+        }
         
         /* SECTION 3: Circular Ecosystem Layout */
         .ecosystem-container {
@@ -174,13 +190,13 @@
                 </div>
 
                 <!-- Center: Menus (Desktop Only XL+) -->
-                <div id="main-nav-links" class="hidden xl:flex space-x-3 xl:space-x-6 text-base">
+                <div id="main-nav-links" class="hidden xl:flex items-center gap-3 xl:gap-6 text-base">
                     <div class="relative group">
-                        <button class="text-primary-custom font-medium flex items-center gap-1 hover:text-primary transition-colors py-2">
+                        <button class="text-gray-800 dark:text-gray-200 font-medium flex items-center gap-1 hover:text-primary transition-colors py-2">
                             Home <i class="fa-solid fa-chevron-down text-xs"></i>
                         </button>
                         <!-- Premium Dropdown -->
-                        <div class="absolute start-0 mt-2 w-48 rounded-xl glass-card opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left scale-95 group-hover:scale-100 z-50">
+                        <div class="absolute start-0 mt-2 w-48 rounded-xl glass-card opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-start scale-95 group-hover:scale-100 z-50">
                             <div class="py-2">
                                 <a href="index.html" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-primary">Home 1</a>
                                 <a href="home2.html" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-primary">Home 2</a>
@@ -190,7 +206,7 @@
                     <a href="about.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">About</a>
                     <a href="products.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Products</a>
                     <a href="categories.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Categories</a>
-                    <a href="brands.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Brands</a>
+                    <a href="brands.html" class="text-primary font-bold active py-2">Brands</a>
                     <a href="deals.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Deals</a>
                     <a href="accessories.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Accessories</a>
                     <a href="gallery.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Gallery</a>
@@ -198,22 +214,29 @@
                     <a href="contact.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Contact</a>
                 </div>
 
-                <!-- Right: Actions -->
-                <div class="hidden xl:flex items-center space-x-4">
+                <!-- Right: Actions (Desktop XL+) -->
+                <div class="hidden xl:flex items-center gap-3 xl:gap-4">
                     <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle Dark Mode">
                         <i class="fa-solid fa-moon"></i>
                     </button>
                     <button id="rtl-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle RTL">
                         <i class="fa-solid fa-right-left"></i>
                     </button>
-                    <a href="login.html" class="px-5 py-2 rounded-full border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all text-sm font-medium flex items-center gap-2">
+                    <a href="login.html" class="px-5 py-2.5 rounded-full bg-primary hover:bg-[#e66000] text-white transition-all text-sm font-semibold flex items-center gap-2 shadow-md hover:shadow-lg hover:shadow-orange-500/25">
                         <i class="fa-regular fa-user"></i> Login
                     </a>
                 </div>
 
-                <!-- Tablet/Mobile Hamburger Toggle (Visible < XL) -->
+                <!-- Tablet/Mobile Right Side Header Controls (Visible < XL) -->
+                <!-- Rules: Logo | Dark | RTL | Hamburger -->
                 <div class="xl:hidden flex items-center gap-2">
-                    <button id="mobile-menu-btn" class="text-gray-800 dark:text-gray-200 text-2xl focus:outline-none p-2 ms-2">
+                    <button id="mobile-theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <button id="mobile-rtl-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle RTL">
+                        <i class="fa-solid fa-right-left"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-800 dark:text-gray-200 text-2xl focus:outline-none p-2 ms-1" title="Open Navigation Menu">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                 </div>
@@ -231,7 +254,7 @@
                     <img src="assets/images/logo.svg" alt="Nexura Logo" class="w-8 h-8 drop-shadow-md">
                     <span class="font-bold text-xl tracking-tight text-gray-900 dark:text-white uppercase">Nexura Menu</span>
                 </div>
-                <button id="close-drawer-btn" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white transition-colors">
+                <button id="close-drawer-btn" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white transition-colors">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
@@ -239,19 +262,19 @@
             <!-- Drawer Links -->
             <div class="flex-grow py-4 px-6 space-y-1">
                 <div class="border-b border-gray-100 dark:border-gray-800/50 pb-2 mb-2">
-                    <button id="drawer-home-btn" class="w-full flex justify-between items-center py-3 text-lg font-bold text-gray-900 dark:text-white hover:text-primary transition-colors">
+                    <button id="drawer-home-btn" class="w-full flex justify-between items-center py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors">
                         Home <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="drawer-home-icon"></i>
                     </button>
                     <div id="drawer-home-menu" class="hidden overflow-hidden ps-4 py-2 space-y-2 border-s-2 border-primary/30 ms-2">
-                        <a href="index.html" class="block py-2 text-primary font-bold">Home 1 (Current)</a>
-                        <a href="home2.html" class="block py-2 text-gray-800 dark:text-gray-200 hover:text-primary transition-colors font-medium">Home 2 (Alternate)</a>
+                        <a href="index.html" class="block py-2 text-gray-600 dark:text-gray-200 hover:text-primary transition-colors font-medium">Home 1</a>
+                        <a href="home2.html" class="block py-2 text-gray-600 dark:text-gray-200 hover:text-primary transition-colors font-medium">Home 2</a>
                     </div>
                 </div>
                 
                 <a href="about.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">About</a>
                 <a href="products.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Products</a>
                 <a href="categories.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Categories</a>
-                <a href="brands.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Brands</a>
+                <a href="brands.html" class="block py-3 text-lg font-bold text-primary active border-b border-gray-100 dark:border-gray-800/50">Brands</a>
                 <a href="deals.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Deals</a>
                 <a href="accessories.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Accessories</a>
                 <a href="gallery.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Gallery</a>
@@ -269,7 +292,7 @@
                         <i class="fa-solid fa-right-left"></i> RTL
                     </button>
                 </div>
-                <a href="login.html" class="w-full py-4 rounded-xl bg-primary text-white font-bold flex justify-center items-center gap-2 hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/30">
+                <a href="login.html" class="w-full py-3.5 rounded-xl bg-primary hover:bg-[#e66000] text-white font-bold flex justify-center items-center gap-2 transition-all shadow-lg shadow-orange-500/30">
                     <i class="fa-regular fa-user"></i> Login to Account
                 </a>
             </div>
@@ -287,7 +310,7 @@
                 <span class="inline-block py-2 px-6 rounded-full bg-white/10 text-white font-bold tracking-widest uppercase mb-8 border border-white/20 backdrop-blur-md">
                     Trusted Global Technology Partners
                 </span>
-                <h1 class="text-5xl md:text-8xl font-black text-white mb-8 leading-none tracking-tighter">
+                <h1 class="text-5xl md:text-8xl font-semibold text-white mb-8 leading-none tracking-tighter">
                     Explore The World's Leading Technology Brands
                 </h1>
                 <p class="text-xl text-gray-200 mb-16 max-w-3xl mx-auto font-light">
@@ -317,23 +340,27 @@
         </div>
 
         <!-- Infinite Logo Marquee at Bottom -->
-        <div class="relative w-full overflow-hidden bg-black/40 py-8 border-y border-white/5 mt-auto z-10">
+        <div class="relative w-full overflow-hidden bg-black/40 py-6 border-y border-white/5 mt-auto z-10">
             <div class="marquee-wrapper">
-                <div class="marquee-content items-center">
-                    <i class="fa-brands fa-apple text-5xl text-gray-200 hover:text-white transition-colors cursor-pointer"></i>
-                    <i class="fa-brands fa-microsoft text-5xl text-gray-200 hover:text-white transition-colors cursor-pointer"></i>
-                    <i class="fa-brands fa-google text-5xl text-gray-200 hover:text-white transition-colors cursor-pointer"></i>
-                    <i class="fa-brands fa-amazon text-5xl text-gray-200 hover:text-white transition-colors cursor-pointer"></i>
-                    <i class="fa-brands fa-playstation text-5xl text-gray-200 hover:text-white transition-colors cursor-pointer"></i>
-                    <span class="text-3xl font-black text-gray-200 uppercase tracking-tighter hover:text-white transition-colors cursor-pointer">SAMSUNG</span>
+                <div class="marquee-content">
+                    <i class="fa-brands fa-apple text-4xl sm:text-5xl text-gray-300 hover:text-white transition-colors cursor-pointer shrink-0"></i>
+                    <i class="fa-brands fa-microsoft text-4xl sm:text-5xl text-gray-300 hover:text-white transition-colors cursor-pointer shrink-0"></i>
+                    <i class="fa-brands fa-google text-4xl sm:text-5xl text-gray-300 hover:text-white transition-colors cursor-pointer shrink-0"></i>
+                    <i class="fa-brands fa-amazon text-4xl sm:text-5xl text-gray-300 hover:text-white transition-colors cursor-pointer shrink-0"></i>
+                    <i class="fa-brands fa-playstation text-4xl sm:text-5xl text-gray-300 hover:text-white transition-colors cursor-pointer shrink-0"></i>
+                    <span class="text-2xl sm:text-3xl font-black text-gray-300 uppercase tracking-tighter hover:text-white transition-colors cursor-pointer shrink-0">SAMSUNG</span>
+                    <i class="fa-brands fa-intel text-4xl sm:text-5xl text-gray-300 hover:text-white transition-colors cursor-pointer shrink-0"></i>
+                    <i class="fa-brands fa-nvidia text-4xl sm:text-5xl text-gray-300 hover:text-white transition-colors cursor-pointer shrink-0"></i>
                 </div>
-                <div class="marquee-content items-center">
-                    <i class="fa-brands fa-apple text-5xl text-gray-200 hover:text-white transition-colors cursor-pointer"></i>
-                    <i class="fa-brands fa-microsoft text-5xl text-gray-200 hover:text-white transition-colors cursor-pointer"></i>
-                    <i class="fa-brands fa-google text-5xl text-gray-200 hover:text-white transition-colors cursor-pointer"></i>
-                    <i class="fa-brands fa-amazon text-5xl text-gray-200 hover:text-white transition-colors cursor-pointer"></i>
-                    <i class="fa-brands fa-playstation text-5xl text-gray-200 hover:text-white transition-colors cursor-pointer"></i>
-                    <span class="text-3xl font-black text-gray-200 uppercase tracking-tighter hover:text-white transition-colors cursor-pointer">SAMSUNG</span>
+                <div class="marquee-content">
+                    <i class="fa-brands fa-apple text-4xl sm:text-5xl text-gray-300 hover:text-white transition-colors cursor-pointer shrink-0"></i>
+                    <i class="fa-brands fa-microsoft text-4xl sm:text-5xl text-gray-300 hover:text-white transition-colors cursor-pointer shrink-0"></i>
+                    <i class="fa-brands fa-google text-4xl sm:text-5xl text-gray-300 hover:text-white transition-colors cursor-pointer shrink-0"></i>
+                    <i class="fa-brands fa-amazon text-4xl sm:text-5xl text-gray-300 hover:text-white transition-colors cursor-pointer shrink-0"></i>
+                    <i class="fa-brands fa-playstation text-4xl sm:text-5xl text-gray-300 hover:text-white transition-colors cursor-pointer shrink-0"></i>
+                    <span class="text-2xl sm:text-3xl font-black text-gray-300 uppercase tracking-tighter hover:text-white transition-colors cursor-pointer shrink-0">SAMSUNG</span>
+                    <i class="fa-brands fa-intel text-4xl sm:text-5xl text-gray-300 hover:text-white transition-colors cursor-pointer shrink-0"></i>
+                    <i class="fa-brands fa-nvidia text-4xl sm:text-5xl text-gray-300 hover:text-white transition-colors cursor-pointer shrink-0"></i>
                 </div>
             </div>
         </div>
@@ -352,11 +379,11 @@
                 </div>
                 <div class="w-full lg:w-1/2">
                     <i class="fa-brands fa-apple text-6xl text-gray-900 dark:text-white mb-6"></i>
-                    <h2 class="text-5xl font-black text-gray-900 dark:text-white tracking-tighter mb-6">Think Different.</h2>
+                    <h2 class="text-5xl font-semibold text-gray-900 dark:text-white tracking-tighter mb-6">Think Different.</h2>
                     <p class="text-xl text-gray-800 dark:text-gray-200 mb-8 leading-relaxed">Pioneering personal technology and creating seamless ecosystems that empower creativity and productivity like never before.</p>
                     
                     <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-2xl mb-8 border border-gray-300 dark:border-gray-600">
-                        <h4 class="font-bold text-gray-900 dark:text-white uppercase tracking-wider text-sm mb-4">Signature Technologies</h4>
+                        <h4 class="font-semibold text-gray-900 dark:text-white uppercase tracking-wider text-sm mb-4">Signature Technologies</h4>
                         <div class="flex gap-4">
                             <span class="bg-white dark:bg-black border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200 shadow-sm">M-Series Chips</span>
                             <span class="bg-white dark:bg-black border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200 shadow-sm">iPhone Ecosystem</span>
@@ -375,11 +402,11 @@
                     <div class="absolute top-8 end-8 bg-black/80 backdrop-blur text-white px-6 py-2 rounded-full font-bold uppercase tracking-widest text-sm">Founded 1938</div>
                 </div>
                 <div class="w-full lg:w-1/2">
-                    <h2 class="text-5xl font-black text-gray-900 dark:text-white tracking-tighter mb-6 uppercase">Samsung</h2>
+                    <h2 class="text-5xl font-semibold text-gray-900 dark:text-white tracking-tighter mb-6 uppercase">Samsung</h2>
                     <p class="text-xl text-gray-800 dark:text-gray-200 mb-8 leading-relaxed">Inspiring the world with innovative technologies, products and design that enrich people's lives and contribute to social prosperity.</p>
                     
                     <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-2xl mb-8 border border-gray-300 dark:border-gray-600">
-                        <h4 class="font-bold text-gray-900 dark:text-white uppercase tracking-wider text-sm mb-4">Signature Technologies</h4>
+                        <h4 class="font-semibold text-gray-900 dark:text-white uppercase tracking-wider text-sm mb-4">Signature Technologies</h4>
                         <div class="flex gap-4">
                             <span class="bg-white dark:bg-black border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200 shadow-sm">Galaxy AI</span>
                             <span class="bg-white dark:bg-black border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200 shadow-sm">SmartThings</span>
@@ -398,11 +425,11 @@
                     <div class="absolute top-8 start-8 bg-black/80 backdrop-blur text-white px-6 py-2 rounded-full font-bold uppercase tracking-widest text-sm">Founded 1946</div>
                 </div>
                 <div class="w-full lg:w-1/2">
-                    <h2 class="text-5xl font-black text-gray-900 dark:text-white tracking-tighter mb-6 uppercase">Sony</h2>
+                    <h2 class="text-5xl font-semibold text-gray-900 dark:text-white tracking-tighter mb-6 uppercase">Sony</h2>
                     <p class="text-xl text-gray-800 dark:text-gray-200 mb-8 leading-relaxed">Filling the world with emotion, through the power of creativity and technology. Leaders in visual and audio excellence.</p>
                     
                     <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-2xl mb-8 border border-gray-300 dark:border-gray-600">
-                        <h4 class="font-bold text-gray-900 dark:text-white uppercase tracking-wider text-sm mb-4">Signature Technologies</h4>
+                        <h4 class="font-semibold text-gray-900 dark:text-white uppercase tracking-wider text-sm mb-4">Signature Technologies</h4>
                         <div class="flex gap-4">
                             <span class="bg-white dark:bg-black border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200 shadow-sm">PlayStation</span>
                             <span class="bg-white dark:bg-black border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200 shadow-sm">Alpha Cameras</span>
@@ -420,8 +447,8 @@
     <section class="py-32 bg-gray-50 dark:bg-gray-900 border-y border-gray-300 dark:border-gray-600">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-24">
-                <h2 class="text-4xl md:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Brand Ecosystems</h2>
-                <p class="text-gray-700 dark:text-gray-300 mt-4 text-xl">Devices that work better together.</p>
+                <h2 class="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white uppercase tracking-tight">Brand Ecosystems</h2>
+                <p class="text-gray-700 dark:text-gray-100 mt-4 text-xl">Devices that work better together.</p>
             </div>
 
             <!-- CSS Circular Layout Math: nodes positioned via transform -->
@@ -466,19 +493,19 @@
             </div>
 
             <div class="mt-24 max-w-3xl mx-auto text-center">
-                <h4 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Ecosystem Benefits</h4>
+                <h4 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Ecosystem Benefits</h4>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="p-6 bg-white dark:bg-black rounded-2xl shadow-sm border border-gray-300 dark:border-gray-600">
                         <i class="fa-solid fa-bolt text-primary text-2xl mb-2"></i>
-                        <h5 class="font-bold text-gray-900 dark:text-white">Seamless Sync</h5>
+                        <h5 class="font-semibold text-gray-900 dark:text-white">Seamless Sync</h5>
                     </div>
                     <div class="p-6 bg-white dark:bg-black rounded-2xl shadow-sm border border-gray-300 dark:border-gray-600">
                         <i class="fa-solid fa-shield-halved text-primary text-2xl mb-2"></i>
-                        <h5 class="font-bold text-gray-900 dark:text-white">Enhanced Security</h5>
+                        <h5 class="font-semibold text-gray-900 dark:text-white">Enhanced Security</h5>
                     </div>
                     <div class="p-6 bg-white dark:bg-black rounded-2xl shadow-sm border border-gray-300 dark:border-gray-600">
                         <i class="fa-solid fa-wand-magic-sparkles text-primary text-2xl mb-2"></i>
-                        <h5 class="font-bold text-gray-900 dark:text-white">Exclusive Features</h5>
+                        <h5 class="font-semibold text-gray-900 dark:text-white">Exclusive Features</h5>
                     </div>
                 </div>
             </div>
@@ -488,7 +515,7 @@
     <!-- SECTION 4: INNOVATION SHOWCASE (Technology Timeline) -->
     <section class="py-32 bg-white dark:bg-black">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl md:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tight mb-20 text-center">Innovation Showcase</h2>
+            <h2 class="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white uppercase tracking-tight mb-20 text-center">Innovation Showcase</h2>
             
             <div class="relative ps-12 md:ps-0">
                 <!-- Center Line for Desktop, Left for Mobile -->
@@ -499,8 +526,8 @@
                 <div class="relative mb-16 md:mb-24 md:flex items-center justify-between w-full group">
                     <div class="md:w-5/12 text-start md:text-end pe-0 md:pe-8 mb-4 md:mb-0 ms-12 md:ms-0">
                         <span class="text-primary font-black text-3xl block mb-2">2007</span>
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">iPhone Revolution</h3>
-                        <p class="text-gray-700 dark:text-gray-300 text-sm">The birth of modern smartphones, introducing multi-touch interfaces and full mobile browsing.</p>
+                        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-2">iPhone Revolution</h3>
+                        <p class="text-gray-700 dark:text-gray-100 text-sm">The birth of modern smartphones, introducing multi-touch interfaces and full mobile browsing.</p>
                     </div>
                     <div class="timeline-dot md:start-1/2 md:-ms-2.5 start-4 md:group-hover:scale-125 transition-transform"></div>
                     <div class="md:w-5/12 ps-0 md:ps-8 ms-12 md:ms-0">
@@ -514,8 +541,8 @@
                 <div class="relative mb-16 md:mb-24 md:flex items-center justify-between w-full flex-row-reverse group">
                     <div class="md:w-5/12 text-start ps-0 md:ps-8 mb-4 md:mb-0 ms-12 md:ms-0">
                         <span class="text-primary font-black text-3xl block mb-2">2010</span>
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Tablet Era</h3>
-                        <p class="text-gray-700 dark:text-gray-300 text-sm">Bridging the gap between phones and laptops with large-format touchscreen slates.</p>
+                        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-2">Tablet Era</h3>
+                        <p class="text-gray-700 dark:text-gray-100 text-sm">Bridging the gap between phones and laptops with large-format touchscreen slates.</p>
                     </div>
                     <div class="timeline-dot md:start-1/2 md:-ms-2.5 start-4 md:group-hover:scale-125 transition-transform"></div>
                     <div class="md:w-5/12 pe-0 md:pe-8 ms-12 md:ms-0">
@@ -529,8 +556,8 @@
                 <div class="relative mb-16 md:mb-24 md:flex items-center justify-between w-full group">
                     <div class="md:w-5/12 text-start md:text-end pe-0 md:pe-8 mb-4 md:mb-0 ms-12 md:ms-0">
                         <span class="text-primary font-black text-3xl block mb-2">2015</span>
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Smart Home Growth</h3>
-                        <p class="text-gray-700 dark:text-gray-300 text-sm">Voice assistants and connected appliances turn houses into automated ecosystems.</p>
+                        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-2">Smart Home Growth</h3>
+                        <p class="text-gray-700 dark:text-gray-100 text-sm">Voice assistants and connected appliances turn houses into automated ecosystems.</p>
                     </div>
                     <div class="timeline-dot md:start-1/2 md:-ms-2.5 start-4 md:group-hover:scale-125 transition-transform"></div>
                     <div class="md:w-5/12 ps-0 md:ps-8 ms-12 md:ms-0">
@@ -544,8 +571,8 @@
                 <div class="relative mb-16 md:mb-24 md:flex items-center justify-between w-full flex-row-reverse group">
                     <div class="md:w-5/12 text-start ps-0 md:ps-8 mb-4 md:mb-0 ms-12 md:ms-0">
                         <span class="text-primary font-black text-3xl block mb-2">2020</span>
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">AI Devices</h3>
-                        <p class="text-gray-700 dark:text-gray-300 text-sm">Machine learning integrated directly into consumer silicon for real-time processing.</p>
+                        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-2">AI Devices</h3>
+                        <p class="text-gray-700 dark:text-gray-100 text-sm">Machine learning integrated directly into consumer silicon for real-time processing.</p>
                     </div>
                     <div class="timeline-dot md:start-1/2 md:-ms-2.5 start-4 md:group-hover:scale-125 transition-transform"></div>
                     <div class="md:w-5/12 pe-0 md:pe-8 ms-12 md:ms-0">
@@ -559,8 +586,8 @@
                 <div class="relative md:flex items-center justify-between w-full group">
                     <div class="md:w-5/12 text-start md:text-end pe-0 md:pe-8 mb-4 md:mb-0 ms-12 md:ms-0">
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400 font-black text-3xl block mb-2">2025+</span>
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Future Technology</h3>
-                        <p class="text-gray-700 dark:text-gray-300 text-sm">Spatial computing, neural interfaces, and autonomous ambient systems.</p>
+                        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-2">Future Technology</h3>
+                        <p class="text-gray-700 dark:text-gray-100 text-sm">Spatial computing, neural interfaces, and autonomous ambient systems.</p>
                     </div>
                     <div class="timeline-dot md:start-1/2 md:-ms-2.5 start-4 bg-white dark:bg-black border-primary md:group-hover:scale-125 transition-transform" style="box-shadow: 0 0 20px rgba(255,107,0,1);"></div>
                     <div class="md:w-5/12 ps-0 md:ps-8 ms-12 md:ms-0">
@@ -582,7 +609,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
                 <span class="text-primary font-bold tracking-widest uppercase mb-4 block">Industry Recognition</span>
-                <h2 class="text-4xl md:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Awards & Certifications</h2>
+                <h2 class="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white uppercase tracking-tight">Awards & Certifications</h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8" style="perspective: 1000px;">
@@ -591,7 +618,7 @@
                     <div class="gold-accent"></div>
                     <div class="relative z-10">
                         <i class="fa-solid fa-trophy text-4xl text-yellow-500 mb-4"></i>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Best Innovation Award</h3>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Best Innovation Award</h3>
                     </div>
                     <p class="text-sm text-gray-700 dark:text-gray-200 relative z-10 font-medium">Global Tech Summit 2025</p>
                 </div>
@@ -600,7 +627,7 @@
                     <div class="gold-accent"></div>
                     <div class="relative z-10">
                         <i class="fa-solid fa-medal text-4xl text-gray-200 mb-4"></i>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Top Consumer Brand</h3>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Top Consumer Brand</h3>
                     </div>
                     <p class="text-sm text-gray-700 dark:text-gray-200 relative z-10 font-medium">Retail Excellence Board</p>
                 </div>
@@ -609,7 +636,7 @@
                     <div class="gold-accent"></div>
                     <div class="relative z-10">
                         <i class="fa-solid fa-leaf text-4xl text-green-500 mb-4"></i>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Sustainability Leader</h3>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Sustainability Leader</h3>
                     </div>
                     <p class="text-sm text-gray-700 dark:text-gray-200 relative z-10 font-medium">EcoTech Global Initiative</p>
                 </div>
@@ -618,7 +645,7 @@
                     <div class="gold-accent"></div>
                     <div class="relative z-10">
                         <i class="fa-solid fa-microchip text-4xl text-blue-500 mb-4"></i>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Technology Excellence</h3>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Technology Excellence</h3>
                     </div>
                     <p class="text-sm text-gray-700 dark:text-gray-200 relative z-10 font-medium">Silicon Valley Awards</p>
                 </div>
@@ -627,7 +654,7 @@
                     <div class="gold-accent"></div>
                     <div class="relative z-10">
                         <i class="fa-solid fa-pen-nib text-4xl text-purple-500 mb-4"></i>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Design Award Winner</h3>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Design Award Winner</h3>
                     </div>
                     <p class="text-sm text-gray-700 dark:text-gray-200 relative z-10 font-medium">International Design Forum</p>
                 </div>
@@ -636,7 +663,7 @@
                     <div class="gold-accent"></div>
                     <div class="relative z-10">
                         <i class="fa-solid fa-users text-4xl text-red-500 mb-4"></i>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Customer Choice Award</h3>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Customer Choice Award</h3>
                     </div>
                     <p class="text-sm text-gray-700 dark:text-gray-200 relative z-10 font-medium">Consumer Reports 2026</p>
                 </div>
@@ -648,7 +675,7 @@
     <!-- SECTION 6: FUTURE OF TECHNOLOGY (Futuristic Bento Grid) -->
     <section class="py-32 bg-white dark:bg-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl md:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tight mb-16">Future Of Technology</h2>
+            <h2 class="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white uppercase tracking-tight mb-16">Future Of Technology</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
                 
@@ -658,7 +685,7 @@
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                     <div class="relative z-10 text-start">
                         <span class="bg-primary text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3 inline-block">Focus 2027</span>
-                        <h3 class="text-2xl font-black text-white">Artificial<br>Intelligence</h3>
+                        <h3 class="text-2xl font-semibold text-white">Artificial<br>Intelligence</h3>
                     </div>
                 </div>
                 
@@ -667,7 +694,7 @@
                     <div class="absolute inset-0 bg-[url('assets/images/products/business-collection.jpg')] bg-cover opacity-20 mix-blend-overlay group-hover:scale-110 transition-transform duration-700"></div>
                     <div class="relative z-10">
                         <i class="fa-solid fa-city text-5xl text-white mb-4"></i>
-                        <h3 class="text-2xl font-bold text-white">Smart Cities</h3>
+                        <h3 class="text-2xl font-semibold text-white">Smart Cities</h3>
                     </div>
                 </div>
                 
@@ -676,7 +703,7 @@
                     <div class="absolute inset-0 bg-[url('assets/images/products/gaming-collection.jpg')] bg-cover opacity-20 mix-blend-overlay group-hover:scale-110 transition-transform duration-700"></div>
                     <div class="relative z-10">
                         <i class="fa-solid fa-vr-cardboard text-5xl text-white mb-4"></i>
-                        <h3 class="text-2xl font-bold text-white">Augmented Reality</h3>
+                        <h3 class="text-2xl font-semibold text-white">Augmented Reality</h3>
                     </div>
                 </div>
 
@@ -685,7 +712,7 @@
                     <div class="absolute inset-0" style="background-image: radial-gradient(circle at center, rgba(0,255,255,0.2) 0, transparent 70%);"></div>
                     <div class="relative z-10">
                         <i class="fa-solid fa-atom text-5xl text-white mb-4"></i>
-                        <h3 class="text-2xl font-bold text-white">Quantum Computing</h3>
+                        <h3 class="text-2xl font-semibold text-white">Quantum Computing</h3>
                     </div>
                 </div>
                 
@@ -693,7 +720,7 @@
                 <div class="rounded-3xl overflow-hidden relative group border border-gray-300 dark:border-gray-600 shadow-xl bg-green-900 h-80 flex items-center justify-center text-center p-6">
                     <div class="relative z-10">
                         <i class="fa-solid fa-leaf text-5xl text-white mb-4"></i>
-                        <h3 class="text-2xl font-bold text-white">Sustainable Tech</h3>
+                        <h3 class="text-2xl font-semibold text-white">Sustainable Tech</h3>
                     </div>
                 </div>
                 
@@ -702,7 +729,7 @@
                     <img src="assets/images/products/new-arrival-4.jpg" alt="Space" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700 mix-blend-screen">
                     <div class="relative z-10">
                         <i class="fa-solid fa-rocket text-5xl text-white mb-4"></i>
-                        <h3 class="text-2xl font-bold text-white uppercase tracking-widest">Space Innovation</h3>
+                        <h3 class="text-2xl font-semibold text-white uppercase tracking-widest">Space Innovation</h3>
                     </div>
                 </div>
 
@@ -711,7 +738,7 @@
                     <div class="absolute inset-0 bg-gradient-to-br from-red-600/30 to-black/30"></div>
                     <div class="relative z-10">
                         <i class="fa-solid fa-car text-5xl text-white mb-4"></i>
-                        <h3 class="text-2xl font-bold text-white">Autonomous<br>Systems</h3>
+                        <h3 class="text-2xl font-semibold text-white">Autonomous<br>Systems</h3>
                     </div>
                 </div>
 
@@ -720,7 +747,7 @@
                     <div class="absolute inset-0 bg-gradient-to-tr from-teal-500/20 to-black/40"></div>
                     <div class="relative z-10">
                         <i class="fa-solid fa-brain text-5xl text-white mb-4"></i>
-                        <h3 class="text-2xl font-bold text-white">Neural<br>Interfaces</h3>
+                        <h3 class="text-2xl font-semibold text-white">Neural<br>Interfaces</h3>
                     </div>
                 </div>
             </div>
@@ -750,7 +777,7 @@
 
                 <!-- Column 2 -->
                 <div>
-                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Quick Links</h4>
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">Quick Links</h4>
                     <ul class="space-y-3">
                         <li><a href="index.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Home</a></li>
                         <li><a href="about.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">About</a></li>
@@ -763,7 +790,7 @@
 
                 <!-- Column 3 -->
                 <div>
-                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Categories</h4>
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">Categories</h4>
                     <ul class="space-y-3">
                         <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Laptops</a></li>
                         <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Smartphones</a></li>
@@ -776,7 +803,7 @@
 
                 <!-- Column 4 -->
                 <div>
-                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Newsletter</h4>
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">Newsletter</h4>
                     <p class="text-gray-800 dark:text-gray-200 text-sm mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
                     <form class="flex flex-col gap-3">
                         <input type="email" placeholder="Enter your email address" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-gray-900 dark:text-white" required>

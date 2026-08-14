@@ -213,3 +213,116 @@ body {
 /* Dark mode specific fixes */
 .dark .deal-content { color: white; }
 .dark .text-dark { color: #f8f9fa; }
+
+/* Active Nav Indicator */
+#main-nav-links > a.active,
+#main-nav-links > div > button.active {
+  color: var(--primary) !important;
+}
+#main-nav-links > a.active::after,
+#main-nav-links > div > button.active::after {
+  width: 100% !important;
+}
+
+/* Hide scrollbar utility */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+
+
+
+/* ==================================================
+   RULE 4: CONSISTENT LEFT & RIGHT PADDING
+   ================================================== */
+.max-w-7xl, .container-custom {
+  max-width: 80rem !important; /* 1280px */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1rem !important; /* 16px */
+  padding-right: 1rem !important;
+}
+
+@media (min-width: 640px) {
+  .max-w-7xl, .container-custom {
+    padding-left: 1.5rem !important; /* 24px (sm:px-6) */
+    padding-right: 1.5rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .max-w-7xl, .container-custom {
+    padding-left: 2rem !important; /* 32px (lg:px-8) */
+    padding-right: 2rem !important;
+  }
+}
+
+/* ==================================================
+   RULE 5: TYPOGRAPHY WEIGHT CONSISTENCY
+   Heading weight: 600, Paragraph weight: 400-550
+   ================================================== */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 600 !important;
+}
+
+p, body, li, dt, dd, input, select, textarea, label {
+  font-weight: 400;
+}
+
+p.font-medium, span.font-medium, a.font-medium {
+  font-weight: 500 !important;
+}
+
+p.font-semibold, span.font-semibold, a.font-semibold {
+  font-weight: 550 !important;
+}
+
+/* ==================================================
+   RULE 6: DARK MODE HIGH VISIBILITY & WHITE CTAs
+   ================================================== */
+.dark {
+  color: #f8fafc !important;
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #ffffff !important;
+}
+
+.dark p {
+  color: #f1f5f9 !important;
+}
+
+/* High contrast White CTAs in Dark Mode */
+.white-cta,
+.dark .white-cta {
+  background-color: #ffffff !important;
+  color: #0f1115 !important;
+  font-weight: 600 !important;
+  box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.25) !important;
+  transition: all 0.3s ease !important;
+}
+
+.white-cta:hover,
+.dark .white-cta:hover {
+  background-color: var(--primary) !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 25px -5px rgba(255, 107, 0, 0.4) !important;
+}
+
+/* Dark Mode Outline Buttons */
+.dark .btn-outline {
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.dark .btn-outline:hover {
+  background-color: #ffffff !important;
+  color: #0f1115 !important;
+}

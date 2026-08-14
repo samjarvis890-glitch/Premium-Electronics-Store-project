@@ -171,13 +171,13 @@
                 </div>
 
                 <!-- Center: Menus (Desktop Only XL+) -->
-                <div id="main-nav-links" class="hidden xl:flex space-x-3 xl:space-x-6 text-base">
+                <div id="main-nav-links" class="hidden xl:flex items-center gap-3 xl:gap-6 text-base">
                     <div class="relative group">
-                        <button class="text-primary-custom font-medium flex items-center gap-1 hover:text-primary transition-colors py-2">
+                        <button class="text-gray-800 dark:text-gray-200 font-medium flex items-center gap-1 hover:text-primary transition-colors py-2">
                             Home <i class="fa-solid fa-chevron-down text-xs"></i>
                         </button>
                         <!-- Premium Dropdown -->
-                        <div class="absolute start-0 mt-2 w-48 rounded-xl glass-card opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left scale-95 group-hover:scale-100 z-50">
+                        <div class="absolute start-0 mt-2 w-48 rounded-xl glass-card opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-start scale-95 group-hover:scale-100 z-50">
                             <div class="py-2">
                                 <a href="index.html" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-primary">Home 1</a>
                                 <a href="home2.html" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-primary">Home 2</a>
@@ -186,7 +186,7 @@
                     </div>
                     <a href="about.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">About</a>
                     <a href="products.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Products</a>
-                    <a href="categories.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Categories</a>
+                    <a href="categories.html" class="text-primary font-bold active py-2">Categories</a>
                     <a href="brands.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Brands</a>
                     <a href="deals.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Deals</a>
                     <a href="accessories.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Accessories</a>
@@ -195,22 +195,29 @@
                     <a href="contact.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Contact</a>
                 </div>
 
-                <!-- Right: Actions -->
-                <div class="hidden xl:flex items-center space-x-4">
+                <!-- Right: Actions (Desktop XL+) -->
+                <div class="hidden xl:flex items-center gap-3 xl:gap-4">
                     <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle Dark Mode">
                         <i class="fa-solid fa-moon"></i>
                     </button>
                     <button id="rtl-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle RTL">
                         <i class="fa-solid fa-right-left"></i>
                     </button>
-                    <a href="login.html" class="px-5 py-2 rounded-full border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all text-sm font-medium flex items-center gap-2">
+                    <a href="login.html" class="px-5 py-2.5 rounded-full bg-primary hover:bg-[#e66000] text-white transition-all text-sm font-semibold flex items-center gap-2 shadow-md hover:shadow-lg hover:shadow-orange-500/25">
                         <i class="fa-regular fa-user"></i> Login
                     </a>
                 </div>
 
-                <!-- Tablet/Mobile Hamburger Toggle (Visible < XL) -->
+                <!-- Tablet/Mobile Right Side Header Controls (Visible < XL) -->
+                <!-- Rules: Logo | Dark | RTL | Hamburger -->
                 <div class="xl:hidden flex items-center gap-2">
-                    <button id="mobile-menu-btn" class="text-gray-800 dark:text-gray-200 text-2xl focus:outline-none p-2 ms-2">
+                    <button id="mobile-theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <button id="mobile-rtl-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle RTL">
+                        <i class="fa-solid fa-right-left"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-800 dark:text-gray-200 text-2xl focus:outline-none p-2 ms-1" title="Open Navigation Menu">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                 </div>
@@ -228,7 +235,7 @@
                     <img src="assets/images/logo.svg" alt="Nexura Logo" class="w-8 h-8 drop-shadow-md">
                     <span class="font-bold text-xl tracking-tight text-gray-900 dark:text-white uppercase">Nexura Menu</span>
                 </div>
-                <button id="close-drawer-btn" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white transition-colors">
+                <button id="close-drawer-btn" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white transition-colors">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
@@ -236,18 +243,18 @@
             <!-- Drawer Links -->
             <div class="flex-grow py-4 px-6 space-y-1">
                 <div class="border-b border-gray-100 dark:border-gray-800/50 pb-2 mb-2">
-                    <button id="drawer-home-btn" class="w-full flex justify-between items-center py-3 text-lg font-bold text-gray-900 dark:text-white hover:text-primary transition-colors">
+                    <button id="drawer-home-btn" class="w-full flex justify-between items-center py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors">
                         Home <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="drawer-home-icon"></i>
                     </button>
                     <div id="drawer-home-menu" class="hidden overflow-hidden ps-4 py-2 space-y-2 border-s-2 border-primary/30 ms-2">
-                        <a href="index.html" class="block py-2 text-primary font-bold">Home 1 (Current)</a>
-                        <a href="home2.html" class="block py-2 text-gray-800 dark:text-gray-200 hover:text-primary transition-colors font-medium">Home 2 (Alternate)</a>
+                        <a href="index.html" class="block py-2 text-gray-600 dark:text-gray-200 hover:text-primary transition-colors font-medium">Home 1</a>
+                        <a href="home2.html" class="block py-2 text-gray-600 dark:text-gray-200 hover:text-primary transition-colors font-medium">Home 2</a>
                     </div>
                 </div>
                 
                 <a href="about.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">About</a>
                 <a href="products.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Products</a>
-                <a href="categories.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Categories</a>
+                <a href="categories.html" class="block py-3 text-lg font-bold text-primary active border-b border-gray-100 dark:border-gray-800/50">Categories</a>
                 <a href="brands.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Brands</a>
                 <a href="deals.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Deals</a>
                 <a href="accessories.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Accessories</a>
@@ -266,7 +273,7 @@
                         <i class="fa-solid fa-right-left"></i> RTL
                     </button>
                 </div>
-                <a href="login.html" class="w-full py-4 rounded-xl bg-primary text-white font-bold flex justify-center items-center gap-2 hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/30">
+                <a href="login.html" class="w-full py-3.5 rounded-xl bg-primary hover:bg-[#e66000] text-white font-bold flex justify-center items-center gap-2 transition-all shadow-lg shadow-orange-500/30">
                     <i class="fa-regular fa-user"></i> Login to Account
                 </a>
             </div>
@@ -296,7 +303,7 @@
             <span class="inline-block py-1.5 px-4 rounded-full bg-primary/10 text-primary font-bold tracking-widest uppercase mb-6 border border-primary/20 backdrop-blur-md">
                 Explore Our Categories
             </span>
-            <h1 class="text-5xl md:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-tighter">
+            <h1 class="text-5xl md:text-7xl font-semibold text-gray-900 dark:text-white mb-6 leading-tight tracking-tighter">
                 Discover Technology Designed For Every Lifestyle
             </h1>
             <p class="text-xl text-gray-800 dark:text-gray-200 mb-12">
@@ -307,19 +314,19 @@
             <div class="flex flex-wrap justify-center gap-4 md:gap-8 bg-white/50 dark:bg-black/50 backdrop-blur-xl border border-gray-300 dark:border-gray-600 p-6 rounded-3xl shadow-2xl">
                 <div class="px-6 border-r border-gray-300 dark:border-gray-600 last:border-0">
                     <span class="block text-3xl font-black text-primary">25+</span>
-                    <span class="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">Categories</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-100">Categories</span>
                 </div>
                 <div class="px-6 border-r border-gray-300 dark:border-gray-600 last:border-0">
                     <span class="block text-3xl font-black text-primary">5000+</span>
-                    <span class="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">Products</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-100">Products</span>
                 </div>
                 <div class="px-6 border-r border-gray-300 dark:border-gray-600 last:border-0">
                     <span class="block text-3xl font-black text-primary">150+</span>
-                    <span class="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">Brands</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-100">Brands</span>
                 </div>
                 <div class="px-6 border-r border-gray-300 dark:border-gray-600 last:border-0">
                     <span class="block text-3xl font-black text-primary">Daily</span>
-                    <span class="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">New Arrivals</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-100">New Arrivals</span>
                 </div>
             </div>
         </div>
@@ -332,105 +339,113 @@
 
     <!-- SECTION 2: COMPUTING COLLECTION (Horizontal Showcase) -->
     <section class="py-24 bg-gray-50 dark:bg-gray-900 border-t border-gray-300 dark:border-gray-600 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-            <h2 class="text-4xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Computing Collection</h2>
-            <div class="w-24 h-2 bg-primary mt-4"></div>
-        </div>
-
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-8 px-4 sm:px-6 lg:px-8 pb-12">
-            
-            <!-- Horizontal Card 1 -->
-            <div class="relative group rounded-3xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-black">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="assets/images/products/student-collection.jpg" alt="Laptops" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
-                    <div class="absolute bottom-6 start-6">
-                        <span class="bg-primary text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-2 inline-block">Featured Brand: Apple</span>
-                        <h3 class="text-4xl font-black text-white">Laptops</h3>
-                    </div>
-                </div>
-                <div class="p-8 relative">
-                    <div class="hidden md:block absolute -top-12 end-6 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-xl border border-gray-300 dark:border-gray-600">
-                        <span class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2">Most Popular</span>
-                        <ul class="text-sm font-medium text-gray-900 dark:text-white space-y-1">
-                            <li>• MacBook Pro</li>
-                            <li>• Dell XPS</li>
-                        </ul>
-                    </div>
-                    <div class="flex items-end justify-between mt-8">
-                        <div>
-                            <p class="text-gray-700 dark:text-gray-300 font-medium mb-1">450+ Products</p>
-                            <p class="text-2xl font-bold text-gray-900 dark:text-white">From $899</p>
-                        </div>
-                        <button class="bg-gray-900 dark:bg-white text-white dark:text-black font-bold px-6 py-2 rounded-full hover:bg-primary dark:hover:bg-primary hover:text-white transition-colors">Explore</button>
-                    </div>
-                </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white uppercase tracking-tight">Computing Collection</h2>
+                <div class="w-24 h-1.5 bg-primary mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <!-- Horizontal Card 2 -->
-            <div class="relative group rounded-3xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-black">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="assets/images/products/new-arrival-5.jpg" alt="Desktops" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
-                    <div class="absolute bottom-6 start-6">
-                        <span class="bg-blue-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-2 inline-block">Featured Brand: ASUS</span>
-                        <h3 class="text-4xl font-black text-white">Desktop PCs</h3>
-                    </div>
-                </div>
-                <div class="p-8 relative">
-                    <div class="hidden md:block absolute -top-12 end-6 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-xl border border-gray-300 dark:border-gray-600">
-                        <span class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2">Most Popular</span>
-                        <ul class="text-sm font-medium text-gray-900 dark:text-white space-y-1">
-                            <li>• ASUS ROG</li>
-                            <li>• Mac Studio</li>
-                        </ul>
-                    </div>
-                    <div class="flex items-end justify-between mt-8">
-                        <div>
-                            <p class="text-gray-700 dark:text-gray-300 font-medium mb-1">200+ Products</p>
-                            <p class="text-2xl font-bold text-gray-900 dark:text-white">From $1200</p>
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+                
+                <!-- Horizontal Card 1 -->
+                <div class="group rounded-3xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 flex flex-col">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="assets/images/products/student-collection.jpg" alt="Laptops" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                        <div class="absolute top-4 start-4">
+                            <span class="bg-primary text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">Featured Brand: Apple</span>
                         </div>
-                        <button class="bg-gray-900 dark:bg-white text-white dark:text-black font-bold px-6 py-2 rounded-full hover:bg-primary dark:hover:bg-primary hover:text-white transition-colors">Explore</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Horizontal Card 3 -->
-            <div class="relative group rounded-3xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-black">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="assets/images/products/comparison-laptop.jpg" alt="Monitors" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
-                    <div class="absolute bottom-6 start-6">
-                        <span class="bg-purple-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-2 inline-block">Featured Brand: LG</span>
-                        <h3 class="text-4xl font-black text-white">Monitors</h3>
-                    </div>
-                </div>
-                <div class="p-8 relative">
-                    <div class="hidden md:block absolute -top-12 end-6 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-xl border border-gray-300 dark:border-gray-600">
-                        <span class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2">Most Popular</span>
-                        <ul class="text-sm font-medium text-gray-900 dark:text-white space-y-1">
-                            <li>• UltraWide 4K</li>
-                            <li>• Pro Display</li>
-                        </ul>
-                    </div>
-                    <div class="flex items-end justify-between mt-8">
-                        <div>
-                            <p class="text-gray-700 dark:text-gray-300 font-medium mb-1">150+ Products</p>
-                            <p class="text-2xl font-bold text-gray-900 dark:text-white">From $299</p>
+                        <div class="absolute bottom-4 start-6 end-6">
+                            <h3 class="text-3xl md:text-4xl font-semibold text-white">Laptops</h3>
                         </div>
-                        <button class="bg-gray-900 dark:bg-white text-white dark:text-black font-bold px-6 py-2 rounded-full hover:bg-primary dark:hover:bg-primary hover:text-white transition-colors">Explore</button>
+                    </div>
+                    <div class="p-6 md:p-8 flex flex-col justify-between flex-grow">
+                        <div class="mb-6">
+                            <span class="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-2">Most Popular Models</span>
+                            <div class="flex flex-wrap gap-2 text-xs font-medium">
+                                <span class="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full border border-gray-200 dark:border-gray-700">MacBook Pro</span>
+                                <span class="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full border border-gray-200 dark:border-gray-700">Dell XPS</span>
+                            </div>
+                        </div>
+                        <div class="flex items-end justify-between pt-4 border-t border-gray-200 dark:border-gray-800">
+                            <div>
+                                <p class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-1">450+ Products</p>
+                                <p class="text-2xl font-semibold text-gray-900 dark:text-white">From $899</p>
+                            </div>
+                            <button class="bg-primary hover:bg-[#e66000] text-white font-bold px-6 py-2.5 rounded-full transition-all shadow-md">Explore</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+                <!-- Horizontal Card 2 -->
+                <div class="group rounded-3xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 flex flex-col">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="assets/images/products/new-arrival-5.jpg" alt="Desktops" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                        <div class="absolute top-4 start-4">
+                            <span class="bg-blue-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">Featured Brand: ASUS</span>
+                        </div>
+                        <div class="absolute bottom-4 start-6 end-6">
+                            <h3 class="text-3xl md:text-4xl font-semibold text-white">Desktop PCs</h3>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 flex flex-col justify-between flex-grow">
+                        <div class="mb-6">
+                            <span class="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-2">Most Popular Models</span>
+                            <div class="flex flex-wrap gap-2 text-xs font-medium">
+                                <span class="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full border border-gray-200 dark:border-gray-700">ASUS ROG</span>
+                                <span class="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full border border-gray-200 dark:border-gray-700">Mac Studio</span>
+                            </div>
+                        </div>
+                        <div class="flex items-end justify-between pt-4 border-t border-gray-200 dark:border-gray-800">
+                            <div>
+                                <p class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-1">200+ Products</p>
+                                <p class="text-2xl font-semibold text-gray-900 dark:text-white">From $1200</p>
+                            </div>
+                            <button class="bg-primary hover:bg-[#e66000] text-white font-bold px-6 py-2.5 rounded-full transition-all shadow-md">Explore</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Horizontal Card 3 -->
+                <div class="group rounded-3xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 flex flex-col">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="assets/images/products/comparison-laptop.jpg" alt="Monitors" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                        <div class="absolute top-4 start-4">
+                            <span class="bg-purple-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">Featured Brand: LG</span>
+                        </div>
+                        <div class="absolute bottom-4 start-6 end-6">
+                            <h3 class="text-3xl md:text-4xl font-semibold text-white">Monitors</h3>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 flex flex-col justify-between flex-grow">
+                        <div class="mb-6">
+                            <span class="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-2">Most Popular Models</span>
+                            <div class="flex flex-wrap gap-2 text-xs font-medium">
+                                <span class="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full border border-gray-200 dark:border-gray-700">UltraWide 4K</span>
+                                <span class="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full border border-gray-200 dark:border-gray-700">Pro Display</span>
+                            </div>
+                        </div>
+                        <div class="flex items-end justify-between pt-4 border-t border-gray-200 dark:border-gray-800">
+                            <div>
+                                <p class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-1">150+ Products</p>
+                                <p class="text-2xl font-semibold text-gray-900 dark:text-white">From $299</p>
+                            </div>
+                            <button class="bg-primary hover:bg-[#e66000] text-white font-bold px-6 py-2.5 rounded-full transition-all shadow-md">Explore</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
     <!-- SECTION 3: MOBILE & WEARABLES ZONE (Honeycomb Grid) -->
     <section class="py-24 bg-white dark:bg-black relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center relative z-10">
-            <h2 class="text-4xl font-black text-gray-900 dark:text-white uppercase tracking-tight">Mobile & Wearables Zone</h2>
-            <p class="text-gray-700 dark:text-gray-300 mt-4 text-lg">Ecosystems that move with you.</p>
+            <h2 class="text-4xl font-semibold text-gray-900 dark:text-white uppercase tracking-tight">Mobile & Wearables Zone</h2>
+            <p class="text-gray-700 dark:text-gray-100 mt-4 text-lg">Ecosystems that move with you.</p>
         </div>
         
         <!-- Floating Stats Elements Removed -->
@@ -443,7 +458,7 @@
                     <div class="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors"></div>
                     <div class="absolute inset-0 flex flex-col items-center justify-center text-white p-4 text-center">
                         <i class="fa-solid fa-mobile-screen text-4xl mb-3"></i>
-                        <h3 class="font-bold text-lg uppercase tracking-wider">Smartphones</h3>
+                        <h3 class="font-semibold text-lg uppercase tracking-wider">Smartphones</h3>
                     </div>
                 </div>
                 <!-- Card 2 -->
@@ -452,7 +467,7 @@
                     <div class="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors"></div>
                     <div class="absolute inset-0 flex flex-col items-center justify-center text-white p-4 text-center">
                         <i class="fa-solid fa-clock text-4xl mb-3"></i>
-                        <h3 class="font-bold text-lg uppercase tracking-wider">Smartwatches</h3>
+                        <h3 class="font-semibold text-lg uppercase tracking-wider">Smartwatches</h3>
                     </div>
                 </div>
                 <!-- Card 3 -->
@@ -461,7 +476,7 @@
                     <div class="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors"></div>
                     <div class="absolute inset-0 flex flex-col items-center justify-center text-white p-4 text-center">
                         <i class="fa-solid fa-ear-listen text-4xl mb-3"></i>
-                        <h3 class="font-bold text-lg uppercase tracking-wider">Earbuds</h3>
+                        <h3 class="font-semibold text-lg uppercase tracking-wider">Earbuds</h3>
                     </div>
                 </div>
                 <!-- Card 4 -->
@@ -470,7 +485,7 @@
                     <div class="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors"></div>
                     <div class="absolute inset-0 flex flex-col items-center justify-center text-white p-4 text-center">
                         <i class="fa-solid fa-battery-full text-4xl mb-3"></i>
-                        <h3 class="font-bold text-lg uppercase tracking-wider">Power Banks</h3>
+                        <h3 class="font-semibold text-lg uppercase tracking-wider">Power Banks</h3>
                     </div>
                 </div>
                 <!-- Card 5 -->
@@ -479,7 +494,7 @@
                     <div class="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors"></div>
                     <div class="absolute inset-0 flex flex-col items-center justify-center text-white p-4 text-center">
                         <i class="fa-solid fa-heart-pulse text-4xl mb-3"></i>
-                        <h3 class="font-bold text-lg uppercase tracking-wider">Fitness Bands</h3>
+                        <h3 class="font-semibold text-lg uppercase tracking-wider">Fitness Bands</h3>
                     </div>
                 </div>
             </div>
@@ -493,7 +508,7 @@
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 uppercase tracking-tighter" style="text-shadow: 0 0 40px rgba(255,0,0,0.5);">Gaming Universe</h2>
+                <h2 class="text-5xl md:text-7xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 uppercase tracking-tighter" style="text-shadow: 0 0 40px rgba(255,0,0,0.5);">Gaming Universe</h2>
                 <p class="text-gray-200 mt-4 text-xl font-medium tracking-widest uppercase">Dominate the arena</p>
             </div>
 
@@ -512,7 +527,7 @@
                         <img src="assets/images/products/gaming_laptop_hero_1784091248220.png" alt="Gaming Laptops" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
                     </div>
                     <div class="p-6 relative z-10 border-t border-gray-800 group-hover:border-red-500/50 transition-colors">
-                        <h3 class="text-2xl font-black text-white uppercase tracking-tight mb-2 group-hover:text-red-500 transition-colors">Gaming Laptops</h3>
+                        <h3 class="text-2xl font-semibold text-white uppercase tracking-tight mb-2 group-hover:text-red-500 transition-colors">Gaming Laptops</h3>
                         <p class="text-gray-200 text-sm">Desktop-class performance anywhere.</p>
                     </div>
                 </div>
@@ -524,7 +539,7 @@
                         <img src="assets/images/products/vr_headset_hero_1784091260126.png" alt="VR Headsets" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
                     </div>
                     <div class="p-6 relative z-10 border-t border-gray-800 group-hover:border-purple-500/50 transition-colors">
-                        <h3 class="text-2xl font-black text-white uppercase tracking-tight mb-2 group-hover:text-purple-500 transition-colors">VR Headsets</h3>
+                        <h3 class="text-2xl font-semibold text-white uppercase tracking-tight mb-2 group-hover:text-purple-500 transition-colors">VR Headsets</h3>
                         <p class="text-gray-200 text-sm">Step inside the game.</p>
                     </div>
                 </div>
@@ -536,7 +551,7 @@
                         <img src="assets/images/products/rgb_accessories_hero_1784091273504.png" alt="RGB Accessories" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
                     </div>
                     <div class="p-6 relative z-10 border-t border-gray-800 group-hover:border-blue-500/50 transition-colors">
-                        <h3 class="text-2xl font-black text-white uppercase tracking-tight mb-2 group-hover:text-blue-500 transition-colors">RGB Accessories</h3>
+                        <h3 class="text-2xl font-semibold text-white uppercase tracking-tight mb-2 group-hover:text-blue-500 transition-colors">RGB Accessories</h3>
                         <p class="text-gray-200 text-sm">Mechanical keyboards & mice.</p>
                     </div>
                 </div>
@@ -548,7 +563,7 @@
     <section class="py-24 blueprint-bg relative border-y border-indigo-500/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16">
-                <h2 class="text-4xl md:text-5xl font-black text-white uppercase tracking-widest font-mono">Smart Home Ecosystem</h2>
+                <h2 class="text-4xl md:text-5xl font-semibold text-white uppercase tracking-widest font-mono">Smart Home Ecosystem</h2>
                 <p class="text-indigo-400 mt-2 font-mono">SYSTEM_BLUEPRINT_v2.0</p>
             </div>
             
@@ -565,10 +580,10 @@
                         </div>
                     </div>
                     <ul class="text-green-400 space-y-4">
-                        <li class="hover:text-white cursor-pointer hover:bg-white/10 p-2 rounded transition-colors">> Living Room Setup <span class="float-right text-gray-700 dark:text-gray-300">[ONLINE]</span></li>
-                        <li class="hover:text-white cursor-pointer hover:bg-white/10 p-2 rounded transition-colors">> Bedroom Setup <span class="float-right text-gray-700 dark:text-gray-300">[ONLINE]</span></li>
+                        <li class="hover:text-white cursor-pointer hover:bg-white/10 p-2 rounded transition-colors">> Living Room Setup <span class="float-right text-gray-700 dark:text-gray-100">[ONLINE]</span></li>
+                        <li class="hover:text-white cursor-pointer hover:bg-white/10 p-2 rounded transition-colors">> Bedroom Setup <span class="float-right text-gray-700 dark:text-gray-100">[ONLINE]</span></li>
                         <li class="hover:text-white cursor-pointer hover:bg-white/10 p-2 rounded transition-colors">> Kitchen Setup <span class="float-right text-yellow-500">[STANDBY]</span></li>
-                        <li class="hover:text-white cursor-pointer hover:bg-white/10 p-2 rounded transition-colors">> Office Setup <span class="float-right text-gray-700 dark:text-gray-300">[ONLINE]</span></li>
+                        <li class="hover:text-white cursor-pointer hover:bg-white/10 p-2 rounded transition-colors">> Office Setup <span class="float-right text-gray-700 dark:text-gray-100">[ONLINE]</span></li>
                     </ul>
                 </div>
 
@@ -586,7 +601,7 @@
                     <div class="relative lg:absolute lg:top-10 lg:start-10 blueprint-card p-4 rounded-xl flex items-center gap-4 cursor-pointer hover:scale-105 transition-transform z-10 w-full lg:w-64">
                         <i class="fa-solid fa-lightbulb text-3xl text-yellow-400"></i>
                         <div>
-                            <h4 class="text-white font-bold font-mono">Smart Lighting</h4>
+                            <h4 class="text-white font-semibold font-mono">Smart Lighting</h4>
                             <p class="text-xs text-gray-200 font-mono">Ambience control</p>
                         </div>
                     </div>
@@ -594,7 +609,7 @@
                     <div class="relative lg:absolute lg:top-20 lg:end-10 blueprint-card p-4 rounded-xl flex items-center gap-4 cursor-pointer hover:scale-105 transition-transform z-10 w-full lg:w-64">
                         <i class="fa-solid fa-video text-3xl text-red-400"></i>
                         <div>
-                            <h4 class="text-white font-bold font-mono">Security Cameras</h4>
+                            <h4 class="text-white font-semibold font-mono">Security Cameras</h4>
                             <p class="text-xs text-gray-200 font-mono">24/7 Monitoring</p>
                         </div>
                     </div>
@@ -602,7 +617,7 @@
                     <div class="relative lg:absolute lg:bottom-10 lg:start-1/3 blueprint-card p-4 rounded-xl flex items-center gap-4 cursor-pointer hover:scale-105 transition-transform z-10 w-full lg:w-64">
                         <i class="fa-solid fa-lock text-3xl text-green-400"></i>
                         <div>
-                            <h4 class="text-white font-bold font-mono">Smart Locks</h4>
+                            <h4 class="text-white font-semibold font-mono">Smart Locks</h4>
                             <p class="text-xs text-gray-200 font-mono">Access management</p>
                         </div>
                     </div>
@@ -621,8 +636,8 @@
                 <!-- Left: Audio Studio -->
                 <div>
                     <div class="border-s-8 border-primary ps-6 mb-12">
-                        <h2 class="text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-none">Audio<br>Studio</h2>
-                        <p class="text-gray-700 dark:text-gray-300 font-medium mt-4">High-fidelity listening equipment.</p>
+                        <h2 class="text-5xl font-semibold text-gray-900 dark:text-white uppercase tracking-tighter leading-none">Audio<br>Studio</h2>
+                        <p class="text-gray-700 dark:text-gray-100 font-medium mt-4">High-fidelity listening equipment.</p>
                     </div>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -631,7 +646,7 @@
                             <img src="assets/images/products/new-arrival-4.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Headphones">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors"></div>
                             <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-                                <h3 class="font-bold text-2xl tracking-tight">Headphones</h3>
+                                <h3 class="font-semibold text-2xl tracking-tight">Headphones</h3>
                                 <p class="text-sm text-gray-200 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Studio quality sound</p>
                             </div>
                         </div>
@@ -640,7 +655,7 @@
                             <img src="assets/images/products/speakers_hero_1784091433040.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Speakers">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors"></div>
                             <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-                                <h3 class="font-bold text-2xl tracking-tight">Speakers</h3>
+                                <h3 class="font-semibold text-2xl tracking-tight">Speakers</h3>
                                 <p class="text-sm text-gray-200 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Room filling audio</p>
                             </div>
                         </div>
@@ -649,7 +664,7 @@
                             <img src="assets/images/products/soundbar_hero_1784090961467.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Soundbars">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors"></div>
                             <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-                                <h3 class="font-bold text-2xl tracking-tight">Soundbars</h3>
+                                <h3 class="font-semibold text-2xl tracking-tight">Soundbars</h3>
                                 <p class="text-sm text-gray-200 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Cinematic experience</p>
                             </div>
                         </div>
@@ -658,7 +673,7 @@
                             <img src="assets/images/products/microphone_hero_1784090974870.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Microphones">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors"></div>
                             <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-                                <h3 class="font-bold text-2xl tracking-tight">Microphones</h3>
+                                <h3 class="font-semibold text-2xl tracking-tight">Microphones</h3>
                                 <p class="text-sm text-gray-200 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Crystal clear recording</p>
                             </div>
                         </div>
@@ -668,8 +683,8 @@
                 <!-- Right: Photography -->
                 <div>
                     <div class="border-s-8 border-gray-900 dark:border-white ps-6 mb-12 lg:ms-8">
-                        <h2 class="text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-none">Photo<br>Graphy</h2>
-                        <p class="text-gray-700 dark:text-gray-300 font-medium mt-4">Capture the perfect moment.</p>
+                        <h2 class="text-5xl font-semibold text-gray-900 dark:text-white uppercase tracking-tighter leading-none">Photo<br>Graphy</h2>
+                        <p class="text-gray-700 dark:text-gray-100 font-medium mt-4">Capture the perfect moment.</p>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:ms-8">
@@ -678,7 +693,7 @@
                             <img src="assets/images/products/camera_hero_1784090988431.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Cameras">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors"></div>
                             <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-                                <h3 class="font-bold text-2xl tracking-tight">Cameras</h3>
+                                <h3 class="font-semibold text-2xl tracking-tight">Cameras</h3>
                                 <p class="text-sm text-gray-200 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Mirrorless & DSLR</p>
                             </div>
                         </div>
@@ -687,7 +702,7 @@
                             <img src="assets/images/products/drone_hero_1784091002216.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Drones">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors"></div>
                             <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-                                <h3 class="font-bold text-2xl tracking-tight">Drones</h3>
+                                <h3 class="font-semibold text-2xl tracking-tight">Drones</h3>
                                 <p class="text-sm text-gray-200 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Aerial photography</p>
                             </div>
                         </div>
@@ -696,7 +711,7 @@
                             <img src="assets/images/products/lens_hero_1784091015185.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Lenses">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors"></div>
                             <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-                                <h3 class="font-bold text-2xl tracking-tight">Lenses</h3>
+                                <h3 class="font-semibold text-2xl tracking-tight">Lenses</h3>
                                 <p class="text-sm text-gray-200 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Prime & Zoom glass</p>
                             </div>
                         </div>
@@ -705,7 +720,7 @@
                             <img src="assets/images/products/lighting_hero_1784091029678.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Lighting">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors"></div>
                             <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-                                <h3 class="font-bold text-2xl tracking-tight">Lighting</h3>
+                                <h3 class="font-semibold text-2xl tracking-tight">Lighting</h3>
                                 <p class="text-sm text-gray-200 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Strobes & continuous</p>
                             </div>
                         </div>
@@ -739,7 +754,7 @@
 
                 <!-- Column 2 -->
                 <div>
-                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Quick Links</h4>
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">Quick Links</h4>
                     <ul class="space-y-3">
                         <li><a href="index.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Home</a></li>
                         <li><a href="about.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">About</a></li>
@@ -752,7 +767,7 @@
 
                 <!-- Column 3 -->
                 <div>
-                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Categories</h4>
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">Categories</h4>
                     <ul class="space-y-3">
                         <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Laptops</a></li>
                         <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Smartphones</a></li>
@@ -765,7 +780,7 @@
 
                 <!-- Column 4 -->
                 <div>
-                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Newsletter</h4>
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">Newsletter</h4>
                     <p class="text-gray-800 dark:text-gray-200 text-sm mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
                     <form class="flex flex-col gap-3">
                         <input type="email" placeholder="Enter your email address" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-gray-900 dark:text-white" required>

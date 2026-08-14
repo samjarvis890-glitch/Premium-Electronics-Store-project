@@ -114,4 +114,81 @@ document.addEventListener('DOMContentLoaded', () => {
             countdownElement.innerHTML = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         }, 1000);
     }
+
+    // 6. Active Nav Link Highlighting for All Pages
+    function highlightActiveNav() {
+        const rawPath = window.location.pathname;
+        let currentFile = rawPath.substring(rawPath.lastIndexOf('/') + 1);
+        if (!currentFile || currentFile === '' || currentFile === '/') {
+            currentFile = 'index.html';
+        }
+
+        // Desktop nav links
+        const desktopNavLinks = document.querySelectorAll('#main-nav-links a');
+        const desktopHomeBtn = document.querySelector('#main-nav-links > div > button');
+
+        // Reset desktop Home button
+        if (desktopHomeBtn) {
+            desktopHomeBtn.classList.remove('text-primary-custom', 'text-primary', 'font-bold', 'active');
+            desktopHomeBtn.classList.add('text-gray-800', 'dark:text-gray-200');
+        }
+
+        desktopNavLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            link.classList.remove('text-primary-custom', 'text-primary', 'font-bold', 'active');
+            link.classList.add('text-gray-800', 'dark:text-gray-200');
+
+            if (href === currentFile) {
+                link.classList.remove('text-gray-800', 'dark:text-gray-200');
+                link.classList.add('text-primary', 'font-bold', 'active');
+
+                // Highlight Home dropdown button if on Home 1 or Home 2
+                if (currentFile === 'index.html' || currentFile === 'home2.html') {
+                    if (desktopHomeBtn) {
+                        desktopHomeBtn.classList.remove('text-gray-800', 'dark:text-gray-200');
+                        desktopHomeBtn.classList.add('text-primary', 'font-bold', 'active');
+                    }
+                }
+            }
+        });
+
+        // Mobile drawer nav links
+        const drawerNavLinks = document.querySelectorAll('#drawer-menu a');
+        const drawerHomeBtn = document.getElementById('drawer-home-btn');
+
+        if (drawerHomeBtn) {
+            drawerHomeBtn.classList.remove('text-primary', 'font-bold');
+            drawerHomeBtn.classList.add('text-gray-700', 'dark:text-gray-200');
+        }
+
+        drawerNavLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            // Do not override CTA styling on login button in drawer
+            if (href === 'login.html' && link.classList.contains('bg-primary')) {
+                return;
+            }
+
+            link.classList.remove('text-primary', 'font-bold', 'active');
+            if (!link.closest('#drawer-home-menu')) {
+                link.classList.add('text-gray-700', 'dark:text-gray-200');
+            } else {
+                link.classList.add('text-gray-600', 'dark:text-gray-400');
+            }
+
+            if (href === currentFile) {
+                link.classList.remove('text-gray-700', 'dark:text-gray-200', 'text-gray-600', 'dark:text-gray-400');
+                link.classList.add('text-primary', 'font-bold', 'active');
+
+                if (currentFile === 'index.html' || currentFile === 'home2.html') {
+                    if (drawerHomeBtn) {
+                        drawerHomeBtn.classList.remove('text-gray-700', 'dark:text-gray-200');
+                        drawerHomeBtn.classList.add('text-primary', 'font-bold');
+                    }
+                }
+            }
+        });
+    }
+
+    highlightActiveNav();
 });
+

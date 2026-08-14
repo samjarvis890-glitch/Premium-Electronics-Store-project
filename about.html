@@ -67,20 +67,20 @@
                 </div>
 
                 <!-- Center: Menus (Desktop Only XL+) -->
-                <div id="main-nav-links" class="hidden xl:flex space-x-3 xl:space-x-6 text-base">
+                <div id="main-nav-links" class="hidden xl:flex items-center gap-3 xl:gap-6 text-base">
                     <div class="relative group">
-                        <button class="text-primary-custom font-medium flex items-center gap-1 hover:text-primary transition-colors py-2">
+                        <button class="text-gray-800 dark:text-gray-200 font-medium flex items-center gap-1 hover:text-primary transition-colors py-2">
                             Home <i class="fa-solid fa-chevron-down text-xs"></i>
                         </button>
                         <!-- Premium Dropdown -->
-                        <div class="absolute start-0 mt-2 w-48 rounded-xl glass-card opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left scale-95 group-hover:scale-100 z-50">
+                        <div class="absolute start-0 mt-2 w-48 rounded-xl glass-card opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-start scale-95 group-hover:scale-100 z-50">
                             <div class="py-2">
                                 <a href="index.html" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-primary">Home 1</a>
                                 <a href="home2.html" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-orange-50 dark:hover:bg-gray-800 hover:text-primary">Home 2</a>
                             </div>
                         </div>
                     </div>
-                    <a href="about.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">About</a>
+                    <a href="about.html" class="text-primary font-bold active py-2">About</a>
                     <a href="products.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Products</a>
                     <a href="categories.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Categories</a>
                     <a href="brands.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Brands</a>
@@ -91,22 +91,29 @@
                     <a href="contact.html" class="text-gray-800 dark:text-gray-200 font-medium hover:text-primary dark:hover:text-primary transition-colors py-2">Contact</a>
                 </div>
 
-                <!-- Right: Actions -->
-                <div class="hidden xl:flex items-center space-x-4">
+                <!-- Right: Actions (Desktop XL+) -->
+                <div class="hidden xl:flex items-center gap-3 xl:gap-4">
                     <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle Dark Mode">
                         <i class="fa-solid fa-moon"></i>
                     </button>
                     <button id="rtl-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle RTL">
                         <i class="fa-solid fa-right-left"></i>
                     </button>
-                    <a href="login.html" class="px-5 py-2 rounded-full border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all text-sm font-medium flex items-center gap-2">
+                    <a href="login.html" class="px-5 py-2.5 rounded-full bg-primary hover:bg-[#e66000] text-white transition-all text-sm font-semibold flex items-center gap-2 shadow-md hover:shadow-lg hover:shadow-orange-500/25">
                         <i class="fa-regular fa-user"></i> Login
                     </a>
                 </div>
 
-                <!-- Tablet/Mobile Hamburger Toggle (Visible < XL) -->
+                <!-- Tablet/Mobile Right Side Header Controls (Visible < XL) -->
+                <!-- Rules: Logo | Dark | RTL | Hamburger -->
                 <div class="xl:hidden flex items-center gap-2">
-                    <button id="mobile-menu-btn" class="text-gray-800 dark:text-gray-200 text-2xl focus:outline-none p-2 ms-2">
+                    <button id="mobile-theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <button id="mobile-rtl-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle RTL">
+                        <i class="fa-solid fa-right-left"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-800 dark:text-gray-200 text-2xl focus:outline-none p-2 ms-1" title="Open Navigation Menu">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                 </div>
@@ -124,7 +131,7 @@
                     <img src="assets/images/logo.svg" alt="Nexura Logo" class="w-8 h-8 drop-shadow-md">
                     <span class="font-bold text-xl tracking-tight text-gray-900 dark:text-white uppercase">Nexura Menu</span>
                 </div>
-                <button id="close-drawer-btn" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white transition-colors">
+                <button id="close-drawer-btn" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white transition-colors">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
@@ -132,16 +139,16 @@
             <!-- Drawer Links -->
             <div class="flex-grow py-4 px-6 space-y-1">
                 <div class="border-b border-gray-100 dark:border-gray-800/50 pb-2 mb-2">
-                    <button id="drawer-home-btn" class="w-full flex justify-between items-center py-3 text-lg font-bold text-gray-900 dark:text-white hover:text-primary transition-colors">
+                    <button id="drawer-home-btn" class="w-full flex justify-between items-center py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors">
                         Home <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="drawer-home-icon"></i>
                     </button>
                     <div id="drawer-home-menu" class="hidden overflow-hidden ps-4 py-2 space-y-2 border-s-2 border-primary/30 ms-2">
-                        <a href="index.html" class="block py-2 text-primary font-bold">Home 1 (Current)</a>
-                        <a href="home2.html" class="block py-2 text-gray-800 dark:text-gray-200 hover:text-primary transition-colors font-medium">Home 2 (Alternate)</a>
+                        <a href="index.html" class="block py-2 text-gray-600 dark:text-gray-200 hover:text-primary transition-colors font-medium">Home 1</a>
+                        <a href="home2.html" class="block py-2 text-gray-600 dark:text-gray-200 hover:text-primary transition-colors font-medium">Home 2</a>
                     </div>
                 </div>
                 
-                <a href="about.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">About</a>
+                <a href="about.html" class="block py-3 text-lg font-bold text-primary active border-b border-gray-100 dark:border-gray-800/50">About</a>
                 <a href="products.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Products</a>
                 <a href="categories.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Categories</a>
                 <a href="brands.html" class="block py-3 text-lg font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800/50">Brands</a>
@@ -162,14 +169,14 @@
                         <i class="fa-solid fa-right-left"></i> RTL
                     </button>
                 </div>
-                <a href="login.html" class="w-full py-4 rounded-xl bg-primary text-white font-bold flex justify-center items-center gap-2 hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/30">
+                <a href="login.html" class="w-full py-3.5 rounded-xl bg-primary hover:bg-[#e66000] text-white font-bold flex justify-center items-center gap-2 transition-all shadow-lg shadow-orange-500/30">
                     <i class="fa-regular fa-user"></i> Login to Account
                 </a>
             </div>
         </div>
     </nav>
     <!-- SECTION 1: IMMERSIVE PARALLAX HERO -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900 perspective-1000">
+    <section class="relative min-h-screen py-32 md:py-44 flex items-center justify-center overflow-hidden bg-gray-900 perspective-1000">
         <!-- Parallax Background Layer -->
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/40 to-gray-900/90 z-10"></div>
@@ -185,8 +192,8 @@
         </div>
 
         <!-- Content -->
-        <div class="relative z-20 text-center max-w-5xl mx-auto px-4 translate-z-50">
-            <h1 class="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-gray-300 mb-6 drop-shadow-2xl font-serif tracking-tight leading-tight animate-fade-in-up">
+        <div class="relative z-20 text-center max-w-5xl mx-auto px-4 pb-16 md:pb-24 translate-z-50">
+            <h1 class="text-5xl md:text-7xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-gray-300 mb-6 drop-shadow-2xl font-serif tracking-tight leading-tight animate-fade-in-up">
                 Building Tomorrow's <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-400">Digital Experience</span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-100 drop-shadow-md mb-12 max-w-3xl mx-auto font-medium leading-relaxed animate-fade-in-up animation-delay-300">
@@ -217,7 +224,7 @@
     <section class="py-32 bg-white dark:bg-gray-950 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 font-serif">The Nexura Ecosystem</h2>
+                <h2 class="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white mb-4 font-serif">The Nexura Ecosystem</h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-primary to-yellow-400 mx-auto"></div>
             </div>
 
@@ -229,7 +236,7 @@
                     <div class="w-16 h-16 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-users"></i>
                     </div>
-                    <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-xl">Customers</h4>
+                    <h4 class="font-semibold text-gray-900 dark:text-white mb-2 text-xl">Customers</h4>
                     <p class="text-sm text-gray-700 dark:text-gray-200">At the center of everything we build. Your satisfaction drives our innovation.</p>
                 </div>
 
@@ -241,7 +248,7 @@
                     <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-primary to-orange-400 flex items-center justify-center text-white text-5xl shadow-[0_0_40px_rgba(249,115,22,0.4)] mb-6 z-10 group-hover:scale-110 transition-transform duration-500">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <h3 class="text-white dark:text-gray-900 font-black tracking-widest uppercase text-2xl mb-2">Nexura</h3>
+                    <h3 class="text-white dark:text-gray-900 font-semibold tracking-widest uppercase text-2xl mb-2">Nexura</h3>
                     <span class="text-gray-200 dark:text-gray-200 font-bold tracking-[0.2em] uppercase text-xs">Ecosystem Hub</span>
                 </div>
 
@@ -250,7 +257,7 @@
                     <div class="w-16 h-16 rounded-full bg-blue-500/10 text-blue-500 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-microchip"></i>
                     </div>
-                    <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-xl">Technology</h4>
+                    <h4 class="font-semibold text-gray-900 dark:text-white mb-2 text-xl">Technology</h4>
                     <p class="text-sm text-gray-700 dark:text-gray-200">Curating the bleeding edge of hardware to bring you tomorrow's tech today.</p>
                 </div>
 
@@ -259,7 +266,7 @@
                     <div class="w-16 h-16 rounded-full bg-purple-500/10 text-purple-500 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-copyright"></i>
                     </div>
-                    <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-xl">Brands</h4>
+                    <h4 class="font-semibold text-gray-900 dark:text-white mb-2 text-xl">Brands</h4>
                     <p class="text-sm text-gray-700 dark:text-gray-200">Exclusive partnerships with global tech titans ensuring premium quality.</p>
                 </div>
 
@@ -268,7 +275,7 @@
                     <div class="w-16 h-16 rounded-full bg-green-500/10 text-green-500 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-lightbulb"></i>
                     </div>
-                    <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-xl">Innovation</h4>
+                    <h4 class="font-semibold text-gray-900 dark:text-white mb-2 text-xl">Innovation</h4>
                     <p class="text-sm text-gray-700 dark:text-gray-200">Pushing the boundaries of what's possible in the consumer electronics space.</p>
                 </div>
 
@@ -277,7 +284,7 @@
                     <div class="w-16 h-16 rounded-full bg-yellow-500/10 text-yellow-500 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-comments"></i>
                     </div>
-                    <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-xl">Community</h4>
+                    <h4 class="font-semibold text-gray-900 dark:text-white mb-2 text-xl">Community</h4>
                     <p class="text-sm text-gray-700 dark:text-gray-200 mb-6">Fostering a vibrant space for tech enthusiasts to connect, share ideas, and grow together.</p>
                     <button class="px-6 py-2 rounded-full bg-yellow-500 text-white font-bold hover:bg-yellow-600 transition-colors shadow-lg shadow-yellow-500/30 text-sm mt-auto">Join Now</button>
                 </div>
@@ -285,89 +292,193 @@
         </div>
     </section>
     <!-- SECTION 3: TECHNOLOGY EXPERIENCE CENTER -->
-    <section class="bg-gray-900">
-        <!-- Vertical Snapping Container -->
-        <div class="flex flex-col w-full h-[80vh] overflow-y-auto snap-y snap-mandatory hide-scrollbar">
-            
-            <!-- Block 1: Gaming -->
-            <div class="relative w-full h-full flex-shrink-0 snap-start flex items-center group overflow-hidden">
-                <img src="assets/images/about/experience-gaming.jpg" alt="Gaming Experience" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-900/80 to-transparent"></div>
-                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                    <div class="max-w-2xl transform transition-all duration-700 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
-                        <span class="text-primary font-bold tracking-widest uppercase mb-2 block">Experience Center</span>
-                        <h2 class="text-5xl md:text-6xl font-bold text-white mb-6 font-serif">Gaming Experience</h2>
-                        <ul class="space-y-4 mb-8 text-gray-300">
-                            <li class="flex items-center"><i class="fa-solid fa-check text-primary me-3"></i> 8K 120Hz Displays</li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-primary me-3"></i> Haptic Feedback Chairs</li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-primary me-3"></i> Spatial Audio Rooms</li>
-                        </ul>
-                        <button class="bg-transparent border border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-full font-bold transition-colors">Book a Session</button>
-                    </div>
+    <section class="py-24 bg-gray-950 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary border border-primary/20 text-xs font-semibold tracking-widest uppercase mb-4">Interactive Showcase</span>
+                <h2 class="text-4xl md:text-5xl font-semibold text-white mb-6 font-serif">Technology Experience Center</h2>
+                
+                <!-- Experience Category Filter Pills -->
+                <div class="flex flex-wrap justify-center gap-3 mt-8">
+                    <button class="exp-nav-btn px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 bg-primary text-white shadow-lg shadow-orange-500/30 flex items-center gap-2" data-index="0">
+                        <i class="fa-solid fa-gamepad"></i> Gaming
+                    </button>
+                    <button class="exp-nav-btn px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 bg-gray-800/80 text-gray-300 hover:bg-gray-700 border border-gray-700 flex items-center gap-2" data-index="1">
+                        <i class="fa-solid fa-house"></i> Smart Living
+                    </button>
+                    <button class="exp-nav-btn px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 bg-gray-800/80 text-gray-300 hover:bg-gray-700 border border-gray-700 flex items-center gap-2" data-index="2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Creative Studio
+                    </button>
+                    <button class="exp-nav-btn px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 bg-gray-800/80 text-gray-300 hover:bg-gray-700 border border-gray-700 flex items-center gap-2" data-index="3">
+                        <i class="fa-solid fa-briefcase"></i> Business Solutions
+                    </button>
                 </div>
             </div>
 
-            <!-- Block 2: Smart Living -->
-            <div class="relative w-full h-full flex-shrink-0 snap-start flex items-center group overflow-hidden">
-                <img src="assets/images/about/experience-smart-home.jpg" alt="Smart Living" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-l from-gray-950 via-gray-900/80 to-transparent"></div>
-                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-end">
-                    <div class="max-w-2xl text-end transform transition-all duration-700 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
-                        <span class="text-blue-500 font-bold tracking-widest uppercase mb-2 block">Experience Center</span>
-                        <h2 class="text-5xl md:text-6xl font-bold text-white mb-6 font-serif">Smart Living</h2>
-                        <ul class="space-y-4 mb-8 text-gray-300 flex flex-col items-end">
-                            <li class="flex items-center justify-end">Voice Controlled Automation <i class="fa-solid fa-check text-blue-500 ms-3"></i></li>
-                            <li class="flex items-center justify-end">Automated Climate <i class="fa-solid fa-check text-blue-500 ms-3"></i></li>
-                            <li class="flex items-center justify-end">Smart Security Systems <i class="fa-solid fa-check text-blue-500 ms-3"></i></li>
-                        </ul>
-                        <button class="bg-transparent border border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-full font-bold transition-colors">Book a Session</button>
+            <!-- Experience Slides Container (Scrollbar Free, Smooth Animation) -->
+            <div class="relative h-[500px] md:h-[550px] rounded-3xl overflow-hidden border border-gray-800 shadow-2xl bg-gray-900">
+                
+                <!-- Slide 1: Gaming -->
+                <div class="exp-slide absolute inset-0 transition-all duration-700 ease-in-out opacity-100 pointer-events-auto scale-100 flex items-center group">
+                    <img src="assets/images/about/experience-gaming.jpg" alt="Gaming Experience" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-900/80 to-transparent"></div>
+                    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
+                        <div class="max-w-xl transform transition-all duration-700 translate-y-0 opacity-100">
+                            <span class="text-primary font-semibold tracking-widest uppercase mb-2 block text-sm">Experience Center</span>
+                            <h3 class="text-4xl md:text-5xl font-semibold text-white mb-6 font-serif">Gaming Experience</h3>
+                            <ul class="space-y-3 mb-8 text-gray-200">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-primary me-3"></i> 8K 120Hz Ultra-fast Displays</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-primary me-3"></i> Haptic Feedback Gaming Chairs</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-primary me-3"></i> Spatial Audio Acoustic Rooms</li>
+                            </ul>
+                            <button class="white-cta px-8 py-3.5 rounded-full font-semibold transition-all">Book a Session</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Block 3: Creative Studio -->
-            <div class="relative w-full h-full flex-shrink-0 snap-start flex items-center group overflow-hidden">
-                <img src="assets/images/about/experience-creative.jpg" alt="Creative Studio" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-900/80 to-transparent"></div>
-                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                    <div class="max-w-2xl transform transition-all duration-700 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
-                        <span class="text-purple-500 font-bold tracking-widest uppercase mb-2 block">Experience Center</span>
-                        <h2 class="text-5xl md:text-6xl font-bold text-white mb-6 font-serif">Creative Studio</h2>
-                        <ul class="space-y-4 mb-8 text-gray-300">
-                            <li class="flex items-center"><i class="fa-solid fa-check text-purple-500 me-3"></i> Color Accurate Workstations</li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-purple-500 me-3"></i> Audio Mixing Consoles</li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-purple-500 me-3"></i> Render Farms</li>
-                        </ul>
-                        <button class="bg-transparent border border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-full font-bold transition-colors">Book a Session</button>
+                <!-- Slide 2: Smart Living -->
+                <div class="exp-slide absolute inset-0 transition-all duration-700 ease-in-out opacity-0 pointer-events-none scale-95 flex items-center group">
+                    <img src="assets/images/about/experience-smart-home.jpg" alt="Smart Living" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-l from-gray-950 via-gray-900/80 to-transparent"></div>
+                    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full flex justify-end">
+                        <div class="max-w-xl text-end transform transition-all duration-700 translate-y-0 opacity-100">
+                            <span class="text-blue-500 font-semibold tracking-widest uppercase mb-2 block text-sm">Experience Center</span>
+                            <h3 class="text-4xl md:text-5xl font-semibold text-white mb-6 font-serif">Smart Living</h3>
+                            <ul class="space-y-3 mb-8 text-gray-200 flex flex-col items-end">
+                                <li class="flex items-center justify-end">Voice Controlled Automation <i class="fa-solid fa-check text-blue-500 ms-3"></i></li>
+                                <li class="flex items-center justify-end">Automated Climate Control <i class="fa-solid fa-check text-blue-500 ms-3"></i></li>
+                                <li class="flex items-center justify-end">Smart Integrated Security <i class="fa-solid fa-check text-blue-500 ms-3"></i></li>
+                            </ul>
+                            <button class="white-cta px-8 py-3.5 rounded-full font-semibold transition-all">Book a Session</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Block 4: Business Solutions -->
-            <div class="relative w-full h-full flex-shrink-0 snap-start flex items-center group overflow-hidden">
-                <img src="assets/images/about/experience-business.jpg" alt="Business Solutions" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-l from-gray-950 via-gray-900/80 to-transparent"></div>
-                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-end">
-                    <div class="max-w-2xl text-end transform transition-all duration-700 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
-                        <span class="text-green-500 font-bold tracking-widest uppercase mb-2 block">Experience Center</span>
-                        <h2 class="text-5xl md:text-6xl font-bold text-white mb-6 font-serif">Business Solutions</h2>
-                        <ul class="space-y-4 mb-8 text-gray-300 flex flex-col items-end">
-                            <li class="flex items-center justify-end">Enterprise Networking <i class="fa-solid fa-check text-green-500 ms-3"></i></li>
-                            <li class="flex items-center justify-end">Telepresence Rooms <i class="fa-solid fa-check text-green-500 ms-3"></i></li>
-                            <li class="flex items-center justify-end">Server Architecture <i class="fa-solid fa-check text-green-500 ms-3"></i></li>
-                        </ul>
-                        <button class="bg-transparent border border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-full font-bold transition-colors">Book a Session</button>
+                <!-- Slide 3: Creative Studio -->
+                <div class="exp-slide absolute inset-0 transition-all duration-700 ease-in-out opacity-0 pointer-events-none scale-95 flex items-center group">
+                    <img src="assets/images/about/experience-creative.jpg" alt="Creative Studio" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-900/80 to-transparent"></div>
+                    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
+                        <div class="max-w-xl transform transition-all duration-700 translate-y-0 opacity-100">
+                            <span class="text-purple-500 font-semibold tracking-widest uppercase mb-2 block text-sm">Experience Center</span>
+                            <h3 class="text-4xl md:text-5xl font-semibold text-white mb-6 font-serif">Creative Studio</h3>
+                            <ul class="space-y-3 mb-8 text-gray-200">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-purple-500 me-3"></i> Color Accurate OLED Workstations</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-purple-500 me-3"></i> Professional Audio Mixing Consoles</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-purple-500 me-3"></i> Dedicated High-Speed Render Farms</li>
+                            </ul>
+                            <button class="white-cta px-8 py-3.5 rounded-full font-semibold transition-all">Book a Session</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+                <!-- Slide 4: Business Solutions -->
+                <div class="exp-slide absolute inset-0 transition-all duration-700 ease-in-out opacity-0 pointer-events-none scale-95 flex items-center group">
+                    <img src="assets/images/about/experience-business.jpg" alt="Business Solutions" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-l from-gray-950 via-gray-900/80 to-transparent"></div>
+                    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full flex justify-end">
+                        <div class="max-w-xl text-end transform transition-all duration-700 translate-y-0 opacity-100">
+                            <span class="text-green-500 font-semibold tracking-widest uppercase mb-2 block text-sm">Experience Center</span>
+                            <h3 class="text-4xl md:text-5xl font-semibold text-white mb-6 font-serif">Business Solutions</h3>
+                            <ul class="space-y-3 mb-8 text-gray-200 flex flex-col items-end">
+                                <li class="flex items-center justify-end">Enterprise High-Speed Networking <i class="fa-solid fa-check text-green-500 ms-3"></i></li>
+                                <li class="flex items-center justify-end">Interactive Telepresence Rooms <i class="fa-solid fa-check text-green-500 ms-3"></i></li>
+                                <li class="flex items-center justify-end">Secure Server Architecture <i class="fa-solid fa-check text-green-500 ms-3"></i></li>
+                            </ul>
+                            <button class="white-cta px-8 py-3.5 rounded-full font-semibold transition-all">Book a Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Arrow Navigation Controls -->
+                <button id="prev-exp-btn" class="absolute start-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-primary hover:border-primary transition-all duration-300 z-20" title="Previous Slide">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button id="next-exp-btn" class="absolute end-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-primary hover:border-primary transition-all duration-300 z-20" title="Next Slide">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
         </div>
     </section>
+
+    <!-- Experience Center Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const expNavBtns = document.querySelectorAll('.exp-nav-btn');
+            const expSlides = document.querySelectorAll('.exp-slide');
+            let currentExpIndex = 0;
+            let expInterval;
+
+            function showExpSlide(index) {
+                currentExpIndex = index;
+                expNavBtns.forEach((btn, idx) => {
+                    if (idx === index) {
+                        btn.className = 'exp-nav-btn px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 bg-primary text-white shadow-lg shadow-orange-500/30 flex items-center gap-2';
+                    } else {
+                        btn.className = 'exp-nav-btn px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 bg-gray-800/80 text-gray-300 hover:bg-gray-700 border border-gray-700 flex items-center gap-2';
+                    }
+                });
+
+                expSlides.forEach((slide, idx) => {
+                    if (idx === index) {
+                        slide.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
+                        slide.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
+                    } else {
+                        slide.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
+                        slide.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+                    }
+                });
+            }
+
+            expNavBtns.forEach((btn, idx) => {
+                btn.addEventListener('click', () => {
+                    showExpSlide(idx);
+                    resetExpTimer();
+                });
+            });
+
+            const prevExpBtn = document.getElementById('prev-exp-btn');
+            const nextExpBtn = document.getElementById('next-exp-btn');
+
+            if (prevExpBtn) {
+                prevExpBtn.addEventListener('click', () => {
+                    const nextIdx = (currentExpIndex - 1 + expSlides.length) % expSlides.length;
+                    showExpSlide(nextIdx);
+                    resetExpTimer();
+                });
+            }
+
+            if (nextExpBtn) {
+                nextExpBtn.addEventListener('click', () => {
+                    const nextIdx = (currentExpIndex + 1) % expSlides.length;
+                    showExpSlide(nextIdx);
+                    resetExpTimer();
+                });
+            }
+
+            function startExpTimer() {
+                expInterval = setInterval(() => {
+                    const nextIdx = (currentExpIndex + 1) % expSlides.length;
+                    showExpSlide(nextIdx);
+                }, 6000);
+            }
+
+            function resetExpTimer() {
+                clearInterval(expInterval);
+                startExpTimer();
+            }
+
+            if (expSlides.length > 0) {
+                showExpSlide(0);
+                startExpTimer();
+            }
+        });
+    </script>
     <!-- SECTION 4: PREMIUM BUYING GUIDE -->
     <section class="py-24 bg-gray-50 dark:bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 font-serif">Tech Editorials</h2>
+                <h2 class="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white mb-6 font-serif">Tech Editorials</h2>
                 <div class="w-24 h-1 bg-gray-900 dark:bg-white mx-auto"></div>
             </div>
 
@@ -380,7 +491,7 @@
                     </div>
                     <div class="p-6 flex-grow flex flex-col justify-between">
                         <div>
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors leading-snug">The Ultimate Creator Laptop Buying Guide for 2026</h3>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors leading-snug">The Ultimate Creator Laptop Buying Guide for 2026</h3>
                             <p class="text-gray-800 dark:text-gray-200 text-sm mb-4 line-clamp-3">Navigating the complex landscape of high-performance mobile workstations. We break down GPU rendering capabilities, thermal designs, and color-accurate displays to help you find the perfect machine for your creative workflow.</p>
                         </div>
                         <span class="text-primary text-xs font-bold uppercase tracking-wider group-hover:underline">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></span>
@@ -395,10 +506,10 @@
                     </div>
                     <div class="p-6 flex-grow flex flex-col justify-between">
                         <div>
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors leading-snug">Flagship Showdown: iOS vs Android Cameras</h3>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors leading-snug">Flagship Showdown: iOS vs Android Cameras</h3>
                             <p class="text-gray-800 dark:text-gray-200 text-sm mb-4 line-clamp-3">A deep dive into computational photography, sensor sizes, and night mode capabilities of this year's top models.</p>
                         </div>
-                        <span class="text-gray-700 dark:text-gray-300 text-xs font-medium uppercase tracking-wider"><i class="fa-solid fa-fire text-orange-500 me-1"></i> Trending</span>
+                        <span class="text-gray-700 dark:text-gray-100 text-xs font-medium uppercase tracking-wider"><i class="fa-solid fa-fire text-orange-500 me-1"></i> Trending</span>
                     </div>
                 </article>
 
@@ -410,10 +521,10 @@
                     </div>
                     <div class="p-6 flex-grow flex flex-col justify-between">
                         <div>
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors leading-snug">Audiophile's Guide to Spatial Audio</h3>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors leading-snug">Audiophile's Guide to Spatial Audio</h3>
                             <p class="text-gray-800 dark:text-gray-200 text-sm mb-4 line-clamp-3">How multi-driver setups and personalized HRTF profiles are changing how we consume lossless music.</p>
                         </div>
-                        <span class="text-gray-700 dark:text-gray-300 text-xs font-medium uppercase tracking-wider"><i class="fa-solid fa-star text-yellow-500 me-1"></i> Top Pick</span>
+                        <span class="text-gray-700 dark:text-gray-100 text-xs font-medium uppercase tracking-wider"><i class="fa-solid fa-star text-yellow-500 me-1"></i> Top Pick</span>
                     </div>
                 </article>
             </div>
@@ -432,117 +543,214 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             <div class="grid grid-cols-2 xl:grid-cols-4 gap-4 md:gap-8 xl:gap-12 text-center">
                 <div class="p-4 sm:p-6 xl:p-8 border-s-4 border-primary bg-gray-900/40 backdrop-blur rounded-r-3xl">
-                    <p class="text-4xl md:text-5xl xl:text-6xl font-extrabold text-white mb-2 font-serif">50<span class="text-primary">+</span></p>
-                    <p class="text-gray-200 font-bold uppercase tracking-widest text-[10px] sm:text-xs xl:text-sm">Countries Served</p>
+                    <p class="text-4xl md:text-5xl xl:text-6xl font-medium text-white mb-2 font-serif">50<span class="text-primary">+</span></p>
+                    <p class="text-gray-200 font-medium uppercase tracking-widest text-[10px] sm:text-xs xl:text-sm">Countries Served</p>
                 </div>
                 <div class="p-4 sm:p-6 xl:p-8 border-s-4 border-blue-500 bg-gray-900/40 backdrop-blur rounded-r-3xl">
-                    <p class="text-4xl md:text-5xl xl:text-6xl font-extrabold text-white mb-2 font-serif">150<span class="text-blue-500">+</span></p>
-                    <p class="text-gray-200 font-bold uppercase tracking-widest text-[10px] sm:text-xs xl:text-sm">Brand Partners</p>
+                    <p class="text-4xl md:text-5xl xl:text-6xl font-medium text-white mb-2 font-serif">150<span class="text-blue-500">+</span></p>
+                    <p class="text-gray-200 font-medium uppercase tracking-widest text-[10px] sm:text-xs xl:text-sm">Brand Partners</p>
                 </div>
                 <div class="p-4 sm:p-6 xl:p-8 border-s-4 border-purple-500 bg-gray-900/40 backdrop-blur rounded-r-3xl">
-                    <p class="text-4xl md:text-5xl xl:text-6xl font-extrabold text-white mb-2 font-serif">500<span class="text-purple-500">K+</span></p>
-                    <p class="text-gray-200 font-bold uppercase tracking-widest text-[10px] sm:text-xs xl:text-sm">Products Delivered</p>
+                    <p class="text-4xl md:text-5xl xl:text-6xl font-medium text-white mb-2 font-serif">500<span class="text-purple-500">K+</span></p>
+                    <p class="text-gray-200 font-medium uppercase tracking-widest text-[10px] sm:text-xs xl:text-sm">Products Delivered</p>
                 </div>
                 <div class="p-4 sm:p-6 xl:p-8 border-s-4 border-green-500 bg-gray-900/40 backdrop-blur rounded-r-3xl">
-                    <p class="text-4xl md:text-5xl xl:text-6xl font-extrabold text-white mb-2 font-serif">99<span class="text-green-500">%</span></p>
-                    <p class="text-gray-200 font-bold uppercase tracking-widest text-[10px] sm:text-xs xl:text-sm">Customer Trust</p>
+                    <p class="text-4xl md:text-5xl xl:text-6xl font-medium text-white mb-2 font-serif">99<span class="text-green-500">%</span></p>
+                    <p class="text-gray-200 font-medium uppercase tracking-widest text-[10px] sm:text-xs xl:text-sm">Customer Trust</p>
                 </div>
             </div>
         </div>
     </section>
     <!-- SECTION 6: INNOVATION LAB -->
-    <section class="py-32 bg-white dark:bg-gray-800" x-data="{ activeTab: 1 }">
+    <section class="py-24 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700" x-data="{ activeTab: 1 }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 font-serif">Innovation Lab</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-primary to-yellow-400 mx-auto"></div>
+            <div class="text-center mb-12">
+                <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary border border-primary/20 text-xs font-semibold tracking-widest uppercase mb-4">R&D Lifecycle</span>
+                <h2 class="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white mb-4 font-serif">Innovation Lab</h2>
+                <p class="text-gray-700 dark:text-gray-100 text-lg max-w-2xl mx-auto">Explore our 5-stage innovation process that powers next-generation technology integration.</p>
             </div>
 
-            <div class="flex flex-col lg:flex-row gap-12">
-                <!-- Interactive Tabs Sidebar -->
-                <div class="lg:w-1/3 flex flex-col gap-2">
-                    <button @click="activeTab = 1" :class="{ 'bg-gray-900 text-white dark:bg-white dark:text-gray-900': activeTab === 1, 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700': activeTab !== 1 }" class="text-start px-8 py-6 font-bold text-lg rounded-2xl transition-all duration-300">
-                        1. Research
-                    </button>
-                    <button @click="activeTab = 2" :class="{ 'bg-gray-900 text-white dark:bg-white dark:text-gray-900': activeTab === 2, 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700': activeTab !== 2 }" class="text-start px-8 py-6 font-bold text-lg rounded-2xl transition-all duration-300">
-                        2. Development
-                    </button>
-                    <button @click="activeTab = 3" :class="{ 'bg-gray-900 text-white dark:bg-white dark:text-gray-900': activeTab === 3, 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700': activeTab !== 3 }" class="text-start px-8 py-6 font-bold text-lg rounded-2xl transition-all duration-300">
-                        3. Testing
-                    </button>
-                    <button @click="activeTab = 4" :class="{ 'bg-gray-900 text-white dark:bg-white dark:text-gray-900': activeTab === 4, 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700': activeTab !== 4 }" class="text-start px-8 py-6 font-bold text-lg rounded-2xl transition-all duration-300">
-                        4. Quality Assurance
-                    </button>
-                    <button @click="activeTab = 5" :class="{ 'bg-gray-900 text-white dark:bg-white dark:text-gray-900': activeTab === 5, 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700': activeTab !== 5 }" class="text-start px-8 py-6 font-bold text-lg rounded-2xl transition-all duration-300">
-                        5. Customer Support
-                    </button>
-                </div>
+            <!-- Horizontal Process Stepper Bar -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
+                <!-- Step 1 -->
+                <button @click="activeTab = 1" 
+                    :class="{ 'bg-primary text-white shadow-lg shadow-orange-500/30 border-primary': activeTab === 1, 'bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700': activeTab !== 1 }" 
+                    class="p-4 rounded-2xl border transition-all duration-300 flex flex-col items-center text-center group">
+                    <span class="text-xs font-bold uppercase tracking-wider mb-1 opacity-80">Step 01</span>
+                    <span class="font-semibold text-sm md:text-base flex items-center gap-2">
+                        <i class="fa-solid fa-flask"></i> Research
+                    </span>
+                </button>
 
-                <style>
-                    @media (max-width: 1023px) {
-                        .mobile-tab-container { min-height: 750px; }
-                    }
-                </style>
+                <!-- Step 2 -->
+                <button @click="activeTab = 2" 
+                    :class="{ 'bg-primary text-white shadow-lg shadow-orange-500/30 border-primary': activeTab === 2, 'bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700': activeTab !== 2 }" 
+                    class="p-4 rounded-2xl border transition-all duration-300 flex flex-col items-center text-center group">
+                    <span class="text-xs font-bold uppercase tracking-wider mb-1 opacity-80">Step 02</span>
+                    <span class="font-semibold text-sm md:text-base flex items-center gap-2">
+                        <i class="fa-solid fa-code"></i> Development
+                    </span>
+                </button>
 
-                <!-- Tab Content Area -->
-                <div class="lg:w-2/3 relative min-h-[400px] mobile-tab-container">
-                    <!-- Research -->
-                    <div x-show="activeTab === 1" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0" class="absolute inset-0 bg-gray-50 dark:bg-gray-950 border border-gray-300 dark:border-gray-600 rounded-3xl overflow-hidden p-6 md:p-10 shadow-2xl flex flex-col md:flex-row gap-8">
-                        <div class="md:w-1/2 flex flex-col justify-center">
-                            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Discovering the Edge</h3>
-                            <p class="text-gray-800 dark:text-gray-200 mb-6">Our research division continuously scouts the global market for emerging technologies, from quantum processors to advanced AI neural nets.</p>
-                            <div class="flex gap-2">
-                                <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase">Quantum</span>
-                                <span class="bg-blue-500/20 text-blue-500 px-3 py-1 rounded-full text-xs font-bold uppercase">AI</span>
-                            </div>
-                        </div>
-                        <div class="md:w-1/2 min-h-[300px] md:min-h-0 md:h-auto flex-shrink-0 rounded-2xl overflow-hidden relative">
-                            <img src="assets/images/about/innovation-lab.jpg" alt="Research" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+                <!-- Step 3 -->
+                <button @click="activeTab = 3" 
+                    :class="{ 'bg-primary text-white shadow-lg shadow-orange-500/30 border-primary': activeTab === 3, 'bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700': activeTab !== 3 }" 
+                    class="p-4 rounded-2xl border transition-all duration-300 flex flex-col items-center text-center group">
+                    <span class="text-xs font-bold uppercase tracking-wider mb-1 opacity-80">Step 03</span>
+                    <span class="font-semibold text-sm md:text-base flex items-center gap-2">
+                        <i class="fa-solid fa-vial"></i> Testing
+                    </span>
+                </button>
+
+                <!-- Step 4 -->
+                <button @click="activeTab = 4" 
+                    :class="{ 'bg-primary text-white shadow-lg shadow-orange-500/30 border-primary': activeTab === 4, 'bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700': activeTab !== 4 }" 
+                    class="p-4 rounded-2xl border transition-all duration-300 flex flex-col items-center text-center group">
+                    <span class="text-xs font-bold uppercase tracking-wider mb-1 opacity-80">Step 04</span>
+                    <span class="font-semibold text-sm md:text-base flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i> Quality Assurance
+                    </span>
+                </button>
+
+                <!-- Step 5 -->
+                <button @click="activeTab = 5" 
+                    :class="{ 'bg-primary text-white shadow-lg shadow-orange-500/30 border-primary': activeTab === 5, 'bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700': activeTab !== 5 }" 
+                    class="p-4 rounded-2xl border transition-all duration-300 flex flex-col items-center text-center group col-span-2 sm:col-span-1">
+                    <span class="text-xs font-bold uppercase tracking-wider mb-1 opacity-80">Step 05</span>
+                    <span class="font-semibold text-sm md:text-base flex items-center gap-2">
+                        <i class="fa-solid fa-headset"></i> Support
+                    </span>
+                </button>
+            </div>
+
+            <!-- Balanced Content Card Box -->
+            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-3xl p-6 sm:p-10 md:p-12 shadow-2xl">
+                
+                <!-- Stage 1: Research -->
+                <div x-show="activeTab === 1" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <span class="text-primary font-bold text-xs uppercase tracking-widest block mb-2">Stage 01 • Market Intelligence</span>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-4">Discovering the Edge</h3>
+                        <p class="text-gray-700 dark:text-gray-200 text-base leading-relaxed mb-6">Our research division continuously scouts global technology hubs for emerging breakthroughs, evaluating quantum processing architectures, next-gen optics, and advanced neural AI models.</p>
+                        <ul class="space-y-3 text-gray-800 dark:text-gray-200 mb-8 text-sm font-medium">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-primary text-base"></i> Global Tech Hub Intelligence & Scouting</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-primary text-base"></i> Quantum & Neural Processing Benchmarking</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-primary text-base"></i> Pre-release Hardware & Optics Evaluation</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-primary/10 text-primary border border-primary/20 px-3 py-1 rounded-full text-xs font-semibold uppercase">Quantum Computing</span>
+                            <span class="bg-blue-500/10 text-blue-500 border border-blue-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase">Neural AI Nets</span>
                         </div>
                     </div>
-
-                    <!-- Additional tabs use the same image for now, but different text -->
-                    <div x-show="activeTab === 2" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0" class="absolute inset-0 bg-gray-50 dark:bg-gray-950 border border-gray-300 dark:border-gray-600 rounded-3xl overflow-hidden p-6 md:p-10 shadow-2xl flex flex-col md:flex-row gap-8" style="display: none;">
-                        <div class="md:w-1/2 flex flex-col justify-center">
-                            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Prototyping Future Tech</h3>
-                            <p class="text-gray-800 dark:text-gray-200 mb-6">We build and test hardware integrations in-house, ensuring that the tech we recommend scales seamlessly with our clients' needs.</p>
-                        </div>
-                        <div class="md:w-1/2 min-h-[300px] md:min-h-0 md:h-auto flex-shrink-0 rounded-2xl overflow-hidden relative">
-                            <img src="assets/images/about/innovation-lab.jpg" alt="Development" class="w-full h-full object-cover hue-rotate-90">
-                        </div>
-                    </div>
-                    
-                    <div x-show="activeTab === 3" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0" class="absolute inset-0 bg-gray-50 dark:bg-gray-950 border border-gray-300 dark:border-gray-600 rounded-3xl overflow-hidden p-6 md:p-10 shadow-2xl flex flex-col md:flex-row gap-8" style="display: none;">
-                        <div class="md:w-1/2 flex flex-col justify-center">
-                            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Rigorous Stress Testing</h3>
-                            <p class="text-gray-800 dark:text-gray-200 mb-6">Every product endures hundreds of hours of thermal, physical, and software stress testing before earning the Nexura seal of approval.</p>
-                        </div>
-                        <div class="md:w-1/2 min-h-[300px] md:min-h-0 md:h-auto flex-shrink-0 rounded-2xl overflow-hidden relative">
-                            <img src="assets/images/about/innovation-lab.jpg" alt="Testing" class="w-full h-full object-cover grayscale">
-                        </div>
-                    </div>
-
-                    <div x-show="activeTab === 4" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0" class="absolute inset-0 bg-gray-50 dark:bg-gray-950 border border-gray-300 dark:border-gray-600 rounded-3xl overflow-hidden p-6 md:p-10 shadow-2xl flex flex-col md:flex-row gap-8" style="display: none;">
-                        <div class="md:w-1/2 flex flex-col justify-center">
-                            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Zero Compromise QA</h3>
-                            <p class="text-gray-800 dark:text-gray-200 mb-6">Our QA team uses automated robotics to verify manufacturing tolerances and software stability across the ecosystem.</p>
-                        </div>
-                        <div class="md:w-1/2 min-h-[300px] md:min-h-0 md:h-auto flex-shrink-0 rounded-2xl overflow-hidden relative">
-                            <img src="assets/images/about/innovation-lab.jpg" alt="QA" class="w-full h-full object-cover hue-rotate-180">
-                        </div>
-                    </div>
-
-                    <div x-show="activeTab === 5" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0" class="absolute inset-0 bg-gray-50 dark:bg-gray-950 border border-gray-300 dark:border-gray-600 rounded-3xl overflow-hidden p-6 md:p-10 shadow-2xl flex flex-col md:flex-row gap-8" style="display: none;">
-                        <div class="md:w-1/2 flex flex-col justify-center">
-                            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Elite Concierge Support</h3>
-                            <p class="text-gray-800 dark:text-gray-200 mb-6">24/7 dedicated support from senior technicians who understand complex multi-device integrations.</p>
-                        </div>
-                        <div class="md:w-1/2 min-h-[300px] md:min-h-0 md:h-auto flex-shrink-0 rounded-2xl overflow-hidden relative">
-                            <img src="assets/images/about/innovation-lab.jpg" alt="Support" class="w-full h-full object-cover invert">
+                    <div class="relative h-[320px] md:h-[380px] rounded-2xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-700">
+                        <img src="assets/images/about/innovation-lab.jpg" alt="Research Lab" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 start-4 bg-gray-900/90 backdrop-blur px-4 py-2 rounded-xl text-white text-xs font-semibold border border-gray-700">
+                            <i class="fa-solid fa-microscope text-primary me-2"></i> R&D Hub • Tokyo & San Jose
                         </div>
                     </div>
                 </div>
+
+                <!-- Stage 2: Development -->
+                <div x-show="activeTab === 2" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center" style="display: none;">
+                    <div>
+                        <span class="text-blue-500 font-bold text-xs uppercase tracking-widest block mb-2">Stage 02 • Prototyping</span>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-4">Prototyping Future Tech</h3>
+                        <p class="text-gray-700 dark:text-gray-200 text-base leading-relaxed mb-6">We build and test custom hardware integrations in-house, ensuring that the technology we recommend scales seamlessly across modern smart environments.</p>
+                        <ul class="space-y-3 text-gray-800 dark:text-gray-200 mb-8 text-sm font-medium">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-blue-500 text-base"></i> In-House Custom Hardware Prototyping</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-blue-500 text-base"></i> Cross-Platform Ecosystem Integration</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-blue-500 text-base"></i> Optimized Firmware Tuning</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-500/10 text-blue-500 border border-blue-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase">Hardware Prototyping</span>
+                            <span class="bg-purple-500/10 text-purple-500 border border-purple-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase">Firmware Tuning</span>
+                        </div>
+                    </div>
+                    <div class="relative h-[320px] md:h-[380px] rounded-2xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-700">
+                        <img src="assets/images/home2/guide-laptop.jpg" alt="Development Lab" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 start-4 bg-gray-900/90 backdrop-blur px-4 py-2 rounded-xl text-white text-xs font-semibold border border-gray-700">
+                            <i class="fa-solid fa-code text-blue-500 me-2"></i> Engineering Facility
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 3: Testing -->
+                <div x-show="activeTab === 3" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center" style="display: none;">
+                    <div>
+                        <span class="text-purple-500 font-bold text-xs uppercase tracking-widest block mb-2">Stage 03 • Stress Validation</span>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-4">Rigorous Stress Testing</h3>
+                        <p class="text-gray-700 dark:text-gray-200 text-base leading-relaxed mb-6">Every product endures hundreds of hours of thermal chamber testing, drop validation, and wireless frequency stress testing before earning the Nexura seal of approval.</p>
+                        <ul class="space-y-3 text-gray-800 dark:text-gray-200 mb-8 text-sm font-medium">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-purple-500 text-base"></i> Extreme Thermal Chamber Stress Tests</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-purple-500 text-base"></i> Wireless & Signal Interference Validation</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-purple-500 text-base"></i> Structural Drop & Vibration Testing</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-purple-500/10 text-purple-500 border border-purple-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase">Thermal Validation</span>
+                            <span class="bg-green-500/10 text-green-500 border border-green-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase">Signal Stress</span>
+                        </div>
+                    </div>
+                    <div class="relative h-[320px] md:h-[380px] rounded-2xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-700">
+                        <img src="assets/images/home2/guide-phone.jpg" alt="Testing Facility" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 start-4 bg-gray-900/90 backdrop-blur px-4 py-2 rounded-xl text-white text-xs font-semibold border border-gray-700">
+                            <i class="fa-solid fa-vial text-purple-500 me-2"></i> Stress Testing Center
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 4: Quality Assurance -->
+                <div x-show="activeTab === 4" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center" style="display: none;">
+                    <div>
+                        <span class="text-green-500 font-bold text-xs uppercase tracking-widest block mb-2">Stage 04 • Precision Standards</span>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-4">Zero-Compromise QA</h3>
+                        <p class="text-gray-700 dark:text-gray-200 text-base leading-relaxed mb-6">Our Quality Assurance team uses automated optical inspection and robotic load-testing to verify manufacturing tolerances and software stability across the ecosystem.</p>
+                        <ul class="space-y-3 text-gray-800 dark:text-gray-200 mb-8 text-sm font-medium">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-green-500 text-base"></i> Automated Optical Inspection (AOI)</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-green-500 text-base"></i> Robotic Component Stress & Load Testing</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-green-500 text-base"></i> Strict Zero-Defect Tolerance Benchmark</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-500/10 text-green-500 border border-green-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase">Optical Inspection</span>
+                            <span class="bg-primary/10 text-primary border border-primary/20 px-3 py-1 rounded-full text-xs font-semibold uppercase">Robotic QA</span>
+                        </div>
+                    </div>
+                    <div class="relative h-[320px] md:h-[380px] rounded-2xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-700">
+                        <img src="assets/images/about/experience-business.jpg" alt="QA Facility" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 start-4 bg-gray-900/90 backdrop-blur px-4 py-2 rounded-xl text-white text-xs font-semibold border border-gray-700">
+                            <i class="fa-solid fa-circle-check text-green-500 me-2"></i> Quality Control Lab
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 5: Support -->
+                <div x-show="activeTab === 5" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center" style="display: none;">
+                    <div>
+                        <span class="text-yellow-500 font-bold text-xs uppercase tracking-widest block mb-2">Stage 05 • Lifetime Care</span>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-4">Elite Concierge Support</h3>
+                        <p class="text-gray-700 dark:text-gray-200 text-base leading-relaxed mb-6">Our commitment extends beyond delivery with 24/7 dedicated support from senior engineers who understand complex multi-device integrations and enterprise deployments.</p>
+                        <ul class="space-y-3 text-gray-800 dark:text-gray-200 mb-8 text-sm font-medium">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-yellow-500 text-base"></i> 24/7 Senior Technical Specialist Access</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-yellow-500 text-base"></i> Remote Architecture & Network Diagnostics</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-yellow-500 text-base"></i> VIP Priority Warranty & Setup Support</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase">24/7 VIP Concierge</span>
+                            <span class="bg-blue-500/10 text-blue-500 border border-blue-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase">Senior Engineers</span>
+                        </div>
+                    </div>
+                    <div class="relative h-[320px] md:h-[380px] rounded-2xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-700">
+                        <img src="assets/images/about/experience-smart-home.jpg" alt="Concierge Support" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 start-4 bg-gray-900/90 backdrop-blur px-4 py-2 rounded-xl text-white text-xs font-semibold border border-gray-700">
+                            <i class="fa-solid fa-headset text-yellow-500 me-2"></i> Concierge Tech Command Center
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -556,7 +764,7 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             <div class="text-center mb-24">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 font-serif">Future Vision Roadmap</h2>
+                <h2 class="text-4xl md:text-5xl font-semibold text-white mb-4 font-serif">Future Vision Roadmap</h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto shadow-[0_0_15px_#3b82f6]"></div>
             </div>
 
@@ -571,7 +779,7 @@
                     </div>
                     <div class="w-full md:w-[45%] text-start md:text-end ps-16 md:ps-0 md:pe-12 mt-4 md:mt-0 order-2 md:order-1">
                         <div class="bg-gray-900/60 backdrop-blur-xl border border-gray-800 p-6 md:p-8 rounded-3xl shadow-2xl inline-block hover:-translate-y-2 transition-transform duration-300">
-                            <h3 class="text-2xl md:text-3xl font-bold text-white mb-2 font-serif">AI Integration</h3>
+                            <h3 class="text-2xl md:text-3xl font-semibold text-white mb-2 font-serif">AI Integration</h3>
                             <p class="text-gray-200 text-sm md:text-base">Total ecosystem synthesis with predictive local neural nets.</p>
                         </div>
                     </div>
@@ -587,7 +795,7 @@
                     </div>
                     <div class="w-full md:w-[45%] text-start ps-16 md:ps-12 mt-4 md:mt-0 order-2 md:order-1">
                         <div class="bg-gray-900/60 backdrop-blur-xl border border-gray-800 p-6 md:p-8 rounded-3xl shadow-2xl inline-block hover:-translate-y-2 transition-transform duration-300">
-                            <h3 class="text-2xl md:text-3xl font-bold text-white mb-2 font-serif">Smart Retail</h3>
+                            <h3 class="text-2xl md:text-3xl font-semibold text-white mb-2 font-serif">Smart Retail</h3>
                             <p class="text-gray-200 text-sm md:text-base">Cashless, autonomous physical store locations worldwide.</p>
                         </div>
                     </div>
@@ -603,7 +811,7 @@
                     </div>
                     <div class="w-full md:w-[45%] text-start md:text-end ps-16 md:ps-0 md:pe-12 mt-4 md:mt-0 order-2 md:order-1">
                         <div class="bg-gray-900/60 backdrop-blur-xl border border-gray-800 p-6 md:p-8 rounded-3xl shadow-2xl inline-block hover:-translate-y-2 transition-transform duration-300">
-                            <h3 class="text-2xl md:text-3xl font-bold text-white mb-2 font-serif">Immersive Shopping</h3>
+                            <h3 class="text-2xl md:text-3xl font-semibold text-white mb-2 font-serif">Immersive Shopping</h3>
                             <p class="text-gray-200 text-sm md:text-base">Volumetric VR showrooms accessible from any headset.</p>
                         </div>
                     </div>
@@ -619,7 +827,7 @@
                     </div>
                     <div class="w-full md:w-[45%] text-start ps-16 md:ps-12 mt-4 md:mt-0 order-2 md:order-1">
                         <div class="bg-gray-900/60 backdrop-blur-xl border border-gray-800 p-6 md:p-8 rounded-3xl shadow-2xl inline-block hover:-translate-y-2 transition-transform duration-300">
-                            <h3 class="text-2xl md:text-3xl font-bold text-white mb-2 font-serif">Global Expansion</h3>
+                            <h3 class="text-2xl md:text-3xl font-semibold text-white mb-2 font-serif">Global Expansion</h3>
                             <p class="text-gray-200 text-sm md:text-base">Next-day automated drone delivery to 150+ countries.</p>
                         </div>
                     </div>
@@ -635,7 +843,7 @@
                     </div>
                     <div class="w-full md:w-[45%] text-start md:text-end ps-16 md:ps-0 md:pe-12 mt-4 md:mt-0 order-2 md:order-1">
                         <div class="bg-gray-900/60 backdrop-blur-xl border border-gray-800 p-6 md:p-8 rounded-3xl shadow-2xl inline-block hover:-translate-y-2 transition-transform duration-300">
-                            <h3 class="text-2xl md:text-3xl font-bold text-white mb-2 font-serif">Future Technology Hub</h3>
+                            <h3 class="text-2xl md:text-3xl font-semibold text-white mb-2 font-serif">Future Technology Hub</h3>
                             <p class="text-gray-200 text-sm md:text-base">The world's first fully self-sustaining technology campus.</p>
                         </div>
                     </div>
@@ -668,7 +876,7 @@
 
                 <!-- Column 2 -->
                 <div>
-                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Quick Links</h4>
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">Quick Links</h4>
                     <ul class="space-y-3">
                         <li><a href="index.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Home</a></li>
                         <li><a href="about.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">About</a></li>
@@ -681,7 +889,7 @@
 
                 <!-- Column 3 -->
                 <div>
-                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Categories</h4>
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">Categories</h4>
                     <ul class="space-y-3">
                         <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Laptops</a></li>
                         <li><a href="products.html" class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm">Smartphones</a></li>
@@ -694,7 +902,7 @@
 
                 <!-- Column 4 -->
                 <div>
-                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Newsletter</h4>
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">Newsletter</h4>
                     <p class="text-gray-800 dark:text-gray-200 text-sm mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
                     <form class="flex flex-col gap-3">
                         <input type="email" placeholder="Enter your email address" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-gray-900 dark:text-white" required>
