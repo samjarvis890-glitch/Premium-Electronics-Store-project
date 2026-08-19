@@ -417,20 +417,24 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-center">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                     <!-- Massive Testimonial -->
-                    <div class="lg:col-span-5 relative">
-                        <i class="fa-solid fa-quote-left text-8xl text-gray-800 dark:text-gray-200 absolute -top-10 -start-6 z-0"></i>
-                        <div class="relative z-10">
-                            <p class="text-2xl md:text-3xl font-medium text-white leading-relaxed mb-8">"I upgraded my entire production studio through Nexura. The seamless integration and immediate performance boost cut my rendering times in half. The white-glove installation service was flawless."</p>
+                    <div class="lg:col-span-5 relative flex flex-col justify-between bg-gray-800/60 backdrop-blur-md border border-gray-700/80 rounded-3xl p-8 sm:p-10 shadow-2xl">
+                        <div class="mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/30 flex items-center justify-center text-primary text-2xl shadow-inner">
+                                <i class="fa-solid fa-quote-left"></i>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <p class="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8">"I upgraded my entire production studio through Nexura. The seamless integration and immediate performance boost cut my rendering times in half. The white-glove installation service was flawless."</p>
                             
-                            <div class="flex items-center gap-6">
-                                <div class="w-16 h-16 rounded-full bg-gray-800 border-2 border-primary p-1">
-                                    <div class="w-full h-full rounded-full bg-gray-700 flex items-center justify-center text-xl font-bold text-white">JD</div>
+                            <div class="flex items-center gap-4 pt-6 border-t border-gray-700/60">
+                                <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-primary to-orange-400 p-0.5 shadow-md flex-shrink-0">
+                                    <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center text-lg font-bold text-white">JD</div>
                                 </div>
                                 <div>
-                                    <h4 class="text-xl font-semibold text-white">James Dawson</h4>
-                                    <p class="text-primary font-medium text-sm">Lead VFX Supervisor <span class="text-gray-700 dark:text-gray-100 mx-2">|</span> <i class="fa-solid fa-circle-check text-green-500 me-1"></i> Verified Buyer</p>
+                                    <h4 class="text-lg font-semibold text-white">James Dawson</h4>
+                                    <p class="text-primary font-medium text-sm">Lead VFX Supervisor <span class="text-gray-500 mx-1">|</span> <i class="fa-solid fa-circle-check text-green-500 me-1"></i> Verified Buyer</p>
                                 </div>
                             </div>
                         </div>
@@ -612,10 +616,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-12 mb-12">
                 <!-- Column 1 -->
                 <div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <img src="assets/images/logo.svg" alt="Nexura Logo" class="w-10 h-10 drop-shadow-lg">
-                        <span class="font-bold text-2xl tracking-tight text-gray-900 dark:text-white uppercase">Nexura</span>
-                    </div>
+                    <a href="index.html" class="flex items-center gap-3 mb-6 inline-flex group cursor-pointer">
+                        <img src="assets/images/logo.svg" alt="Nexura Logo" class="w-10 h-10 drop-shadow-lg group-hover:scale-105 transition-transform">
+                        <span class="font-bold text-2xl tracking-tight text-gray-900 dark:text-white uppercase group-hover:text-primary transition-colors">Nexura</span>
+                    </a>
                     <p class="text-gray-800 dark:text-gray-200 text-sm mb-6 leading-relaxed">
                         Your premium destination for the latest electronics, smart gadgets, and high-end technology. Discover the future today.
                     </p>

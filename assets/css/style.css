@@ -169,16 +169,29 @@ body {
 /* Utilities */
 .text-primary-custom { color: var(--primary); }
 .bg-primary-custom { background-color: var(--primary); color: white; }
-.btn-primary {
-  background-color: var(--primary);
-  color: white;
+.btn-primary, .btn-secondary, .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem; /* 48px */
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
   font-weight: 600;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  text-align: center;
   transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
 }
 .btn-primary:hover {
   background-color: #e66000;
+  border-color: #e66000;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
 }
@@ -186,28 +199,24 @@ body {
 .btn-secondary {
   background-color: var(--secondary);
   color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  border-color: var(--secondary);
 }
 .btn-secondary:hover {
   background-color: #1a1b28;
+  border-color: #1a1b28;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(43, 45, 66, 0.4);
 }
 
 .btn-outline {
-  border: 2px solid var(--text-dark);
+  background-color: transparent;
+  border-color: var(--text-dark);
   color: var(--text-dark);
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  transition: all 0.3s ease;
 }
 .btn-outline:hover {
   background-color: var(--text-dark);
   color: var(--bg-color);
+  transform: translateY(-2px);
 }
 
 /* Dark mode specific fixes */
@@ -263,24 +272,74 @@ body {
   }
 }
 
+/* Interactive Showcase Slide Content Spacing (Clear safe buffer for navigation arrows) */
+.exp-slide-content-start {
+  padding-inline-start: 7.5rem !important;
+  padding-inline-end: 2rem !important;
+}
+
+.exp-slide-content-end {
+  padding-inline-end: 7.5rem !important;
+  padding-inline-start: 2rem !important;
+}
+
+@media (max-width: 768px) {
+  .exp-slide-content-start {
+    padding-inline-start: 5.5rem !important;
+    padding-inline-end: 1.5rem !important;
+  }
+  .exp-slide-content-end {
+    padding-inline-end: 5.5rem !important;
+    padding-inline-start: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .exp-slide-content-start {
+    padding-inline-start: 4.5rem !important;
+    padding-inline-end: 1rem !important;
+  }
+  .exp-slide-content-end {
+    padding-inline-end: 4.5rem !important;
+    padding-inline-start: 1rem !important;
+  }
+}
+
 /* ==================================================
    RULE 5: TYPOGRAPHY WEIGHT CONSISTENCY
    Heading weight: 600, Paragraph weight: 400-550
    ================================================== */
 h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+.h1, .h2, .h3, .h4, .h5, .h6,
+[class*="heading"], [class*="title"] {
   font-weight: 600 !important;
 }
 
-p, body, li, dt, dd, input, select, textarea, label {
+body, li, dt, dd, input, select, textarea, label {
   font-weight: 400;
 }
 
-p.font-medium, span.font-medium, a.font-medium {
+/* Paragraphs & Paragraph child elements strictly 400 - 550 */
+p, .paragraph,
+p.font-normal, .paragraph.font-normal,
+p.font-light, .paragraph.font-light,
+p.font-thin, .paragraph.font-thin {
+  font-weight: 400 !important;
+}
+
+p.font-medium, .paragraph.font-medium,
+p .font-medium {
   font-weight: 500 !important;
 }
 
-p.font-semibold, span.font-semibold, a.font-semibold {
+p.font-semibold, .paragraph.font-semibold,
+p .font-semibold,
+p.font-bold, .paragraph.font-bold,
+p .font-bold,
+p.font-extrabold, .paragraph.font-extrabold,
+p .font-extrabold,
+p.font-black, .paragraph.font-black,
+p strong, p b, .paragraph strong, .paragraph b {
   font-weight: 550 !important;
 }
 
